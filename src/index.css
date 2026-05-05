@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Mallory';
+  src: url('/fonts/Mallory-Book.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mallory';
+  src: url('/fonts/Mallory-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --color-eggshell:    #fdfcfc;
+  --color-powder:      #f5f3f1;
+  --color-chalk:       #e5e5e5;
+  --color-fog:         #b1b0b0;
+  --color-gravel:      #777169;
+  --color-slate:       #a59f97;
+  --color-cinder:      #2a2724;
+  --color-obsidian:    #000000;
+  --color-signal-blue: #0447ff;
+  --color-ember:       #ff4704;
+
+  --font-mallory: 'Mallory', ui-sans-serif, system-ui, sans-serif;
+  --font-mono:    ui-monospace, 'Geist Mono', SFMono-Regular, Menlo, monospace;
+
+  --radius-card:  16px;
+  --radius-panel: 20px;
+  --radius-badge: 12px;
+  --radius-full:  9999px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Mallory', ui-sans-serif, system-ui, sans-serif;
+  background-color: #fdfcfc;
+  color: #000000;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Universal hairline shadow for cards floating on eggshell */
+.elevated {
+  box-shadow:
+    rgba(0, 0, 0, 0.4) 0px 0px 1.143px 0px,
+    rgba(0, 0, 0, 0.04) 0px 2px 4px 0px;
+}
