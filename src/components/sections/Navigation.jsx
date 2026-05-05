@@ -2,7 +2,12 @@ import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { PillButton } from '../ui'
 
-const NAV = ['Featured', 'Solutions', 'Developers', 'About', 'Pricing']
+const NAV = [
+  { label: 'How it works', href: '#journey' },
+  { label: 'Stories',      href: '#stories' },
+  { label: 'Earnings',     href: '#earn' },
+  { label: 'Pricing',      href: '#pricing' },
+]
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false)
@@ -15,17 +20,17 @@ export default function Navigation() {
 
   return (
     <motion.nav
-      initial={{ y: -20, opacity: 0 }}
+      initial={{ y: -16, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
+      transition={{ duration: 0.4, ease: 'easeOut' }}
       style={{
         position: 'sticky',
         top: 0,
         zIndex: 100,
-        backgroundColor: 'rgba(253,252,252,0.85)',
+        backgroundColor: 'rgba(250,246,237,0.85)',
         backdropFilter: 'saturate(180%) blur(20px)',
         WebkitBackdropFilter: 'saturate(180%) blur(20px)',
-        borderBottom: scrolled ? '1px solid #e5e5e5' : '1px solid transparent',
+        borderBottom: scrolled ? '1px solid #e8dfd0' : '1px solid transparent',
         transition: 'border-bottom 0.2s ease',
       }}
     >
@@ -34,36 +39,31 @@ export default function Navigation() {
           maxWidth: '1200px',
           margin: '0 auto',
           padding: '0 32px',
-          height: '56px',
+          height: '60px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
         }}
       >
         {/* Logo + wordmark */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <div
-            aria-hidden
-            style={{
-              width: 22,
-              height: 22,
-              borderRadius: '9999px',
-              background:
-                'conic-gradient(from 180deg, #3d75d8, #75bee5, #52d0e9, #1f5fcf, #2c54ca, #ade8f3, #d8f1f5, #2bbad0, #1e53b0, #2f40d2, #3d75d8)',
-            }}
-          />
+        <a href="#top" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
+          {/* Mountain mark — sherpa */}
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M2 20 L9 8 L13 14 L17 6 L22 20 Z" stroke="#1c1814" strokeWidth="1.6" strokeLinejoin="round" fill="none" />
+            <circle cx="17" cy="6" r="1.4" fill="#b85c3a" />
+          </svg>
           <span
             style={{
-              fontFamily: 'Mallory, sans-serif',
-              fontWeight: 700,
-              fontSize: '15px',
-              letterSpacing: '0.02em',
-              color: '#000',
+              fontFamily: "'Lora', Georgia, serif",
+              fontWeight: 600,
+              fontSize: '17px',
+              letterSpacing: '-0.01em',
+              color: '#1c1814',
             }}
           >
-            ElevenLabs
+            Pocket Sherpa
           </span>
-        </div>
+        </a>
 
         {/* Centre links */}
         <ul
@@ -77,31 +77,31 @@ export default function Navigation() {
           className="hidden md:flex"
         >
           {NAV.map((item) => (
-            <li key={item}>
+            <li key={item.label}>
               <a
-                href={`#${item.toLowerCase()}`}
+                href={item.href}
                 style={{
                   fontFamily: 'Mallory, sans-serif',
                   fontWeight: 400,
                   fontSize: '14px',
-                  color: '#000000',
+                  color: '#1c1814',
                   textDecoration: 'none',
                   letterSpacing: '0.01em',
                   transition: 'color 0.18s',
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = '#777169')}
-                onMouseLeave={(e) => (e.currentTarget.style.color = '#000000')}
+                onMouseEnter={(e) => (e.currentTarget.style.color = '#b85c3a')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = '#1c1814')}
               >
-                {item}
+                {item.label}
               </a>
             </li>
           ))}
         </ul>
 
-        {/* Auth buttons */}
+        {/* Auth */}
         <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-          <PillButton variant="ghost">Log in</PillButton>
-          <PillButton variant="filled">Sign up</PillButton>
+          <PillButton variant="ghost">Sign in</PillButton>
+          <PillButton variant="filled">Start writing free</PillButton>
         </div>
       </div>
     </motion.nav>

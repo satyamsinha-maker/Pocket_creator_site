@@ -1,32 +1,28 @@
-import Navigation        from './components/sections/Navigation'
-import Hero               from './components/sections/Hero'
-import TrustBar           from './components/sections/TrustBar'
-import TwoPlatforms       from './components/sections/TwoPlatforms'
-import CreateEditLocalize from './components/sections/CreateEditLocalize'
-import DeployAgents       from './components/sections/DeployAgents'
-import BuildAPIs          from './components/sections/BuildAPIs'
-import GlobalImpact       from './components/sections/GlobalImpact'
-import Research           from './components/sections/Research'
-import Safety             from './components/sections/Safety'
-import LatestUpdates      from './components/sections/LatestUpdates'
-import FinalCTA           from './components/sections/FinalCTA'
-import Footer             from './components/sections/Footer'
+import Navigation       from './components/sections/Navigation'
+import Hero              from './components/sections/Hero'
+import CompleteJourney   from './components/sections/CompleteJourney'
+import TrustBand         from './components/sections/TrustBand'
+import Act1Write         from './components/sections/Act1Write'
+import Act2Produce       from './components/sections/Act2Produce'
+import Act3Earn          from './components/sections/Act3Earn'
+import WriterStories     from './components/sections/WriterStories'
+import SampleStories     from './components/sections/SampleStories'
+import FinalCTA          from './components/sections/FinalCTA'
+import Footer            from './components/sections/Footer'
 import './App.css'
 
 export default function App() {
   return (
-    <div style={{ background: '#fdfcfc' }}>
+    <div style={{ background: '#faf6ed' }}>
       <Navigation />
       <Hero />
-      <TrustBar />
-      <TwoPlatforms />
-      <CreateEditLocalize />
-      <DeployAgents />
-      <BuildAPIs />
-      <GlobalImpact />
-      <Research />
-      <Safety />
-      <LatestUpdates />
+      <CompleteJourney />
+      <TrustBand />
+      <Act1Write />
+      <Act2Produce />
+      <Act3Earn />
+      <WriterStories />
+      <SampleStories />
       <FinalCTA />
       <Footer />
     </div>

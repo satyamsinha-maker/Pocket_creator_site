@@ -1,53 +1,47 @@
 import { Container } from '../ui'
 
 const COLS = [
-  {
-    heading: 'Products',
-    links: ['Text to Speech', 'Voice Cloning', 'Voice Library', 'Music', 'Studios', 'Agents', 'Scribe', 'Speech to Speech', 'Sound Effects', 'Mobile API'],
-  },
-  {
-    heading: 'Solutions',
-    links: ['Conversational AI', 'Audiobooks', 'Newsrooms', 'Government', 'Education', 'Customer Support', 'Marketing', 'Translation', 'Voice Acting'],
-  },
-  {
-    heading: 'Resources',
-    links: ['Blog', 'Help Center', 'Changelog', 'Status', 'Languages', 'Trust Center', 'Community', 'Feature Voices', 'Voice Lab', 'Mobile API'],
-  },
-  {
-    heading: 'Account',
-    links: ['Sign in', 'Sign up', 'Pricing', 'Enterprise', 'Affiliates', 'Partners', 'Brand kit', 'Trust & safety'],
-  },
+  { heading: 'Product',  links: ['How it works', 'Pricing', 'Roadmap', 'Beta access'] },
+  { heading: 'Writers',  links: ['Writer stories', 'Earnings', 'Sample series', 'Submission rules'] },
+  { heading: 'Resources',links: ['Help center', 'Blog', 'Genre guides', 'Style guide', 'Status'] },
+  { heading: 'Company',  links: ['About', 'Pocket FM', 'Careers', 'Press', 'Contact'] },
 ]
 
 export default function Footer() {
   return (
     <footer
       style={{
-        padding: '64px 0 48px',
-        borderTop: '1px solid #e5e5e5',
-        background: '#fdfcfc',
+        padding: '72px 0 48px',
+        borderTop: '1px solid #e8dfd0',
+        background: '#f3ecdc',
       }}
     >
       <Container>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '40px' }}>
-          <div
-            aria-hidden
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '40px' }}>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M2 20 L9 8 L13 14 L17 6 L22 20 Z" stroke="#1c1814" strokeWidth="1.6" strokeLinejoin="round" fill="none" />
+            <circle cx="17" cy="6" r="1.4" fill="#b85c3a" />
+          </svg>
+          <span
             style={{
-              width: 22,
-              height: 22,
-              borderRadius: '9999px',
-              background:
-                'conic-gradient(from 180deg, #3d75d8, #75bee5, #52d0e9, #1f5fcf, #2c54ca, #ade8f3, #d8f1f5, #2bbad0, #1e53b0, #2f40d2, #3d75d8)',
+              fontFamily: "'Lora', Georgia, serif",
+              fontWeight: 600,
+              fontSize: '17px',
+              letterSpacing: '-0.01em',
+              color: '#1c1814',
             }}
-          />
-          <span style={{ fontFamily: 'Mallory, sans-serif', fontWeight: 700, fontSize: '15px' }}>ElevenLabs</span>
-          <span style={{ fontFamily: 'Mallory, sans-serif', fontSize: '12px', color: '#777169', marginLeft: '6px' }}>EN, English</span>
+          >
+            Pocket Sherpa
+          </span>
+          <span style={{ fontFamily: 'Mallory, sans-serif', fontSize: '12px', color: '#6b5e52', marginLeft: '6px' }}>
+            A Pocket FM company
+          </span>
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '32px', marginBottom: '48px' }} className="footer-grid">
           {COLS.map((c) => (
             <div key={c.heading}>
-              <p style={{ fontFamily: 'Mallory, sans-serif', fontWeight: 700, fontSize: '13px', color: '#000', marginBottom: '14px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+              <p style={{ fontFamily: 'Mallory, sans-serif', fontWeight: 700, fontSize: '12px', color: '#1c1814', marginBottom: '14px', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
                 {c.heading}
               </p>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -57,13 +51,13 @@ export default function Footer() {
                       href="#"
                       style={{
                         fontFamily: 'Mallory, sans-serif',
-                        fontSize: '13px',
-                        color: '#777169',
+                        fontSize: '14px',
+                        color: '#6b5e52',
                         textDecoration: 'none',
                         transition: 'color 0.18s',
                       }}
-                      onMouseEnter={(e) => (e.currentTarget.style.color = '#000')}
-                      onMouseLeave={(e) => (e.currentTarget.style.color = '#777169')}
+                      onMouseEnter={(e) => (e.currentTarget.style.color = '#1c1814')}
+                      onMouseLeave={(e) => (e.currentTarget.style.color = '#6b5e52')}
                     >
                       {l}
                     </a>
@@ -77,7 +71,7 @@ export default function Footer() {
         <div
           style={{
             paddingTop: '24px',
-            borderTop: '1px solid #e5e5e5',
+            borderTop: '1px solid #e8dfd0',
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
@@ -85,14 +79,12 @@ export default function Footer() {
             gap: '12px',
           }}
         >
-          <span style={{ fontFamily: 'Mallory, sans-serif', fontSize: '12px', color: '#a59f97' }}>
-            © 2026 ElevenLabs. All rights reserved.
+          <p style={{ fontFamily: "'Lora', Georgia, serif", fontStyle: 'italic', fontSize: '13px', color: '#6b5e52', maxWidth: '480px' }}>
+            Idea to audio series to listeners to royalty cheque, all in one product.
+          </p>
+          <span style={{ fontFamily: 'Mallory, sans-serif', fontSize: '12px', color: '#908474' }}>
+            © 2026 Pocket Sherpa · A Pocket FM product
           </span>
-          <div style={{ display: 'flex', gap: '20px' }}>
-            {['Privacy', 'Terms', 'Security'].map((l) => (
-              <a key={l} href="#" style={{ fontFamily: 'Mallory, sans-serif', fontSize: '12px', color: '#777169', textDecoration: 'none' }}>{l}</a>
-            ))}
-          </div>
         </div>
       </Container>
 

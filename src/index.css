@@ -17,23 +17,26 @@
 }
 
 @theme {
-  --color-eggshell:    #fdfcfc;
-  --color-powder:      #f5f3f1;
-  --color-chalk:       #e5e5e5;
-  --color-fog:         #b1b0b0;
-  --color-gravel:      #777169;
-  --color-slate:       #a59f97;
-  --color-cinder:      #2a2724;
-  --color-obsidian:    #000000;
-  --color-signal-blue: #0447ff;
-  --color-ember:       #ff4704;
+  /* Warm-literary palette */
+  --color-cream:   #faf6ed;   /* page surface — paper warmth */
+  --color-vellum:  #f3ecdc;   /* secondary surface */
+  --color-paper:   #ffffff;   /* card surface */
+  --color-chalk:   #e8dfd0;   /* warm border */
+  --color-fog:     #b8ad9a;   /* muted, disabled */
+  --color-gravel:  #6b5e52;   /* secondary text — warm stone */
+  --color-slate:   #908474;   /* tertiary text */
+  --color-ink:     #1c1814;   /* primary text — warm ink */
+  --color-sienna:  #b85c3a;   /* accent — burnt sienna */
+  --color-sienna-deep: #8c4528;
+  --color-gold:    #c19a3e;   /* alternate accent — muted gold */
 
-  --font-mallory: 'Mallory', ui-sans-serif, system-ui, sans-serif;
-  --font-mono:    ui-monospace, 'Geist Mono', SFMono-Regular, Menlo, monospace;
+  /* Fonts */
+  --font-serif:   'Lora', Georgia, 'Times New Roman', serif;
+  --font-sans:    'Mallory', ui-sans-serif, system-ui, sans-serif;
 
-  --radius-card:  16px;
-  --radius-panel: 20px;
-  --radius-badge: 12px;
+  /* Radii — slightly less aggressive than ElevenLabs version */
+  --radius-card:  12px;
+  --radius-panel: 16px;
   --radius-full:  9999px;
 }
 
@@ -49,15 +52,15 @@ html {
 
 body {
   font-family: 'Mallory', ui-sans-serif, system-ui, sans-serif;
-  background-color: #fdfcfc;
-  color: #000000;
+  background-color: #faf6ed;
+  color: #1c1814;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Universal hairline shadow for cards floating on eggshell */
+/* Card hairline elevation matches Refero discipline */
 .elevated {
   box-shadow:
-    rgba(0, 0, 0, 0.4) 0px 0px 1.143px 0px,
-    rgba(0, 0, 0, 0.04) 0px 2px 4px 0px;
+    rgba(28, 24, 20, 0.4) 0px 0px 1.143px 0px,
+    rgba(28, 24, 20, 0.04) 0px 2px 4px 0px;
 }
