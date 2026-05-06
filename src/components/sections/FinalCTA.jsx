@@ -4,30 +4,61 @@ import { Container, AnimatedSection, SerifHeading, Body, PillButton } from '../u
 export default function FinalCTA() {
   const [v, setV] = useState('')
   return (
-    <AnimatedSection className="py-40 text-center relative overflow-hidden bg-white">
+    <AnimatedSection style={{ padding: '160px 0', textAlign: 'center', position: 'relative', overflow: 'hidden', background: '#ffffff' }}>
+      {/* Dreamy gradient halo behind the headline */}
       <div
         aria-hidden
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] pointer-events-none blur-[20px]"
-        style={{ background: 'radial-gradient(circle, rgba(127,125,252,0.28), rgba(244,75,204,0.14) 33%, rgba(229,237,245,0) 66%)' }}
+        style={{
+          position: 'absolute',
+          left: '50%',
+          top: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '900px',
+          height: '900px',
+          pointerEvents: 'none',
+          background: 'radial-gradient(circle, rgba(127,125,252,0.28), rgba(244,75,204,0.14) 33%, rgba(229,237,245,0) 66%)',
+          filter: 'blur(20px)',
+        }}
       />
       <Container>
-        <div className="relative z-[1]">
-          <SerifHeading size="xl" maxWidth="780px" className="mx-auto">
+        <div style={{ position: 'relative', zIndex: 1 }}>
+          <SerifHeading size="xl" maxWidth="780px">
             Your audience is waiting.
           </SerifHeading>
-          <div className="mt-6 mx-auto max-w-[540px] mb-9">
+          <div style={{ margin: '24px auto 36px', maxWidth: '540px' }}>
             <Body size="lg" color="#50617a">
               Sign up free. Write your first chapter today. We will handle the rest.
             </Body>
           </div>
 
-          <div className="max-w-[660px] mx-auto">
-            <div className="flex items-center bg-white border border-stone rounded-input pl-4 pr-2 py-2 gap-2 shadow-input text-left">
+          <div style={{ maxWidth: '660px', margin: '0 auto' }}>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                background: '#ffffff',
+                border: '1px solid #d8d6df',
+                borderRadius: '4px',
+                padding: '8px 8px 8px 16px',
+                boxShadow: 'rgba(23, 23, 23, 0.06) 0px 3px 6px 0px',
+                gap: '8px',
+                textAlign: 'left',
+              }}
+            >
               <input
                 value={v}
                 onChange={(e) => setV(e.target.value)}
                 placeholder="What story do you want to tell the world?"
-                className="flex-1 border-0 outline-0 bg-transparent text-body text-midnight py-2"
+                style={{
+                  flex: 1,
+                  border: 'none',
+                  outline: 'none',
+                  background: 'transparent',
+                  fontFamily: "'Mallory', sans-serif",
+                  fontSize: '14px',
+                  color: '#061b31',
+                  padding: '8px 0',
+                }}
               />
               <PillButton variant="sienna">
                 Start writing free

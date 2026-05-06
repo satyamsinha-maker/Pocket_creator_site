@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Container, AnimatedSection, SerifHeading, Eyebrow } from '../ui'
 
+const SANS = "'Mallory', sans-serif"
+
 const GENRES = ['All', 'Romance', 'Thriller', 'Fantasy', 'Drama']
 
 const SERIES = [
@@ -20,17 +22,45 @@ function Card({ s }) {
   return (
     <motion.article
       whileHover={{ y: -2, boxShadow: 'rgba(50, 50, 93, 0.12) 0px 16px 32px 0px' }}
-      className="bg-white rounded-card overflow-hidden cursor-pointer shadow-input transition-shadow duration-200"
+      style={{
+        background: '#ffffff',
+        borderRadius: '6px',
+        overflow: 'hidden',
+        cursor: 'pointer',
+        boxShadow: 'rgba(23, 23, 23, 0.06) 0px 3px 6px 0px',
+        transition: 'box-shadow 0.25s',
+      }}
     >
-      <div className="aspect-[4/5] relative overflow-hidden" style={{ background: s.gradient }}>
-        <div className="absolute bottom-3.5 left-3.5 right-3.5">
-          <p className="font-normal text-[15px] text-white tracking-heading-sm leading-[1.15] [text-shadow:0_1px_6px_rgba(0,0,0,0.25)]">
+      <div
+        style={{
+          aspectRatio: '4 / 5',
+          background: s.gradient,
+          position: 'relative',
+          overflow: 'hidden',
+        }}
+      >
+        <div style={{ position: 'absolute', bottom: 14, left: 14, right: 14 }}>
+          <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '15px', color: '#fff', letterSpacing: '-0.009em', lineHeight: 1.15, textShadow: '0 1px 6px rgba(0,0,0,0.25)' }}>
             {s.title}
           </p>
         </div>
         <button
           onClick={(e) => { e.stopPropagation(); setPlaying(!playing) }}
-          className="absolute top-3 right-3 w-9 h-9 rounded-tag bg-white border-0 cursor-pointer flex items-center justify-center shadow-md"
+          style={{
+            position: 'absolute',
+            top: 12,
+            right: 12,
+            width: 36,
+            height: 36,
+            borderRadius: '4px',
+            background: '#ffffff',
+            border: 'none',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            boxShadow: 'rgba(0,0,0,0.15) 0px 2px 6px 0px',
+          }}
           aria-label={playing ? 'Pause sample' : 'Play 30-second sample'}
         >
           {playing ? (
@@ -41,11 +71,11 @@ function Card({ s }) {
         </button>
       </div>
 
-      <div className="px-4 py-3.5">
-        <p className="font-normal text-[15px] text-midnight mb-1 tracking-heading-sm whitespace-nowrap overflow-hidden text-ellipsis">
+      <div style={{ padding: '14px 16px' }}>
+        <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '15px', color: '#061b31', marginBottom: '4px', letterSpacing: '-0.009em', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
           {s.title}
         </p>
-        <p className="text-[12px] text-ghost">
+        <p style={{ fontFamily: SANS, fontSize: '12px', color: '#64748d' }}>
           {s.genre} · {s.episodes} episodes · {s.writer}
         </p>
       </div>
@@ -58,25 +88,33 @@ export default function SampleStories() {
   const filtered = genre === 'All' ? SERIES : SERIES.filter((s) => s.genre === genre)
 
   return (
-    <AnimatedSection className="py-[120px] bg-white">
+    <AnimatedSection style={{ padding: '120px 0', background: '#ffffff' }}>
       <Container>
-        <div className="mb-10 max-w-[720px]">
+        <div style={{ marginBottom: '40px', maxWidth: '720px' }}>
           <Eyebrow>Sample stories</Eyebrow>
           <SerifHeading size="lg">Listen to what writers are creating.</SerifHeading>
         </div>
 
-        <div className="flex flex-wrap gap-2 mb-8">
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '32px' }}>
           {GENRES.map((g) => {
             const active = g === genre
             return (
               <button
                 key={g}
                 onClick={() => setGenre(g)}
-                className={`rounded-tag px-3.5 py-2 text-[13px] cursor-pointer border transition-all duration-200 ${
-                  active
-                    ? 'bg-violet text-white border-violet'
-                    : 'bg-white text-midnight border-powder hover:border-violet-washed'
-                }`}
+                style={{
+                  background: active ? '#F51D00' : '#ffffff',
+                  color: active ? '#ffffff' : '#061b31',
+                  border: '1px solid',
+                  borderColor: active ? '#F51D00' : '#e5edf5',
+                  borderRadius: '4px',
+                  padding: '8px 14px',
+                  fontFamily: SANS,
+                  fontSize: '13px',
+                  fontWeight: 400,
+                  cursor: 'pointer',
+                  transition: 'all 0.18s',
+                }}
               >
                 {g}
               </button>
@@ -84,14 +122,26 @@ export default function SampleStories() {
           })}
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, 1fr)',
+            gap: '20px',
+          }}
+          className="sample-grid"
+        >
           {filtered.map((s) => <Card key={s.title} s={s} />)}
         </div>
 
-        <p className="text-[13px] text-ghost text-center mt-8">
+        <p style={{ fontFamily: SANS, fontSize: '13px', color: '#64748d', textAlign: 'center', marginTop: '32px' }}>
           Tap a cover to hear a 30-second sample.
         </p>
       </Container>
+
+      <style>{`
+        @media (max-width: 900px) { .sample-grid { grid-template-columns: repeat(2, 1fr) !important; } }
+        @media (max-width: 480px) { .sample-grid { grid-template-columns: 1fr !important; } }
+      `}</style>
     </AnimatedSection>
   )
 }

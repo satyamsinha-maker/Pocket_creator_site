@@ -12,27 +12,44 @@ export default function Hero() {
   const [value, setValue] = useState('')
 
   return (
-    <section id="top" className="relative overflow-hidden bg-white py-24 md:py-28">
+    <section
+      id="top"
+      style={{
+        padding: '96px 0 112px',
+        position: 'relative',
+        overflow: 'hidden',
+        background: '#ffffff',
+      }}
+    >
+      {/* Dreamy gradient halo — subtle, top-right */}
       <div
         aria-hidden
-        className="absolute -top-1/4 -right-[10%] w-[900px] h-[900px] pointer-events-none blur-[20px]"
-        style={{ background: 'radial-gradient(circle, rgba(127,125,252,0.35), rgba(244,75,204,0.18) 33%, rgba(229,237,245,0) 66%)' }}
+        style={{
+          position: 'absolute',
+          top: '-25%',
+          right: '-10%',
+          width: '900px',
+          height: '900px',
+          pointerEvents: 'none',
+          background: 'radial-gradient(circle, rgba(127,125,252,0.35), rgba(244,75,204,0.18) 33%, rgba(229,237,245,0) 66%)',
+          filter: 'blur(20px)',
+        }}
       />
 
       <Container>
-        <div className="max-w-[820px] relative z-[1]">
+        <div style={{ maxWidth: '820px', position: 'relative', zIndex: 1 }}>
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           >
-            <SerifHeading size="xl" as="h1">
+            <SerifHeading size="xl" as="h1" maxWidth="100%">
               Write a story.<br />Reach listeners.<br />Get paid.
             </SerifHeading>
           </motion.div>
 
           <motion.div
-            className="mt-6 max-w-[560px]"
+            style={{ marginTop: '24px', maxWidth: '560px' }}
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.06 }}
@@ -44,22 +61,53 @@ export default function Hero() {
             </Body>
           </motion.div>
 
+          {/* Chat input */}
           <motion.div
-            className="mt-10 max-w-[660px]"
+            style={{ marginTop: '40px', maxWidth: '660px' }}
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.12 }}
           >
-            <p className="font-normal text-caption text-ghost tracking-eyebrow uppercase mb-2.5">
+            <p
+              style={{
+                fontFamily: "'Mallory', sans-serif",
+                fontWeight: 400,
+                fontSize: '11px',
+                color: '#64748d',
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                marginBottom: '10px',
+              }}
+            >
               Tell me your story idea
             </p>
 
-            <div className="flex items-center bg-white border border-stone rounded-input pl-4 pr-2 py-2 gap-2 shadow-input">
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                background: '#ffffff',
+                border: '1px solid #d8d6df',
+                borderRadius: '4px',
+                padding: '8px 8px 8px 16px',
+                boxShadow: 'rgba(23, 23, 23, 0.06) 0px 3px 6px 0px',
+                gap: '8px',
+              }}
+            >
               <input
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
                 placeholder="A betrayed scientist returns from exile with a secret..."
-                className="flex-1 border-0 outline-0 bg-transparent text-body text-midnight py-2"
+                style={{
+                  flex: 1,
+                  border: 'none',
+                  outline: 'none',
+                  background: 'transparent',
+                  fontFamily: "'Mallory', sans-serif",
+                  fontSize: '14px',
+                  color: '#061b31',
+                  padding: '8px 0',
+                }}
               />
               <PillButton variant="sienna">
                 Start writing
@@ -69,31 +117,45 @@ export default function Hero() {
               </PillButton>
             </div>
 
-            <div className="flex flex-wrap gap-2 mt-3.5">
+            {/* Genre prompt chips */}
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '14px' }}>
               {PROMPTS.map((p, i) => (
                 <motion.button
                   key={i}
                   onClick={() => setValue(p)}
-                  whileHover={{ y: -1 }}
+                  whileHover={{ borderColor: '#fcb8ad', backgroundColor: '#f8fafd' }}
                   whileTap={{ scale: 0.98 }}
-                  className="bg-white border border-powder rounded-tag px-3 py-2 text-[12px] text-slate cursor-pointer text-left max-w-[380px] leading-[1.4] hover:border-violet-washed hover:bg-porcelain transition-colors"
+                  style={{
+                    background: '#ffffff',
+                    border: '1px solid #e5edf5',
+                    borderRadius: '4px',
+                    padding: '8px 12px',
+                    fontFamily: "'Mallory', sans-serif",
+                    fontSize: '12px',
+                    color: '#50617a',
+                    cursor: 'pointer',
+                    textAlign: 'left',
+                    maxWidth: '380px',
+                    lineHeight: 1.4,
+                  }}
                 >
-                  <span className="text-violet mr-1.5">&rsaquo;</span>
+                  <span style={{ color: '#F51D00', marginRight: 6 }}>&rsaquo;</span>
                   {p}
                 </motion.button>
               ))}
             </div>
           </motion.div>
 
+          {/* Secondary CTAs */}
           <motion.div
-            className="mt-10 flex gap-3 items-center flex-wrap"
+            style={{ marginTop: '40px', display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <PillButton variant="filled">Start writing free</PillButton>
             <PillButton variant="ghost">
-              <span className="inline-flex w-3.5 h-3.5 items-center justify-center text-violet">
+              <span style={{ display: 'inline-flex', width: 14, height: 14, alignItems: 'center', justifyContent: 'center', color: '#F51D00' }}>
                 <svg width="10" height="12" viewBox="0 0 10 12" fill="none">
                   <path d="M0 1 L10 6 L0 11 Z" fill="currentColor" />
                 </svg>

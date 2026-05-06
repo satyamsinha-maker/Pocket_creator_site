@@ -1,29 +1,31 @@
 import { motion } from 'framer-motion'
 import { Container, AnimatedSection, SerifHeading, Body, Eyebrow } from '../ui'
 
-/* ── Stub UIs ─────────────────────────────────────────────────────────── */
+const SANS = "'Mallory', sans-serif"
+
+/* ── Stripe-style stub UIs ────────────────────────────────────────────── */
 
 function StoryboardStub() {
   return (
-    <div className="bg-porcelain rounded-card p-5 shadow-soft">
-      <p className="font-normal text-[15px] text-midnight mb-1.5">The Boss’s Forbidden Love</p>
-      <p className="font-normal text-caption text-violet uppercase tracking-eyebrow mb-3.5">Romance · Slow burn · Hindi</p>
+    <div style={{ background: '#f8fafd', borderRadius: '6px', padding: '20px', boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 32px 8px' }}>
+      <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '15px', color: '#061b31', marginBottom: '6px' }}>The Boss’s Forbidden Love</p>
+      <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '11px', color: '#F51D00', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '14px' }}>Romance · Slow burn · Hindi</p>
 
-      <div className="grid grid-cols-2 gap-1.5 mb-3">
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px', marginBottom: '12px' }}>
         {[
           { name: 'Aarav Mehra',  role: 'CEO, the rival' },
           { name: 'Mira Kapoor',  role: 'Father’s daughter' },
           { name: 'Vikram Singh', role: 'The patriarch' },
           { name: 'Riya',         role: 'Best friend' },
         ].map((c) => (
-          <div key={c.name} className="bg-white border border-powder rounded-tag px-2.5 py-2">
-            <p className="font-normal text-caption text-midnight">{c.name}</p>
-            <p className="font-normal text-[10px] text-ghost">{c.role}</p>
+          <div key={c.name} style={{ background: '#ffffff', border: '1px solid #e5edf5', borderRadius: '4px', padding: '8px 10px' }}>
+            <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '11px', color: '#061b31' }}>{c.name}</p>
+            <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '10px', color: '#64748d' }}>{c.role}</p>
           </div>
         ))}
       </div>
 
-      <p className="font-normal text-caption text-slate leading-[1.5]">
+      <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '11px', color: '#50617a', lineHeight: 1.5 }}>
         Plot arc: rivalry &rarr; misunderstanding &rarr; reluctant alliance &rarr; betrayal &rarr; reckoning.
       </p>
     </div>
@@ -32,13 +34,13 @@ function StoryboardStub() {
 
 function DraftStub() {
   return (
-    <div className="bg-porcelain rounded-card p-5 shadow-soft">
-      <p className="font-normal text-caption text-violet uppercase tracking-eyebrow mb-2">Episode 7 · Draft</p>
-      <p className="font-normal text-body text-midnight leading-[1.5] mb-2">
+    <div style={{ background: '#f8fafd', borderRadius: '6px', padding: '20px', boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 32px 8px' }}>
+      <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '11px', color: '#F51D00', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '8px' }}>Episode 7 · Draft</p>
+      <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '14px', color: '#061b31', lineHeight: 1.5, marginBottom: '8px' }}>
         Mira’s heels echoed across the marble lobby, each step a measured breath. She had not expected to see him here. Not tonight. Not after what he had said in the boardroom.
       </p>
-      <p className="font-normal text-body text-midnight leading-[1.5]">
-        Aarav looked up. Their eyes met. The room <span className="bg-violet/10 border-b border-dashed border-violet">seemed to hold its breath</span>.
+      <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '14px', color: '#061b31', lineHeight: 1.5 }}>
+        Aarav looked up. Their eyes met. The room <span style={{ background: 'rgba(245,29,0,0.1)', borderBottom: '1px dashed #F51D00' }}>seemed to hold its breath</span>.
       </p>
     </div>
   )
@@ -46,8 +48,8 @@ function DraftStub() {
 
 function ReviewStub() {
   return (
-    <div className="bg-porcelain rounded-card p-5 shadow-soft">
-      <p className="font-normal text-[13px] text-midnight leading-[1.5] mb-3.5 italic">
+    <div style={{ background: '#f8fafd', borderRadius: '6px', padding: '20px', boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 32px 8px' }}>
+      <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '13px', color: '#061b31', lineHeight: 1.5, marginBottom: '14px', fontStyle: 'italic' }}>
         “Mira’s heels echoed across the marble lobby...”
       </p>
       {[
@@ -55,9 +57,9 @@ function ReviewStub() {
         { tag: 'Character voice', note: 'Aarav feels guarded. Aligns with Ep 4 rivalry beat.' },
         { tag: 'Continuity',      note: 'Boardroom scene: cross-checks with Ep 6 ending.' },
       ].map((r) => (
-        <div key={r.tag} className="flex gap-2.5 mb-2.5">
-          <span className="flex-none bg-violet text-white rounded-tag px-1.5 py-0.5 font-normal text-[10px] h-fit">{r.tag}</span>
-          <p className="font-normal text-[12px] text-slate leading-[1.4]">{r.note}</p>
+        <div key={r.tag} style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
+          <span style={{ flex: 'none', background: '#F51D00', color: '#ffffff', borderRadius: '4px', padding: '2px 6px', fontFamily: SANS, fontWeight: 400, fontSize: '10px', height: 'fit-content' }}>{r.tag}</span>
+          <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '12px', color: '#50617a', lineHeight: 1.4 }}>{r.note}</p>
         </div>
       ))}
     </div>
@@ -66,22 +68,22 @@ function ReviewStub() {
 
 function MemoryStub() {
   return (
-    <div className="bg-porcelain rounded-card p-5 shadow-soft">
-      <div className="flex gap-2.5 items-start mb-3.5">
-        <div className="bg-midnight text-white rounded-tag w-[22px] h-[22px] flex items-center justify-center flex-none text-[10px] font-normal">
+    <div style={{ background: '#f8fafd', borderRadius: '6px', padding: '20px', boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 32px 8px' }}>
+      <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start', marginBottom: '14px' }}>
+        <div style={{ background: '#061b31', color: '#ffffff', borderRadius: '4px', width: 22, height: 22, display: 'flex', alignItems: 'center', justifyContent: 'center', flex: 'none', fontFamily: SANS, fontSize: '10px', fontWeight: 400 }}>
           You
         </div>
-        <p className="font-normal text-[13px] text-midnight leading-[1.5]">
+        <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '13px', color: '#061b31', lineHeight: 1.5 }}>
           What did Marcus say about his sister in episode 12?
         </p>
       </div>
-      <div className="flex gap-2.5 items-start">
-        <div className="bg-violet text-white rounded-tag w-[22px] h-[22px] flex items-center justify-center flex-none">
+      <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+        <div style={{ background: '#F51D00', color: '#ffffff', borderRadius: '4px', width: 22, height: 22, display: 'flex', alignItems: 'center', justifyContent: 'center', flex: 'none' }}>
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M2 20 L9 8 L13 14 L17 6 L22 20 Z" stroke="currentColor" strokeWidth="1.6" /></svg>
         </div>
         <div>
-          <p className="font-normal text-caption text-violet uppercase tracking-eyebrow mb-1">Episode 12 · 03:42</p>
-          <p className="font-normal text-[13px] text-midnight leading-[1.5] italic">
+          <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '11px', color: '#F51D00', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '4px' }}>Episode 12 · 03:42</p>
+          <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '13px', color: '#061b31', lineHeight: 1.5, fontStyle: 'italic' }}>
             “She wasn’t my sister, Aarav. She was the only person I ever trusted. And I left her in that house.”
           </p>
         </div>
@@ -91,52 +93,86 @@ function MemoryStub() {
 }
 
 const BLOCKS = [
-  { title: 'Storyboard before you write', body: 'Lock in your title, genre, characters, plot arcs, key relationships and tone. Sherpa asks the questions a seasoned editor would, and turns your half-formed idea into a story bible you can build on for fifty episodes.', visual: <StoryboardStub /> },
-  { title: 'First drafts in minutes',     body: 'Once your storyboard is locked, Sherpa generates a first draft of every episode. You direct, Sherpa writes, you refine. The blank page is gone.', visual: <DraftStub /> },
-  { title: 'Built-in editorial review',   body: 'Ask Sherpa to review your episode. Get feedback on pacing, character voice, emotional arcs and continuity. Like having an editor on call, twenty-four hours a day.', visual: <ReviewStub /> },
-  { title: 'Total recall, every episode', body: 'On episode 50 and cannot remember what your antagonist confessed in episode 12? Ask Sherpa. Every line, every detail, every promise you made to your reader is held in memory and pulled forward when you need it.', visual: <MemoryStub /> },
+  {
+    title: 'Storyboard before you write',
+    body:  'Lock in your title, genre, characters, plot arcs, key relationships and tone. Sherpa asks the questions a seasoned editor would, and turns your half-formed idea into a story bible you can build on for fifty episodes.',
+    visual: <StoryboardStub />,
+  },
+  {
+    title: 'First drafts in minutes',
+    body:  'Once your storyboard is locked, Sherpa generates a first draft of every episode. You direct, Sherpa writes, you refine. The blank page is gone.',
+    visual: <DraftStub />,
+  },
+  {
+    title: 'Built-in editorial review',
+    body:  'Ask Sherpa to review your episode. Get feedback on pacing, character voice, emotional arcs and continuity. Like having an editor on call, twenty-four hours a day.',
+    visual: <ReviewStub />,
+  },
+  {
+    title: 'Total recall, every episode',
+    body:  'On episode 50 and cannot remember what your antagonist confessed in episode 12? Ask Sherpa. Every line, every detail, every promise you made to your reader is held in memory and pulled forward when you need it.',
+    visual: <MemoryStub />,
+  },
 ]
 
 export default function Act1Write() {
   return (
-    <AnimatedSection className="py-[120px] bg-white">
+    <AnimatedSection style={{ padding: '120px 0', background: '#ffffff' }}>
       <Container>
-        <div className="max-w-[720px] mb-16">
+        <div style={{ maxWidth: '720px', marginBottom: '64px' }}>
           <Eyebrow>Act 1 · Write with Sherpa</Eyebrow>
           <SerifHeading size="lg">
             Write with a partner that<br />remembers everything.
           </SerifHeading>
-          <div className="mt-5 max-w-[520px]">
+          <div style={{ marginTop: '20px', maxWidth: '520px' }}>
             <Body size="md">
               Sherpa is not a blank chat box. It is a co-writer that builds a complete world with you, then helps you write episodes that stay true to it, episode after episode.
             </Body>
           </div>
         </div>
 
-        <div className="flex flex-col gap-20">
-          {BLOCKS.map((b, i) => (
-            <motion.div
-              key={b.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className={`grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-16 items-center ${i % 2 === 1 ? 'md:[direction:rtl]' : ''}`}
-            >
-              <div className="[direction:ltr]">
-                <p className="font-normal text-caption text-violet tracking-eyebrow uppercase mb-3">
-                  Block {String(i + 1).padStart(2, '0')}
-                </p>
-                <SerifHeading size="md">{b.title}</SerifHeading>
-                <div className="mt-3.5 max-w-[440px]">
-                  <Body size="md">{b.body}</Body>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '80px' }}>
+          {BLOCKS.map((b, i) => {
+            const reverse = i % 2 === 1
+            return (
+              <motion.div
+                key={b.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: '1fr 1fr',
+                  gap: '64px',
+                  alignItems: 'center',
+                  direction: reverse ? 'rtl' : 'ltr',
+                }}
+                className="act1-row"
+              >
+                <div style={{ direction: 'ltr' }}>
+                  <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '11px', color: '#F51D00', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '12px' }}>
+                    Block {String(i + 1).padStart(2, '0')}
+                  </p>
+                  <SerifHeading size="md" maxWidth="100%">
+                    {b.title}
+                  </SerifHeading>
+                  <div style={{ marginTop: '14px', maxWidth: '440px' }}>
+                    <Body size="md">{b.body}</Body>
+                  </div>
                 </div>
-              </div>
-              <div className="[direction:ltr]">{b.visual}</div>
-            </motion.div>
-          ))}
+                <div style={{ direction: 'ltr' }}>{b.visual}</div>
+              </motion.div>
+            )
+          })}
         </div>
       </Container>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .act1-row { grid-template-columns: 1fr !important; direction: ltr !important; gap: 28px !important; }
+        }
+      `}</style>
     </AnimatedSection>
   )
 }

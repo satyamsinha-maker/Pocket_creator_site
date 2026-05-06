@@ -1,25 +1,42 @@
 import { motion } from 'framer-motion'
 
+const SANS = "'Mallory', ui-sans-serif, system-ui, sans-serif"
+
 /* ── Eyebrow ──────────────────────────────────────────────────────────── */
-export function Eyebrow({ children, className = '' }) {
+export function Eyebrow({ children, color = '#F51D00' }) {
   return (
-    <p className={`text-[12px] font-normal tracking-eyebrow uppercase text-violet mb-4 ${className}`}>
+    <p
+      style={{
+        fontFamily: SANS,
+        fontWeight: 400,
+        fontSize: '12px',
+        color,
+        letterSpacing: '0.08em',
+        textTransform: 'uppercase',
+        marginBottom: '16px',
+      }}
+    >
       {children}
     </p>
   )
 }
 
-/* ── SerifHeading — legacy name; uses Mallory at large display sizes ──── */
-export function SerifHeading({ children, size = 'lg', maxWidth, as: Tag = 'h2', className = '' }) {
-  const sizeClasses =
-    size === 'xl' ? 'text-[clamp(40px,5.4vw,56px)] leading-[1.07] tracking-display' :
-    size === 'lg' ? 'text-[clamp(32px,4vw,44px)] leading-[1.1] tracking-heading-lg' :
-    size === 'md' ? 'text-[clamp(24px,2.8vw,32px)] leading-[1.15] tracking-heading' :
-                    'text-[clamp(20px,2.2vw,22px)] leading-[1.2] tracking-heading-sm'
+/* ── Heading — sohne-var/Inter weight 300, large sizes per Stripe scale ─ */
+export function SerifHeading({ children, size = 'lg', maxWidth = '760px', as: Tag = 'h2' }) {
+  const config =
+    size === 'xl' ? { fontSize: 'clamp(40px, 5.4vw, 56px)', lineHeight: 1.07, letterSpacing: '-0.03em' } :
+    size === 'lg' ? { fontSize: 'clamp(32px, 4vw, 44px)',   lineHeight: 1.10, letterSpacing: '-0.025em' } :
+    size === 'md' ? { fontSize: 'clamp(24px, 2.8vw, 32px)', lineHeight: 1.15, letterSpacing: '-0.02em' } :
+                    { fontSize: 'clamp(20px, 2.2vw, 22px)', lineHeight: 1.20, letterSpacing: '-0.01em' }
   return (
     <Tag
-      className={`font-normal text-midnight ${sizeClasses} ${className}`}
-      style={maxWidth ? { maxWidth } : undefined}
+      style={{
+        fontFamily: SANS,
+        fontWeight: 400,
+        color: '#061b31',
+        maxWidth,
+        ...config,
+      }}
     >
       {children}
     </Tag>
@@ -27,38 +44,83 @@ export function SerifHeading({ children, size = 'lg', maxWidth, as: Tag = 'h2', 
 }
 
 /* ── Body ─────────────────────────────────────────────────────────────── */
-export function Body({ children, color, size = 'md', maxWidth, className = '' }) {
-  const sizeClass =
-    size === 'lg' ? 'text-subheading leading-subheading' :
-    size === 'sm' ? 'text-[12px] leading-[1.4]' :
-                    'text-body leading-body'
+export function Body({ children, color = '#50617a', size = 'md', maxWidth, style = {} }) {
+  const fontSize = size === 'lg' ? '18px' : size === 'sm' ? '12px' : '14px'
+  const lineHeight = size === 'lg' ? 1.5 : 1.4
   return (
     <p
-      className={`font-normal ${color ? '' : 'text-slate'} ${sizeClass} ${className}`}
-      style={{ ...(maxWidth ? { maxWidth } : {}), ...(color ? { color } : {}) }}
+      style={{
+        fontFamily: SANS,
+        fontWeight: 400,
+        fontSize,
+        lineHeight,
+        color,
+        maxWidth,
+        ...style,
+      }}
     >
       {children}
     </p>
   )
 }
 
-/* ── PillButton — Stripe square 4px buttons ───────────────────────────── */
-export function PillButton({ variant = 'filled', children, onClick, className = '', ...rest }) {
+/* ── PillButton — kept name for compat, now Stripe square buttons ─────── */
+export function PillButton({ variant = 'filled', children, onClick, ...rest }) {
   const variants = {
-    filled:
-      'bg-violet text-white border border-violet h-10 px-6 hover:bg-violet-dark',
-    ghost:
-      'bg-transparent text-midnight border-0 h-10 px-1 hover:bg-violet/[0.06]',
-    outlined:
-      'bg-transparent text-violet border border-violet-washed h-10 px-6 hover:bg-violet/[0.04]',
-    sienna:
-      'bg-violet text-white border border-violet h-9 px-[18px] hover:bg-violet-dark',
+    filled: {
+      backgroundColor: '#F51D00',
+      color: '#ffffff',
+      border: '1px solid #F51D00',
+      padding: '0 24px',
+      height: '40px',
+    },
+    ghost: {
+      backgroundColor: 'transparent',
+      color: '#061b31',
+      border: 'none',
+      padding: '0 4px',
+      height: '40px',
+    },
+    outlined: {
+      backgroundColor: 'transparent',
+      color: '#F51D00',
+      border: '1px solid #fcb8ad',
+      padding: '0 24px',
+      height: '40px',
+    },
+    sienna: { /* legacy alias — used by Hero/FinalCTA submit; map to filled */
+      backgroundColor: '#F51D00',
+      color: '#ffffff',
+      border: '1px solid #F51D00',
+      padding: '0 18px',
+      height: '36px',
+    },
   }
+  const v = variants[variant] || variants.filled
   return (
     <motion.button
       onClick={onClick}
+      whileHover={{
+        backgroundColor:
+          variant === 'ghost'    ? 'rgba(245,29,0,0.06)' :
+          variant === 'outlined' ? 'rgba(245,29,0,0.04)' :
+                                    '#c81700',
+      }}
       whileTap={{ scale: 0.98 }}
-      className={`${variants[variant] || variants.filled} rounded-button font-normal text-body cursor-pointer whitespace-nowrap inline-flex items-center gap-1.5 transition-colors duration-200 ${className}`}
+      style={{
+        ...v,
+        borderRadius: '4px',
+        fontFamily: SANS,
+        fontWeight: 400,
+        fontSize: '14px',
+        letterSpacing: '0.003px',
+        cursor: 'pointer',
+        whiteSpace: 'nowrap',
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: '6px',
+        transition: 'background-color 0.18s',
+      }}
       {...rest}
     >
       {children}
@@ -66,8 +128,8 @@ export function PillButton({ variant = 'filled', children, onClick, className = 
   )
 }
 
-/* ── AnimatedSection ──────────────────────────────────────────────────── */
-export function AnimatedSection({ children, className = '', delay = 0, id, style = {} }) {
+/* ── AnimatedSection — restrained fade-up ─────────────────────────────── */
+export function AnimatedSection({ children, className = '', style = {}, delay = 0, id }) {
   return (
     <motion.section
       id={id}
@@ -84,20 +146,55 @@ export function AnimatedSection({ children, className = '', delay = 0, id, style
 }
 
 /* ── Container ───────────────────────────────────────────────────────── */
-export function Container({ children, className = '' }) {
+export function Container({ children, style = {} }) {
   return (
-    <div className={`max-w-[1200px] mx-auto px-8 ${className}`}>
+    <div
+      style={{
+        maxWidth: '1200px',
+        margin: '0 auto',
+        padding: '0 32px',
+        ...style,
+      }}
+    >
       {children}
     </div>
   )
 }
 
-/* ── Card ─────────────────────────────────────────────────────────────── */
-export function Card({ children, className = '', hover = false, surface = 'powder' }) {
-  const bg = surface === 'porcelain' ? 'bg-porcelain' : surface === 'white' ? 'bg-white' : 'bg-powder'
+/* ── Card — Stripe Default Card (powder-blue) by default ──────────────── */
+export function Card({ children, style = {}, className = '', hover = false, surface = 'powder' }) {
+  const bg = surface === 'porcelain' ? '#f8fafd' : surface === 'white' ? '#ffffff' : '#e5edf5'
   return (
     <motion.div
-      className={`${bg} rounded-card p-3 ${className}`}
+      className={className}
+      style={{
+        backgroundColor: bg,
+        borderRadius: '6px',
+        padding: '12px',
+        ...style,
+      }}
+      whileHover={hover ? {
+        boxShadow: 'rgba(50, 50, 93, 0.12) 0px 16px 32px 0px',
+        y: -2,
+      } : undefined}
+      transition={{ duration: 0.25 }}
+    >
+      {children}
+    </motion.div>
+  )
+}
+
+/* ── FeatureCard — porcelain with soft xl shadow ──────────────────────── */
+export function FeatureCard({ children, style = {}, hover = false }) {
+  return (
+    <motion.div
+      style={{
+        backgroundColor: '#f8fafd',
+        borderRadius: '6px',
+        padding: '12px',
+        boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 32px 8px',
+        ...style,
+      }}
       whileHover={hover ? { y: -2, boxShadow: 'rgba(50, 50, 93, 0.12) 0px 16px 32px 0px' } : undefined}
       transition={{ duration: 0.25 }}
     >

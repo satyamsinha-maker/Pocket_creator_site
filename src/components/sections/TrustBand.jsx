@@ -9,22 +9,53 @@ const STATS = [
 
 export default function TrustBand() {
   return (
-    <AnimatedSection className="py-16 bg-white">
+    <AnimatedSection style={{ padding: '64px 0', background: '#ffffff' }}>
       <Container>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8">
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, 1fr)',
+            gap: '24px',
+          }}
+          className="trust-grid"
+        >
           {STATS.map((s, i) => (
             <div
               key={s.label}
-              className={i === 0 ? '' : 'lg:pl-6 lg:border-l lg:border-powder'}
+              style={{
+                paddingLeft: i === 0 ? 0 : '24px',
+                borderLeft: i === 0 ? 'none' : '1px solid #e5edf5',
+              }}
+              className="trust-item"
             >
-              <p className="font-normal text-[clamp(36px,4.5vw,56px)] leading-display tracking-display text-midnight mb-2 tabular-nums">
+              <p
+                style={{
+                  fontFamily: "'Mallory', sans-serif",
+                  fontWeight: 400,
+                  fontSize: 'clamp(36px, 4.5vw, 56px)',
+                  lineHeight: 1.07,
+                  letterSpacing: '-0.03em',
+                  color: '#061b31',
+                  marginBottom: '8px',
+                  fontFeatureSettings: '"tnum"',
+                }}
+              >
                 {s.value}
               </p>
-              <Body size="sm" color="#50617a">{s.label}</Body>
+              <Body size="sm" color="#50617a">
+                {s.label}
+              </Body>
             </div>
           ))}
         </div>
       </Container>
+
+      <style>{`
+        @media (max-width: 900px) {
+          .trust-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 32px 24px !important; }
+          .trust-item { border-left: none !important; padding-left: 0 !important; }
+        }
+      `}</style>
     </AnimatedSection>
   )
 }

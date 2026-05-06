@@ -10,16 +10,23 @@ const STEPS = [
 
 export default function CompleteJourney() {
   return (
-    <AnimatedSection id="journey" className="py-24 bg-powder">
+    <AnimatedSection id="journey" style={{ padding: '96px 0', background: '#e5edf5' }}>
       <Container>
-        <div className="mb-14 max-w-[720px]">
+        <div style={{ marginBottom: '56px', maxWidth: '720px' }}>
           <Eyebrow>The complete journey</Eyebrow>
           <SerifHeading size="lg">
             From a blank page to a paid audience.<br />We handle everything in between.
           </SerifHeading>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, 1fr)',
+            gap: '12px',
+          }}
+          className="journey-grid"
+        >
           {STEPS.map((s, i) => (
             <motion.div
               key={s.num}
@@ -27,24 +34,75 @@ export default function CompleteJourney() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
-              className="bg-white rounded-card p-6 relative"
+              style={{
+                background: '#ffffff',
+                borderRadius: '6px',
+                padding: '24px',
+                position: 'relative',
+              }}
             >
-              <p className="font-normal text-caption text-violet mb-3.5 tracking-eyebrow uppercase">
+              <p
+                style={{
+                  fontFamily: "'Mallory', sans-serif",
+                  fontWeight: 400,
+                  fontSize: '11px',
+                  color: '#F51D00',
+                  marginBottom: '14px',
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase',
+                }}
+              >
                 Step {s.num}
               </p>
-              <p className="font-normal text-heading-sm leading-heading-sm tracking-heading-sm text-midnight mb-2 flex items-center gap-2.5">
+
+              <p
+                style={{
+                  fontFamily: "'Mallory', sans-serif",
+                  fontWeight: 400,
+                  fontSize: '22px',
+                  lineHeight: 1.2,
+                  letterSpacing: '-0.01em',
+                  color: '#061b31',
+                  marginBottom: '8px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '10px',
+                }}
+              >
                 {s.title}
-                {i < STEPS.length - 1 && <span className="text-violet text-base">→</span>}
+                {i < STEPS.length - 1 && (
+                  <span style={{ color: '#F51D00', fontSize: '16px' }}>→</span>
+                )}
               </p>
-              <Body size="sm" color="#50617a">{s.blurb}</Body>
+
+              <Body size="sm" color="#50617a">
+                {s.blurb}
+              </Body>
             </motion.div>
           ))}
         </div>
 
-        <p className="mt-10 font-normal text-body text-slate pl-3.5 border-l-2 border-violet max-w-[640px] leading-[1.5]">
+        <p
+          style={{
+            marginTop: '40px',
+            fontFamily: "'Mallory', sans-serif",
+            fontWeight: 400,
+            fontSize: '14px',
+            color: '#50617a',
+            paddingLeft: '14px',
+            borderLeft: '2px solid #F51D00',
+            maxWidth: '640px',
+            lineHeight: 1.5,
+          }}
+        >
           Most visitors will not read the rest of the page. If you read nothing else, you should still understand the loop.
         </p>
       </Container>
+
+      <style>{`
+        @media (max-width: 900px) { .journey-grid { grid-template-columns: repeat(2, 1fr) !important; } }
+        @media (max-width: 540px) { .journey-grid { grid-template-columns: 1fr !important; } }
+      `}</style>
     </AnimatedSection>
   )
 }

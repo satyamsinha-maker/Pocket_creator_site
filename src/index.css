@@ -17,60 +17,28 @@
 }
 
 @theme {
-  /* ── Colors ──────────────────────────────────────────────────── */
-  --color-platinum:    #ffffff;
-  --color-porcelain:   #f8fafd;
-  --color-powder:      #e5edf5;
-  --color-stone:       #d8d6df;
-  --color-ghost:       #64748d;
-  --color-slate:       #50617a;
-  --color-midnight:    #061b31;
-  --color-violet:      #F51D00;     /* brand primary */
-  --color-violet-dark: #c81700;
-  --color-violet-soft: #ff6b4d;
-  --color-violet-washed: #fcb8ad;
+  /* Stripe palette */
+  --color-platinum:    #ffffff;   /* page surface */
+  --color-porcelain:   #f8fafd;   /* secondary surface */
+  --color-powder:      #e5edf5;   /* alternating sections, light card backgrounds */
+  --color-stone:       #d8d6df;   /* hairlines, dividers */
+  --color-ghost:       #64748d;   /* tertiary, placeholder */
+  --color-slate:       #50617a;   /* secondary text */
+  --color-midnight:    #061b31;   /* primary text */
+  --color-violet:      #F51D00;   /* primary action */
+  --color-soft-violet: #ff6b4d;   /* decorative accent */
+  --color-washed-violet:#fcb8ad;  /* outlined button border */
   --color-green:       #81b81a;
   --color-orange:      #ff6118;
 
-  /* ── Fonts ───────────────────────────────────────────────────── */
+  /* Sole typeface — Inter as sohne-var substitute */
   --font-sans: 'Mallory', ui-sans-serif, system-ui, -apple-system, sans-serif;
 
-  /* ── Type scale (Stripe) ─────────────────────────────────────── */
-  --text-caption:    11px;
-  --text-caption--line-height: 1.45;
-  --text-body:       14px;
-  --text-body--line-height: 1.4;
-  --text-subheading: 18px;
-  --text-subheading--line-height: 1.25;
-  --text-heading-sm: 22px;
-  --text-heading-sm--line-height: 1.2;
-  --text-heading:    32px;
-  --text-heading--line-height: 1.15;
-  --text-heading-lg: 44px;
-  --text-heading-lg--line-height: 1.1;
-  --text-display:    56px;
-  --text-display--line-height: 1.07;
-
-  /* Tracking */
-  --tracking-display:    -0.03em;
-  --tracking-heading-lg: -0.025em;
-  --tracking-heading:    -0.02em;
-  --tracking-heading-sm: -0.01em;
-  --tracking-eyebrow:    0.08em;
-
-  /* ── Radii ───────────────────────────────────────────────────── */
+  /* Radii (Stripe is square — 4px buttons, 6px cards) */
   --radius-button: 4px;
   --radius-card:   6px;
   --radius-input:  4px;
   --radius-tag:    4px;
-
-  /* ── Shadows ─────────────────────────────────────────────────── */
-  --shadow-soft:  rgba(0, 0, 0, 0.2) 0px 0px 32px 8px;
-  --shadow-hover: rgba(50, 50, 93, 0.12) 0px 16px 32px 0px;
-  --shadow-input: rgba(23, 23, 23, 0.06) 0px 3px 6px 0px;
-
-  /* ── Container ───────────────────────────────────────────────── */
-  --container-content: 1200px;
 }
 
 * {
@@ -90,4 +58,9 @@ body {
   color: #061b31;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Soft diffused shadow used across feature cards */
+.elevated {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 32px 8px;
 }
