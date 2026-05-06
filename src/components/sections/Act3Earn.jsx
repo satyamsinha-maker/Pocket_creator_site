@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { Container, AnimatedSection, SerifHeading, Body, Eyebrow } from '../ui'
 
-const SANS = "'Inter', sans-serif"
+const SANS = "'Mallory', sans-serif"
 
 function EarningsDashStub() {
   return (
@@ -9,11 +9,11 @@ function EarningsDashStub() {
       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
         <div>
           <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '11px', color: '#64748d', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '6px' }}>This month</p>
-          <p style={{ fontFamily: SANS, fontWeight: 300, fontSize: '32px', color: '#061b31', letterSpacing: '-0.02em', fontFeatureSettings: '"tnum"' }}>₹84,520</p>
+          <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '32px', color: '#061b31', letterSpacing: '-0.02em', fontFeatureSettings: '"tnum"' }}>₹84,520</p>
         </div>
         <div style={{ textAlign: 'right' }}>
           <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '11px', color: '#64748d', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '6px' }}>Listens</p>
-          <p style={{ fontFamily: SANS, fontWeight: 300, fontSize: '32px', color: '#061b31', letterSpacing: '-0.02em', fontFeatureSettings: '"tnum"' }}>1.2M</p>
+          <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '32px', color: '#061b31', letterSpacing: '-0.02em', fontFeatureSettings: '"tnum"' }}>1.2M</p>
         </div>
       </div>
 
@@ -98,7 +98,7 @@ export default function Act3Earn() {
               <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '11px', color: '#533afd', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '10px' }}>
                 Block {String(i + 1).padStart(2, '0')}
               </p>
-              <p style={{ fontFamily: SANS, fontWeight: 300, fontSize: '22px', lineHeight: 1.2, letterSpacing: '-0.01em', color: '#061b31', marginBottom: '10px' }}>
+              <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '22px', lineHeight: 1.2, letterSpacing: '-0.01em', color: '#061b31', marginBottom: '10px' }}>
                 {b.title}
               </p>
               <Body size="sm">{b.body}</Body>

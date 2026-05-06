@@ -30,8 +30,8 @@ export default function TrustBand() {
             >
               <p
                 style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontWeight: 300,
+                  fontFamily: "'Mallory', sans-serif",
+                  fontWeight: 400,
                   fontSize: 'clamp(36px, 4.5vw, 56px)',
                   lineHeight: 1.07,
                   letterSpacing: '-0.03em',

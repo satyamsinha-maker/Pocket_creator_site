@@ -54,7 +54,7 @@ export default function FinalCTA() {
                   border: 'none',
                   outline: 'none',
                   background: 'transparent',
-                  fontFamily: "'Inter', sans-serif",
+                  fontFamily: "'Mallory', sans-serif",
                   fontSize: '14px',
                   color: '#061b31',
                   padding: '8px 0',

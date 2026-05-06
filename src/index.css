@@ -32,7 +32,7 @@
   --color-orange:      #ff6118;
 
   /* Sole typeface — Inter as sohne-var substitute */
-  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-sans: 'Mallory', ui-sans-serif, system-ui, -apple-system, sans-serif;
 
   /* Radii (Stripe is square — 4px buttons, 6px cards) */
   --radius-button: 4px;
@@ -52,7 +52,7 @@ html {
 }
 
 body {
-  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-family: 'Mallory', ui-sans-serif, system-ui, -apple-system, sans-serif;
   font-feature-settings: "ss01" on, "tnum";
   background-color: #ffffff;
   color: #061b31;

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { Container, AnimatedSection, SerifHeading, Body, Eyebrow } from '../ui'
 
-const SANS = "'Inter', sans-serif"
+const SANS = "'Mallory', sans-serif"
 
 function VoiceStub() {
   return (
@@ -98,7 +98,7 @@ export default function Act2Produce() {
               }}
             >
               <div style={{ marginBottom: '24px', minHeight: '76px' }}>{c.visual}</div>
-              <p style={{ fontFamily: SANS, fontWeight: 300, fontSize: '22px', lineHeight: 1.2, letterSpacing: '-0.01em', color: '#061b31', marginBottom: '8px' }}>
+              <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '22px', lineHeight: 1.2, letterSpacing: '-0.01em', color: '#061b31', marginBottom: '8px' }}>
                 {c.title}
               </p>
               <Body size="sm" color="#50617a">

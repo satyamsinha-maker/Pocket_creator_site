@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 
-const SANS = "'Inter', ui-sans-serif, system-ui, sans-serif"
+const SANS = "'Mallory', ui-sans-serif, system-ui, sans-serif"
 
 /* ── Eyebrow ──────────────────────────────────────────────────────────── */
 export function Eyebrow({ children, color = '#533afd' }) {
@@ -32,7 +32,7 @@ export function SerifHeading({ children, size = 'lg', maxWidth = '760px', as: Ta
     <Tag
       style={{
         fontFamily: SANS,
-        fontWeight: 300,
+        fontWeight: 400,
         color: '#061b31',
         maxWidth,
         ...config,

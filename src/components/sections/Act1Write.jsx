@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { Container, AnimatedSection, SerifHeading, Body, Eyebrow } from '../ui'
 
-const SANS = "'Inter', sans-serif"
+const SANS = "'Mallory', sans-serif"
 
 /* ── Stripe-style stub UIs ────────────────────────────────────────────── */
 

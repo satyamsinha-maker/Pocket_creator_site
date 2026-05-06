@@ -70,7 +70,7 @@ export default function Hero() {
           >
             <p
               style={{
-                fontFamily: "'Inter', sans-serif",
+                fontFamily: "'Mallory', sans-serif",
                 fontWeight: 400,
                 fontSize: '11px',
                 color: '#64748d',
@@ -103,7 +103,7 @@ export default function Hero() {
                   border: 'none',
                   outline: 'none',
                   background: 'transparent',
-                  fontFamily: "'Inter', sans-serif",
+                  fontFamily: "'Mallory', sans-serif",
                   fontSize: '14px',
                   color: '#061b31',
                   padding: '8px 0',
@@ -130,7 +130,7 @@ export default function Hero() {
                     border: '1px solid #e5edf5',
                     borderRadius: '4px',
                     padding: '8px 12px',
-                    fontFamily: "'Inter', sans-serif",
+                    fontFamily: "'Mallory', sans-serif",
                     fontSize: '12px',
                     color: '#50617a',
                     cursor: 'pointer',

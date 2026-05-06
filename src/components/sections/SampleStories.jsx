@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Container, AnimatedSection, SerifHeading, Eyebrow } from '../ui'
 
-const SANS = "'Inter', sans-serif"
+const SANS = "'Mallory', sans-serif"
 
 const GENRES = ['All', 'Romance', 'Thriller', 'Fantasy', 'Drama']
 

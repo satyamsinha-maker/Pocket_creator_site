@@ -53,7 +53,7 @@ export default function Navigation() {
           </svg>
           <span
             style={{
-              fontFamily: "'Inter', sans-serif",
+              fontFamily: "'Mallory', sans-serif",
               fontWeight: 400,
               fontSize: '16px',
               letterSpacing: '-0.009px',
@@ -80,7 +80,7 @@ export default function Navigation() {
               <a
                 href={item.href}
                 style={{
-                  fontFamily: "'Inter', sans-serif",
+                  fontFamily: "'Mallory', sans-serif",
                   fontWeight: 400,
                   fontSize: '14px',
                   color: '#061b31',

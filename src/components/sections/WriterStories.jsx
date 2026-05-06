@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { Container, AnimatedSection, SerifHeading, Eyebrow } from '../ui'
 
-const SANS = "'Inter', sans-serif"
+const SANS = "'Mallory', sans-serif"
 
 function Avatar({ name, gradient }) {
   const initials = name.split(' ').map((n) => n[0]).slice(0, 2).join('')
@@ -102,7 +102,7 @@ export default function WriterStories() {
                 <blockquote
                   style={{
                     fontFamily: SANS,
-                    fontWeight: 300,
+                    fontWeight: 400,
                     fontSize: '20px',
                     lineHeight: 1.4,
                     letterSpacing: '-0.01em',

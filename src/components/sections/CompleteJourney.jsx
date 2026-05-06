@@ -43,7 +43,7 @@ export default function CompleteJourney() {
             >
               <p
                 style={{
-                  fontFamily: "'Inter', sans-serif",
+                  fontFamily: "'Mallory', sans-serif",
                   fontWeight: 400,
                   fontSize: '11px',
                   color: '#533afd',
@@ -57,8 +57,8 @@ export default function CompleteJourney() {
 
               <p
                 style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontWeight: 300,
+                  fontFamily: "'Mallory', sans-serif",
+                  fontWeight: 400,
                   fontSize: '22px',
                   lineHeight: 1.2,
                   letterSpacing: '-0.01em',
@@ -85,7 +85,7 @@ export default function CompleteJourney() {
         <p
           style={{
             marginTop: '40px',
-            fontFamily: "'Inter', sans-serif",
+            fontFamily: "'Mallory', sans-serif",
             fontWeight: 400,
             fontSize: '14px',
             color: '#50617a',

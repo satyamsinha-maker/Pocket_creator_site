@@ -1,6 +1,6 @@
 import { Container } from '../ui'
 
-const SANS = "'Inter', sans-serif"
+const SANS = "'Mallory', sans-serif"
 
 const COLS = [
   { heading: 'Product',   links: ['How it works', 'Pricing', 'Roadmap', 'Beta access'] },
