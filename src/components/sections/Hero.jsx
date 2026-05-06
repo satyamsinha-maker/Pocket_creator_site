@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, useMotionValue, useTransform, animate } from 'framer-motion'
 
 const SANS = "'Mallory', sans-serif"
 
@@ -78,6 +78,29 @@ export default function Hero() {
     )
     return () => clearInterval(t)
   }, [])
+
+  /* ── Sherpa UI clip+blur reveal (bottom → top) ──────────────────────────
+   * `reveal` drives a CSS mask that CLIPS the image, exposing it from bottom
+   * upward. Above the leading edge the image is fully clipped (invisible).
+   * Below it, the image is fully visible. A feathered transition zone makes
+   * the leading edge soft. Simultaneously a global blur clears from heavy
+   * → zero, so the just-revealed portion looks blurry at the moment of
+   * appearance and sharpens as the reveal continues.
+   * ───────────────────────────────────────────────────────────────────── */
+  const reveal = useMotionValue(0)
+  useEffect(() => {
+    const ctrl = animate(reveal, 110, {
+      duration: 1.8,
+      delay: 0.4,
+      ease: [0.22, 1, 0.36, 1],
+    })
+    return () => ctrl.stop()
+  }, [reveal])
+  const maskImage = useTransform(
+    reveal,
+    /* below the band → black (visible)   ·   above → transparent (clipped) */
+    (v) => `linear-gradient(to top, black ${v - 8}%, transparent ${v + 8}%)`,
+  )
 
   return (
     <section
@@ -218,21 +241,30 @@ export default function Hero() {
             left:   '50%',
             transform: 'translateX(-50%)',    /* horizontally centred         */
             width:  'var(--grid-w)',          /* 1015 / 1441 of mountain      */
+            aspectRatio: '1015 / 579',        /* reserves slot before image  */
             zIndex: 2,
+            borderRadius: 'clamp(4px, 0.6vw, 8px)',
+            overflow: 'hidden',
+            boxShadow: '0 0 4px 0 rgba(0,0,0,0.25)',
           }}
         >
+          {/* Single product image — clipped by mask, blur clears in tandem */}
           <motion.img
             src="/figma/product.png"
             alt="Sherpa writing app interface"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.18 }}
+            initial={{ filter: 'blur(18px)' }}
+            animate={{ filter: 'blur(0px)' }}
+            transition={{ duration: 1.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
             style={{
-              width:  '100%',
-              height: 'auto',                 /* preserves 1015:579 aspect */
-              borderRadius: 'clamp(4px, 0.6vw, 8px)',
-              boxShadow: '0 0 4px 0 rgba(0,0,0,0.25)',
+              position: 'absolute',
+              inset: 0,
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
               display: 'block',
+              maskImage,
+              WebkitMaskImage: maskImage,
+              willChange: 'filter, mask-image',
             }}
           />
         </div>
