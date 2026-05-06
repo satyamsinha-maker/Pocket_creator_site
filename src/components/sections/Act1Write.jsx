@@ -1,29 +1,31 @@
 import { motion } from 'framer-motion'
 import { Container, AnimatedSection, SerifHeading, Body, Eyebrow } from '../ui'
 
-/* ── Stub UIs (no images) ─────────────────────────────────────────────── */
+const SANS = "'Inter', sans-serif"
+
+/* ── Stripe-style stub UIs ────────────────────────────────────────────── */
 
 function StoryboardStub() {
   return (
-    <div style={{ background: '#faf6ed', borderRadius: '10px', border: '1px solid #e8dfd0', padding: '16px' }}>
-      <p style={{ fontFamily: "'Lora', Georgia, serif", fontWeight: 600, fontSize: '15px', color: '#1c1814', marginBottom: '8px' }}>The Boss’s Forbidden Love</p>
-      <p style={{ fontFamily: 'Mallory, sans-serif', fontSize: '11px', color: '#b85c3a', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '14px' }}>Romance · Slow burn · Hindi</p>
+    <div style={{ background: '#f8fafd', borderRadius: '6px', padding: '20px', boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 32px 8px' }}>
+      <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '15px', color: '#061b31', marginBottom: '6px' }}>The Boss’s Forbidden Love</p>
+      <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '11px', color: '#533afd', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '14px' }}>Romance · Slow burn · Hindi</p>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginBottom: '12px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px', marginBottom: '12px' }}>
         {[
           { name: 'Aarav Mehra',  role: 'CEO, the rival' },
           { name: 'Mira Kapoor',  role: 'Father’s daughter' },
           { name: 'Vikram Singh', role: 'The patriarch' },
           { name: 'Riya',         role: 'Best friend' },
         ].map((c) => (
-          <div key={c.name} style={{ background: '#fff', border: '1px solid #e8dfd0', borderRadius: '6px', padding: '8px 10px' }}>
-            <p style={{ fontFamily: 'Mallory, sans-serif', fontWeight: 700, fontSize: '11px', color: '#1c1814' }}>{c.name}</p>
-            <p style={{ fontFamily: 'Mallory, sans-serif', fontSize: '10px', color: '#6b5e52' }}>{c.role}</p>
+          <div key={c.name} style={{ background: '#ffffff', border: '1px solid #e5edf5', borderRadius: '4px', padding: '8px 10px' }}>
+            <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '11px', color: '#061b31' }}>{c.name}</p>
+            <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '10px', color: '#64748d' }}>{c.role}</p>
           </div>
         ))}
       </div>
 
-      <p style={{ fontFamily: 'Mallory, sans-serif', fontSize: '11px', color: '#3d3530', lineHeight: 1.5, fontStyle: 'italic' }}>
+      <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '11px', color: '#50617a', lineHeight: 1.5 }}>
         Plot arc: rivalry &rarr; misunderstanding &rarr; reluctant alliance &rarr; betrayal &rarr; reckoning.
       </p>
     </div>
@@ -32,13 +34,13 @@ function StoryboardStub() {
 
 function DraftStub() {
   return (
-    <div style={{ background: '#faf6ed', borderRadius: '10px', border: '1px solid #e8dfd0', padding: '16px' }}>
-      <p style={{ fontFamily: 'Mallory, sans-serif', fontSize: '11px', color: '#b85c3a', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '8px' }}>Episode 7 · Draft</p>
-      <p style={{ fontFamily: "'Lora', Georgia, serif", fontWeight: 500, fontSize: '14px', color: '#1c1814', lineHeight: 1.55, marginBottom: '8px' }}>
+    <div style={{ background: '#f8fafd', borderRadius: '6px', padding: '20px', boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 32px 8px' }}>
+      <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '11px', color: '#533afd', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '8px' }}>Episode 7 · Draft</p>
+      <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '14px', color: '#061b31', lineHeight: 1.5, marginBottom: '8px' }}>
         Mira’s heels echoed across the marble lobby, each step a measured breath. She had not expected to see him here. Not tonight. Not after what he had said in the boardroom.
       </p>
-      <p style={{ fontFamily: "'Lora', Georgia, serif", fontWeight: 500, fontSize: '14px', color: '#1c1814', lineHeight: 1.55 }}>
-        Aarav looked up. Their eyes met. The room <span style={{ background: '#fff5e8', borderBottom: '1px dashed #b85c3a' }}>seemed to hold its breath</span>.
+      <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '14px', color: '#061b31', lineHeight: 1.5 }}>
+        Aarav looked up. Their eyes met. The room <span style={{ background: 'rgba(83,58,253,0.1)', borderBottom: '1px dashed #533afd' }}>seemed to hold its breath</span>.
       </p>
     </div>
   )
@@ -46,18 +48,18 @@ function DraftStub() {
 
 function ReviewStub() {
   return (
-    <div style={{ background: '#faf6ed', borderRadius: '10px', border: '1px solid #e8dfd0', padding: '16px' }}>
-      <p style={{ fontFamily: "'Lora', Georgia, serif", fontWeight: 500, fontSize: '13px', color: '#1c1814', lineHeight: 1.55, marginBottom: '12px' }}>
+    <div style={{ background: '#f8fafd', borderRadius: '6px', padding: '20px', boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 32px 8px' }}>
+      <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '13px', color: '#061b31', lineHeight: 1.5, marginBottom: '14px', fontStyle: 'italic' }}>
         “Mira’s heels echoed across the marble lobby...”
       </p>
       {[
-        { tag: 'Pacing',         note: 'Strong opening hook — consider shortening line 3 for tension.' },
-        { tag: 'Character voice',note: 'Aarav feels guarded. Aligns with Ep 4 rivalry beat.' },
-        { tag: 'Continuity',     note: 'Boardroom scene: cross-checks with Ep 6 ending.' },
+        { tag: 'Pacing',          note: 'Strong opening hook — consider shortening line 3 for tension.' },
+        { tag: 'Character voice', note: 'Aarav feels guarded. Aligns with Ep 4 rivalry beat.' },
+        { tag: 'Continuity',      note: 'Boardroom scene: cross-checks with Ep 6 ending.' },
       ].map((r) => (
-        <div key={r.tag} style={{ display: 'flex', gap: '10px', marginBottom: '8px' }}>
-          <span style={{ flex: 'none', background: '#b85c3a', color: '#faf6ed', borderRadius: '4px', padding: '2px 6px', fontFamily: 'Mallory, sans-serif', fontSize: '10px', fontWeight: 700, height: 'fit-content' }}>{r.tag}</span>
-          <p style={{ fontFamily: 'Mallory, sans-serif', fontSize: '12px', color: '#3d3530', lineHeight: 1.4 }}>{r.note}</p>
+        <div key={r.tag} style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
+          <span style={{ flex: 'none', background: '#533afd', color: '#ffffff', borderRadius: '4px', padding: '2px 6px', fontFamily: SANS, fontWeight: 400, fontSize: '10px', height: 'fit-content' }}>{r.tag}</span>
+          <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '12px', color: '#50617a', lineHeight: 1.4 }}>{r.note}</p>
         </div>
       ))}
     </div>
@@ -66,22 +68,22 @@ function ReviewStub() {
 
 function MemoryStub() {
   return (
-    <div style={{ background: '#faf6ed', borderRadius: '10px', border: '1px solid #e8dfd0', padding: '16px' }}>
+    <div style={{ background: '#f8fafd', borderRadius: '6px', padding: '20px', boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 32px 8px' }}>
       <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start', marginBottom: '14px' }}>
-        <div style={{ background: '#1c1814', color: '#faf6ed', borderRadius: '50%', width: 22, height: 22, display: 'flex', alignItems: 'center', justifyContent: 'center', flex: 'none', fontFamily: 'Mallory, sans-serif', fontSize: '11px', fontWeight: 700 }}>
+        <div style={{ background: '#061b31', color: '#ffffff', borderRadius: '4px', width: 22, height: 22, display: 'flex', alignItems: 'center', justifyContent: 'center', flex: 'none', fontFamily: SANS, fontSize: '10px', fontWeight: 400 }}>
           You
         </div>
-        <p style={{ fontFamily: 'Mallory, sans-serif', fontSize: '13px', color: '#1c1814', lineHeight: 1.5 }}>
+        <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '13px', color: '#061b31', lineHeight: 1.5 }}>
           What did Marcus say about his sister in episode 12?
         </p>
       </div>
       <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
-        <div style={{ background: '#b85c3a', color: '#faf6ed', borderRadius: '50%', width: 22, height: 22, display: 'flex', alignItems: 'center', justifyContent: 'center', flex: 'none' }}>
+        <div style={{ background: '#533afd', color: '#ffffff', borderRadius: '4px', width: 22, height: 22, display: 'flex', alignItems: 'center', justifyContent: 'center', flex: 'none' }}>
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M2 20 L9 8 L13 14 L17 6 L22 20 Z" stroke="currentColor" strokeWidth="1.6" /></svg>
         </div>
         <div>
-          <p style={{ fontFamily: 'Mallory, sans-serif', fontSize: '11px', color: '#b85c3a', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '4px' }}>Episode 12 · 03:42</p>
-          <p style={{ fontFamily: "'Lora', Georgia, serif", fontStyle: 'italic', fontSize: '13px', color: '#1c1814', lineHeight: 1.55 }}>
+          <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '11px', color: '#533afd', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '4px' }}>Episode 12 · 03:42</p>
+          <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '13px', color: '#061b31', lineHeight: 1.5, fontStyle: 'italic' }}>
             “She wasn’t my sister, Aarav. She was the only person I ever trusted. And I left her in that house.”
           </p>
         </div>
@@ -115,7 +117,7 @@ const BLOCKS = [
 
 export default function Act1Write() {
   return (
-    <AnimatedSection style={{ padding: '120px 0' }}>
+    <AnimatedSection style={{ padding: '120px 0', background: '#ffffff' }}>
       <Container>
         <div style={{ maxWidth: '720px', marginBottom: '64px' }}>
           <Eyebrow>Act 1 · Write with Sherpa</Eyebrow>
@@ -129,28 +131,27 @@ export default function Act1Write() {
           </div>
         </div>
 
-        {/* Four alternating blocks */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '64px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '80px' }}>
           {BLOCKS.map((b, i) => {
             const reverse = i % 2 === 1
             return (
               <motion.div
                 key={b.title}
-                initial={{ opacity: 0, y: 24 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                 style={{
                   display: 'grid',
                   gridTemplateColumns: '1fr 1fr',
-                  gap: '48px',
+                  gap: '64px',
                   alignItems: 'center',
                   direction: reverse ? 'rtl' : 'ltr',
                 }}
                 className="act1-row"
               >
                 <div style={{ direction: 'ltr' }}>
-                  <p style={{ fontFamily: "'Lora', Georgia, serif", fontStyle: 'italic', fontSize: '14px', color: '#b85c3a', marginBottom: '10px' }}>
+                  <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '11px', color: '#533afd', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '12px' }}>
                     Block {String(i + 1).padStart(2, '0')}
                   </p>
                   <SerifHeading size="md" maxWidth="100%">
@@ -169,7 +170,7 @@ export default function Act1Write() {
 
       <style>{`
         @media (max-width: 768px) {
-          .act1-row { grid-template-columns: 1fr !important; direction: ltr !important; gap: 24px !important; }
+          .act1-row { grid-template-columns: 1fr !important; direction: ltr !important; gap: 28px !important; }
         }
       `}</style>
     </AnimatedSection>

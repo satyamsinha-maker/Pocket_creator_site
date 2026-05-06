@@ -27,10 +27,10 @@ export default function Navigation() {
         position: 'sticky',
         top: 0,
         zIndex: 100,
-        backgroundColor: 'rgba(250,246,237,0.85)',
+        backgroundColor: 'rgba(255,255,255,0.85)',
         backdropFilter: 'saturate(180%) blur(20px)',
         WebkitBackdropFilter: 'saturate(180%) blur(20px)',
-        borderBottom: scrolled ? '1px solid #e8dfd0' : '1px solid transparent',
+        borderBottom: scrolled ? '1px solid #e5edf5' : '1px solid transparent',
         transition: 'border-bottom 0.2s ease',
       }}
     >
@@ -39,7 +39,7 @@ export default function Navigation() {
           maxWidth: '1200px',
           margin: '0 auto',
           padding: '0 32px',
-          height: '60px',
+          height: '64px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
@@ -47,18 +47,17 @@ export default function Navigation() {
       >
         {/* Logo + wordmark */}
         <a href="#top" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
-          {/* Mountain mark — sherpa */}
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-            <path d="M2 20 L9 8 L13 14 L17 6 L22 20 Z" stroke="#1c1814" strokeWidth="1.6" strokeLinejoin="round" fill="none" />
-            <circle cx="17" cy="6" r="1.4" fill="#b85c3a" />
+            <path d="M2 20 L9 8 L13 14 L17 6 L22 20 Z" stroke="#061b31" strokeWidth="1.6" strokeLinejoin="round" fill="none" />
+            <circle cx="17" cy="6" r="1.4" fill="#533afd" />
           </svg>
           <span
             style={{
-              fontFamily: "'Lora', Georgia, serif",
-              fontWeight: 600,
-              fontSize: '17px',
-              letterSpacing: '-0.01em',
-              color: '#1c1814',
+              fontFamily: "'Inter', sans-serif",
+              fontWeight: 400,
+              fontSize: '16px',
+              letterSpacing: '-0.009px',
+              color: '#061b31',
             }}
           >
             Pocket Sherpa
@@ -69,7 +68,7 @@ export default function Navigation() {
         <ul
           style={{
             display: 'flex',
-            gap: '28px',
+            gap: '32px',
             listStyle: 'none',
             margin: 0,
             padding: 0,
@@ -81,16 +80,15 @@ export default function Navigation() {
               <a
                 href={item.href}
                 style={{
-                  fontFamily: 'Mallory, sans-serif',
+                  fontFamily: "'Inter', sans-serif",
                   fontWeight: 400,
                   fontSize: '14px',
-                  color: '#1c1814',
+                  color: '#061b31',
                   textDecoration: 'none',
-                  letterSpacing: '0.01em',
                   transition: 'color 0.18s',
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = '#b85c3a')}
-                onMouseLeave={(e) => (e.currentTarget.style.color = '#1c1814')}
+                onMouseEnter={(e) => (e.currentTarget.style.color = '#533afd')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = '#061b31')}
               >
                 {item.label}
               </a>
@@ -99,7 +97,7 @@ export default function Navigation() {
         </ul>
 
         {/* Auth */}
-        <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
           <PillButton variant="ghost">Sign in</PillButton>
           <PillButton variant="filled">Start writing free</PillButton>
         </div>

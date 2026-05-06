@@ -10,7 +10,7 @@ const STEPS = [
 
 export default function CompleteJourney() {
   return (
-    <AnimatedSection id="journey" style={{ padding: '96px 0', background: '#f3ecdc' }}>
+    <AnimatedSection id="journey" style={{ padding: '96px 0', background: '#e5edf5' }}>
       <Container>
         <div style={{ marginBottom: '56px', maxWidth: '720px' }}>
           <Eyebrow>The complete journey</Eyebrow>
@@ -23,47 +23,46 @@ export default function CompleteJourney() {
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: '0',
-            position: 'relative',
+            gap: '12px',
           }}
           className="journey-grid"
         >
           {STEPS.map((s, i) => (
             <motion.div
               key={s.num}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.5, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
               style={{
+                background: '#ffffff',
+                borderRadius: '6px',
+                padding: '24px',
                 position: 'relative',
-                padding: '24px 24px 24px 0',
-                borderTop: '1px solid #e8dfd0',
               }}
             >
-              {/* Number */}
               <p
                 style={{
-                  fontFamily: "'Lora', Georgia, serif",
+                  fontFamily: "'Inter', sans-serif",
                   fontWeight: 400,
-                  fontStyle: 'italic',
-                  fontSize: '13px',
-                  color: '#b85c3a',
+                  fontSize: '11px',
+                  color: '#533afd',
                   marginBottom: '14px',
-                  letterSpacing: '0.05em',
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase',
                 }}
               >
-                [{s.num}]
+                Step {s.num}
               </p>
 
-              {/* Title */}
               <p
                 style={{
-                  fontFamily: "'Lora', Georgia, serif",
-                  fontWeight: 600,
+                  fontFamily: "'Inter', sans-serif",
+                  fontWeight: 300,
                   fontSize: '22px',
                   lineHeight: 1.2,
-                  color: '#1c1814',
+                  letterSpacing: '-0.01em',
+                  color: '#061b31',
                   marginBottom: '8px',
                   display: 'flex',
                   alignItems: 'center',
@@ -72,13 +71,11 @@ export default function CompleteJourney() {
               >
                 {s.title}
                 {i < STEPS.length - 1 && (
-                  <span style={{ color: '#b85c3a', fontSize: '18px', fontFamily: 'Mallory, sans-serif' }}>
-                    →
-                  </span>
+                  <span style={{ color: '#533afd', fontSize: '16px' }}>→</span>
                 )}
               </p>
 
-              <Body size="sm" color="#6b5e52" maxWidth="220px">
+              <Body size="sm" color="#50617a">
                 {s.blurb}
               </Body>
             </motion.div>
@@ -88,14 +85,14 @@ export default function CompleteJourney() {
         <p
           style={{
             marginTop: '40px',
-            fontFamily: "'Lora', Georgia, serif",
-            fontStyle: 'italic',
+            fontFamily: "'Inter', sans-serif",
+            fontWeight: 400,
             fontSize: '14px',
-            color: '#8c4528',
+            color: '#50617a',
             paddingLeft: '14px',
-            borderLeft: '2px solid #b85c3a',
+            borderLeft: '2px solid #533afd',
             maxWidth: '640px',
-            lineHeight: 1.55,
+            lineHeight: 1.5,
           }}
         >
           Most visitors will not read the rest of the page. If you read nothing else, you should still understand the loop.

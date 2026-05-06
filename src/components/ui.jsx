@@ -1,17 +1,19 @@
 import { motion } from 'framer-motion'
 
+const SANS = "'Inter', ui-sans-serif, system-ui, sans-serif"
+
 /* ── Eyebrow ──────────────────────────────────────────────────────────── */
-export function Eyebrow({ children, color = '#b85c3a' }) {
+export function Eyebrow({ children, color = '#533afd' }) {
   return (
     <p
       style={{
-        fontFamily: 'Mallory, sans-serif',
-        fontWeight: 700,
+        fontFamily: SANS,
+        fontWeight: 400,
         fontSize: '12px',
         color,
-        letterSpacing: '0.14em',
+        letterSpacing: '0.08em',
         textTransform: 'uppercase',
-        marginBottom: '14px',
+        marginBottom: '16px',
       }}
     >
       {children}
@@ -19,23 +21,21 @@ export function Eyebrow({ children, color = '#b85c3a' }) {
   )
 }
 
-/* ── SerifHeading — Lora for literary tone ────────────────────────────── */
+/* ── Heading — sohne-var/Inter weight 300, large sizes per Stripe scale ─ */
 export function SerifHeading({ children, size = 'lg', maxWidth = '760px', as: Tag = 'h2' }) {
-  const fontSize =
-    size === 'xl' ? 'clamp(44px, 6vw, 76px)' :
-    size === 'lg' ? 'clamp(34px, 4.5vw, 52px)' :
-    size === 'md' ? 'clamp(26px, 3vw, 36px)' :
-                    'clamp(22px, 2.4vw, 28px)'
+  const config =
+    size === 'xl' ? { fontSize: 'clamp(40px, 5.4vw, 56px)', lineHeight: 1.07, letterSpacing: '-0.03em' } :
+    size === 'lg' ? { fontSize: 'clamp(32px, 4vw, 44px)',   lineHeight: 1.10, letterSpacing: '-0.025em' } :
+    size === 'md' ? { fontSize: 'clamp(24px, 2.8vw, 32px)', lineHeight: 1.15, letterSpacing: '-0.02em' } :
+                    { fontSize: 'clamp(20px, 2.2vw, 22px)', lineHeight: 1.20, letterSpacing: '-0.01em' }
   return (
     <Tag
       style={{
-        fontFamily: "'Lora', Georgia, serif",
-        fontWeight: 500,
-        fontSize,
-        lineHeight: 1.1,
-        letterSpacing: '-0.01em',
-        color: '#1c1814',
+        fontFamily: SANS,
+        fontWeight: 300,
+        color: '#061b31',
         maxWidth,
+        ...config,
       }}
     >
       {children}
@@ -43,16 +43,17 @@ export function SerifHeading({ children, size = 'lg', maxWidth = '760px', as: Ta
   )
 }
 
-/* ── Body text helper ─────────────────────────────────────────────────── */
-export function Body({ children, color = '#6b5e52', size = 'md', maxWidth, style = {} }) {
-  const fontSize = size === 'lg' ? '17px' : size === 'sm' ? '13px' : '15px'
+/* ── Body ─────────────────────────────────────────────────────────────── */
+export function Body({ children, color = '#50617a', size = 'md', maxWidth, style = {} }) {
+  const fontSize = size === 'lg' ? '18px' : size === 'sm' ? '12px' : '14px'
+  const lineHeight = size === 'lg' ? 1.5 : 1.4
   return (
     <p
       style={{
-        fontFamily: 'Mallory, sans-serif',
+        fontFamily: SANS,
         fontWeight: 400,
         fontSize,
-        lineHeight: 1.55,
+        lineHeight,
         color,
         maxWidth,
         ...style,
@@ -63,54 +64,62 @@ export function Body({ children, color = '#6b5e52', size = 'md', maxWidth, style
   )
 }
 
-/* ── PillButton — ink filled / ghost / sienna accent ──────────────────── */
+/* ── PillButton — kept name for compat, now Stripe square buttons ─────── */
 export function PillButton({ variant = 'filled', children, onClick, ...rest }) {
   const variants = {
     filled: {
-      backgroundColor: '#1c1814',
-      color: '#faf6ed',
-      border: '1px solid #1c1814',
+      backgroundColor: '#533afd',
+      color: '#ffffff',
+      border: '1px solid #533afd',
+      padding: '0 24px',
+      height: '40px',
     },
     ghost: {
-      backgroundColor: '#ffffff',
-      color: '#1c1814',
-      border: '1px solid #e8dfd0',
+      backgroundColor: 'transparent',
+      color: '#061b31',
+      border: 'none',
+      padding: '0 4px',
+      height: '40px',
     },
-    sienna: {
-      backgroundColor: '#b85c3a',
-      color: '#faf6ed',
-      border: '1px solid #b85c3a',
+    outlined: {
+      backgroundColor: 'transparent',
+      color: '#533afd',
+      border: '1px solid #b9b9f9',
+      padding: '0 24px',
+      height: '40px',
+    },
+    sienna: { /* legacy alias — used by Hero/FinalCTA submit; map to filled */
+      backgroundColor: '#533afd',
+      color: '#ffffff',
+      border: '1px solid #533afd',
+      padding: '0 18px',
+      height: '36px',
     },
   }
-  const v = variants[variant]
+  const v = variants[variant] || variants.filled
   return (
     <motion.button
       onClick={onClick}
       whileHover={{
-        opacity: variant === 'ghost' ? 1 : 0.9,
         backgroundColor:
-          variant === 'ghost' ? '#f3ecdc' :
-          variant === 'sienna' ? '#8c4528' :
-          undefined,
+          variant === 'ghost'    ? 'rgba(83,58,253,0.06)' :
+          variant === 'outlined' ? 'rgba(83,58,253,0.04)' :
+                                    '#3f29d9',
       }}
-      whileTap={{ scale: 0.97 }}
+      whileTap={{ scale: 0.98 }}
       style={{
         ...v,
-        borderRadius: '9999px',
-        padding: '0 20px',
-        height: '40px',
-        fontFamily: 'Mallory, sans-serif',
-        fontWeight: variant === 'ghost' ? 400 : 700,
+        borderRadius: '4px',
+        fontFamily: SANS,
+        fontWeight: 400,
         fontSize: '14px',
-        letterSpacing: '0.01em',
+        letterSpacing: '0.003px',
         cursor: 'pointer',
         whiteSpace: 'nowrap',
         display: 'inline-flex',
         alignItems: 'center',
         gap: '6px',
-        boxShadow: variant === 'ghost'
-          ? 'rgba(28,24,20,0.06) 0px 0px 0px 1px, rgba(28,24,20,0.04) 0px 1px 2px 0px'
-          : 'rgba(28,24,20,0.06) 0px 1px 2px 0px',
+        transition: 'background-color 0.18s',
       }}
       {...rest}
     >
@@ -119,14 +128,14 @@ export function PillButton({ variant = 'filled', children, onClick, ...rest }) {
   )
 }
 
-/* ── AnimatedSection — restrained fade-up on scroll ───────────────────── */
+/* ── AnimatedSection — restrained fade-up ─────────────────────────────── */
 export function AnimatedSection({ children, className = '', style = {}, delay = 0, id }) {
   return (
     <motion.section
       id={id}
       className={className}
       style={style}
-      initial={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay }}
@@ -152,18 +161,41 @@ export function Container({ children, style = {} }) {
   )
 }
 
-/* ── Card with hairline elevation ─────────────────────────────────────── */
-export function Card({ children, style = {}, className = '', hover = false }) {
+/* ── Card — Stripe Default Card (powder-blue) by default ──────────────── */
+export function Card({ children, style = {}, className = '', hover = false, surface = 'powder' }) {
+  const bg = surface === 'porcelain' ? '#f8fafd' : surface === 'white' ? '#ffffff' : '#e5edf5'
   return (
     <motion.div
       className={className}
       style={{
-        backgroundColor: '#ffffff',
-        borderRadius: '12px',
-        boxShadow: 'rgba(28,24,20,0.4) 0px 0px 1.143px 0px, rgba(28,24,20,0.04) 0px 2px 4px 0px',
+        backgroundColor: bg,
+        borderRadius: '6px',
+        padding: '12px',
         ...style,
       }}
-      whileHover={hover ? { y: -2, boxShadow: 'rgba(28,24,20,0.5) 0px 0px 1.143px 0px, rgba(28,24,20,0.06) 0px 6px 16px 0px' } : undefined}
+      whileHover={hover ? {
+        boxShadow: 'rgba(50, 50, 93, 0.12) 0px 16px 32px 0px',
+        y: -2,
+      } : undefined}
+      transition={{ duration: 0.25 }}
+    >
+      {children}
+    </motion.div>
+  )
+}
+
+/* ── FeatureCard — porcelain with soft xl shadow ──────────────────────── */
+export function FeatureCard({ children, style = {}, hover = false }) {
+  return (
+    <motion.div
+      style={{
+        backgroundColor: '#f8fafd',
+        borderRadius: '6px',
+        padding: '12px',
+        boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 32px 8px',
+        ...style,
+      }}
+      whileHover={hover ? { y: -2, boxShadow: 'rgba(50, 50, 93, 0.12) 0px 16px 32px 0px' } : undefined}
       transition={{ duration: 0.25 }}
     >
       {children}

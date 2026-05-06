@@ -17,27 +17,28 @@
 }
 
 @theme {
-  /* Warm-literary palette */
-  --color-cream:   #faf6ed;   /* page surface — paper warmth */
-  --color-vellum:  #f3ecdc;   /* secondary surface */
-  --color-paper:   #ffffff;   /* card surface */
-  --color-chalk:   #e8dfd0;   /* warm border */
-  --color-fog:     #b8ad9a;   /* muted, disabled */
-  --color-gravel:  #6b5e52;   /* secondary text — warm stone */
-  --color-slate:   #908474;   /* tertiary text */
-  --color-ink:     #1c1814;   /* primary text — warm ink */
-  --color-sienna:  #b85c3a;   /* accent — burnt sienna */
-  --color-sienna-deep: #8c4528;
-  --color-gold:    #c19a3e;   /* alternate accent — muted gold */
+  /* Stripe palette */
+  --color-platinum:    #ffffff;   /* page surface */
+  --color-porcelain:   #f8fafd;   /* secondary surface */
+  --color-powder:      #e5edf5;   /* alternating sections, light card backgrounds */
+  --color-stone:       #d8d6df;   /* hairlines, dividers */
+  --color-ghost:       #64748d;   /* tertiary, placeholder */
+  --color-slate:       #50617a;   /* secondary text */
+  --color-midnight:    #061b31;   /* primary text */
+  --color-violet:      #533afd;   /* primary action */
+  --color-soft-violet: #8087ff;   /* decorative accent */
+  --color-washed-violet:#b9b9f9;  /* outlined button border */
+  --color-green:       #81b81a;
+  --color-orange:      #ff6118;
 
-  /* Fonts */
-  --font-serif:   'Lora', Georgia, 'Times New Roman', serif;
-  --font-sans:    'Mallory', ui-sans-serif, system-ui, sans-serif;
+  /* Sole typeface — Inter as sohne-var substitute */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
 
-  /* Radii — slightly less aggressive than ElevenLabs version */
-  --radius-card:  12px;
-  --radius-panel: 16px;
-  --radius-full:  9999px;
+  /* Radii (Stripe is square — 4px buttons, 6px cards) */
+  --radius-button: 4px;
+  --radius-card:   6px;
+  --radius-input:  4px;
+  --radius-tag:    4px;
 }
 
 * {
@@ -51,16 +52,15 @@ html {
 }
 
 body {
-  font-family: 'Mallory', ui-sans-serif, system-ui, sans-serif;
-  background-color: #faf6ed;
-  color: #1c1814;
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-feature-settings: "ss01" on, "tnum";
+  background-color: #ffffff;
+  color: #061b31;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Card hairline elevation matches Refero discipline */
+/* Soft diffused shadow used across feature cards */
 .elevated {
-  box-shadow:
-    rgba(28, 24, 20, 0.4) 0px 0px 1.143px 0px,
-    rgba(28, 24, 20, 0.04) 0px 2px 4px 0px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 32px 8px;
 }

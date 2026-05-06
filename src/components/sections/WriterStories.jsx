@@ -1,19 +1,20 @@
 import { motion } from 'framer-motion'
-import { Container, AnimatedSection, SerifHeading, Body, Eyebrow } from '../ui'
+import { Container, AnimatedSection, SerifHeading, Eyebrow } from '../ui'
 
-/* Avatar — initials only, no photos */
-function Avatar({ name, tone = '#b85c3a' }) {
+const SANS = "'Inter', sans-serif"
+
+function Avatar({ name, gradient }) {
   const initials = name.split(' ').map((n) => n[0]).slice(0, 2).join('')
   return (
     <div
       style={{
         width: 56,
         height: 56,
-        borderRadius: '50%',
-        background: `linear-gradient(135deg, ${tone}, ${tone}88)`,
-        color: '#faf6ed',
-        fontFamily: "'Lora', Georgia, serif",
-        fontWeight: 600,
+        borderRadius: '4px',
+        background: gradient,
+        color: '#ffffff',
+        fontFamily: SANS,
+        fontWeight: 400,
         fontSize: '18px',
         display: 'flex',
         alignItems: 'center',
@@ -30,7 +31,7 @@ const STORIES = [
   {
     name:  'Priya Sharma',
     role:  'Romance writer',
-    tone:  '#b85c3a',
+    gradient: 'radial-gradient(circle, rgb(127, 125, 252), rgb(244, 75, 204) 33%, rgb(229, 237, 245) 66%)',
     series:'The Boss’s Forbidden Love (Hindi)',
     quote: 'I had been writing on Wattpad for three years and earned nothing. My first Pocket Sherpa series hit one million listens in six weeks. I quit my IT job last month.',
     stats: ['47 episodes', '1.2M listens', '₹3,40,000 earned in 3 months'],
@@ -38,7 +39,7 @@ const STORIES = [
   {
     name:  'Arjun Krishnan',
     role:  'Thriller writer',
-    tone:  '#1c1814',
+    gradient: 'linear-gradient(0deg, rgb(255, 46, 222), rgb(210, 152, 255))',
     series:'Cold Currency (English)',
     quote: 'The memory tool is the unlock. I write a 120-episode series and Sherpa keeps every detail of every backstory. I’d still be on episode 8 without it.',
     stats: ['89 episodes', '2.8M listens', '₹6,10,000 earned to date'],
@@ -46,7 +47,7 @@ const STORIES = [
   {
     name:  'Meera Joseph',
     role:  'Fantasy writer',
-    tone:  '#c19a3e',
+    gradient: 'linear-gradient(90deg, rgb(114, 50, 241) 3.13%, rgb(251, 118, 250) 50%, rgb(255, 207, 94))',
     series:'The Witch in the Walls (Malayalam)',
     quote: 'I wrote the first three episodes on a Sunday. By Friday it was on Pocket FM with full voice acting. That used to take a year and a publisher.',
     stats: ['23 episodes', '480k listens', 'First publication: 6 days'],
@@ -55,7 +56,7 @@ const STORIES = [
 
 export default function WriterStories() {
   return (
-    <AnimatedSection id="stories" style={{ padding: '120px 0', background: '#f3ecdc' }}>
+    <AnimatedSection id="stories" style={{ padding: '120px 0', background: '#e5edf5' }}>
       <Container>
         <div style={{ marginBottom: '56px', maxWidth: '720px' }}>
           <Eyebrow>Writers, paid</Eyebrow>
@@ -68,43 +69,45 @@ export default function WriterStories() {
           {STORIES.map((s, i) => (
             <motion.article
               key={s.name}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.55, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.55, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ boxShadow: 'rgba(50, 50, 93, 0.12) 0px 16px 32px 0px' }}
               style={{
-                background: '#fff',
-                border: '1px solid #e8dfd0',
-                borderRadius: '14px',
+                background: '#ffffff',
+                borderRadius: '6px',
                 padding: '32px',
                 display: 'grid',
                 gridTemplateColumns: '72px 1fr',
                 gap: '24px',
                 alignItems: 'flex-start',
+                transition: 'box-shadow 0.25s',
               }}
               className="story-card"
             >
-              <Avatar name={s.name} tone={s.tone} />
+              <Avatar name={s.name} gradient={s.gradient} />
 
               <div>
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px', flexWrap: 'wrap', marginBottom: '4px' }}>
-                  <p style={{ fontFamily: "'Lora', Georgia, serif", fontWeight: 600, fontSize: '18px', color: '#1c1814' }}>
+                  <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '18px', color: '#061b31', letterSpacing: '-0.009em' }}>
                     {s.name}
                   </p>
-                  <span style={{ fontFamily: 'Mallory, sans-serif', fontSize: '13px', color: '#6b5e52' }}>· {s.role}</span>
+                  <span style={{ fontFamily: SANS, fontSize: '13px', color: '#64748d' }}>· {s.role}</span>
                 </div>
-                <p style={{ fontFamily: 'Mallory, sans-serif', fontSize: '12px', color: '#b85c3a', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '14px' }}>
+                <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '11px', color: '#533afd', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '14px' }}>
                   Series: {s.series}
                 </p>
 
                 <blockquote
                   style={{
-                    fontFamily: "'Lora', Georgia, serif",
-                    fontStyle: 'italic',
-                    fontSize: '19px',
-                    lineHeight: 1.5,
-                    color: '#1c1814',
-                    borderLeft: '2px solid #b85c3a',
+                    fontFamily: SANS,
+                    fontWeight: 300,
+                    fontSize: '20px',
+                    lineHeight: 1.4,
+                    letterSpacing: '-0.01em',
+                    color: '#061b31',
+                    borderLeft: '2px solid #533afd',
                     paddingLeft: '16px',
                     marginBottom: '18px',
                   }}
@@ -117,11 +120,11 @@ export default function WriterStories() {
                     <span
                       key={st}
                       style={{
-                        fontFamily: 'Mallory, sans-serif',
-                        fontWeight: 700,
+                        fontFamily: SANS,
+                        fontWeight: 400,
                         fontSize: '13px',
-                        color: '#1c1814',
-                        letterSpacing: '0.01em',
+                        color: '#061b31',
+                        fontFeatureSettings: '"tnum"',
                       }}
                     >
                       {st}
