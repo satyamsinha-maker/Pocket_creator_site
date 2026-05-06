@@ -8,12 +8,12 @@ const GENRES = ['All', 'Romance', 'Thriller', 'Fantasy', 'Drama']
 
 const SERIES = [
   { title: 'The Boss’s Forbidden Love',     genre: 'Romance',  episodes: 47, writer: 'Priya Sharma',   gradient: 'radial-gradient(circle, rgb(127, 125, 252), rgb(244, 75, 204) 33%, rgb(229, 237, 245) 66%)' },
-  { title: 'Cold Currency',                  genre: 'Thriller', episodes: 89, writer: 'Arjun Krishnan', gradient: 'linear-gradient(135deg, #061b31, #533afd)' },
+  { title: 'Cold Currency',                  genre: 'Thriller', episodes: 89, writer: 'Arjun Krishnan', gradient: 'linear-gradient(135deg, #061b31, #F51D00)' },
   { title: 'The Witch in the Walls',         genre: 'Fantasy',  episodes: 23, writer: 'Meera Joseph',   gradient: 'linear-gradient(0deg, rgb(255, 46, 222), rgb(210, 152, 255))' },
   { title: 'Empire of Ashes',                genre: 'Thriller', episodes: 64, writer: 'Vikram Rao',     gradient: 'linear-gradient(90deg, rgb(114, 50, 241) 3.13%, rgb(251, 118, 250) 50%, rgb(255, 207, 94))' },
   { title: 'After Midnight',                 genre: 'Romance',  episodes: 32, writer: 'Sara Iqbal',     gradient: 'linear-gradient(135deg, #ff2ede, #d298ff)' },
-  { title: 'The Cartographer’s Daughter',    genre: 'Drama',    episodes: 28, writer: 'Devika Menon',   gradient: 'linear-gradient(135deg, #533afd, #8087ff 60%, #b9b9f9)' },
-  { title: 'Ravan’s Diary',                  genre: 'Fantasy',  episodes: 41, writer: 'Karthik Iyer',   gradient: 'radial-gradient(circle, #ff6118, #533afd 60%, #061b31)' },
+  { title: 'The Cartographer’s Daughter',    genre: 'Drama',    episodes: 28, writer: 'Devika Menon',   gradient: 'linear-gradient(135deg, #F51D00, #ff6b4d 60%, #fcb8ad)' },
+  { title: 'Ravan’s Diary',                  genre: 'Fantasy',  episodes: 41, writer: 'Karthik Iyer',   gradient: 'radial-gradient(circle, #ff6118, #F51D00 60%, #061b31)' },
   { title: 'Last Train to Banaras',          genre: 'Drama',    episodes: 19, writer: 'Anya Banerjee',  gradient: 'linear-gradient(135deg, #50617a, #061b31)' },
 ]
 
@@ -64,9 +64,9 @@ function Card({ s }) {
           aria-label={playing ? 'Pause sample' : 'Play 30-second sample'}
         >
           {playing ? (
-            <svg width="11" height="12" viewBox="0 0 11 12" fill="#533afd"><rect x="1" y="1" width="3" height="10" /><rect x="7" y="1" width="3" height="10" /></svg>
+            <svg width="11" height="12" viewBox="0 0 11 12" fill="#F51D00"><rect x="1" y="1" width="3" height="10" /><rect x="7" y="1" width="3" height="10" /></svg>
           ) : (
-            <svg width="10" height="12" viewBox="0 0 10 12" fill="#533afd"><path d="M0 1 L10 6 L0 11 Z" /></svg>
+            <svg width="10" height="12" viewBox="0 0 10 12" fill="#F51D00"><path d="M0 1 L10 6 L0 11 Z" /></svg>
           )}
         </button>
       </div>
@@ -103,10 +103,10 @@ export default function SampleStories() {
                 key={g}
                 onClick={() => setGenre(g)}
                 style={{
-                  background: active ? '#533afd' : '#ffffff',
+                  background: active ? '#F51D00' : '#ffffff',
                   color: active ? '#ffffff' : '#061b31',
                   border: '1px solid',
-                  borderColor: active ? '#533afd' : '#e5edf5',
+                  borderColor: active ? '#F51D00' : '#e5edf5',
                   borderRadius: '4px',
                   padding: '8px 14px',
                   fontFamily: SANS,

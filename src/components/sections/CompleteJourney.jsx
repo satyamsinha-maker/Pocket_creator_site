@@ -46,7 +46,7 @@ export default function CompleteJourney() {
                   fontFamily: "'Mallory', sans-serif",
                   fontWeight: 400,
                   fontSize: '11px',
-                  color: '#533afd',
+                  color: '#F51D00',
                   marginBottom: '14px',
                   letterSpacing: '0.08em',
                   textTransform: 'uppercase',
@@ -71,7 +71,7 @@ export default function CompleteJourney() {
               >
                 {s.title}
                 {i < STEPS.length - 1 && (
-                  <span style={{ color: '#533afd', fontSize: '16px' }}>→</span>
+                  <span style={{ color: '#F51D00', fontSize: '16px' }}>→</span>
                 )}
               </p>
 
@@ -90,7 +90,7 @@ export default function CompleteJourney() {
             fontSize: '14px',
             color: '#50617a',
             paddingLeft: '14px',
-            borderLeft: '2px solid #533afd',
+            borderLeft: '2px solid #F51D00',
             maxWidth: '640px',
             lineHeight: 1.5,
           }}

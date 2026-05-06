@@ -20,12 +20,12 @@ function EarningsDashStub() {
       <svg viewBox="0 0 320 80" style={{ width: '100%', height: 'auto' }}>
         <defs>
           <linearGradient id="earnGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#533afd" stopOpacity="0.3" />
-            <stop offset="100%" stopColor="#533afd" stopOpacity="0" />
+            <stop offset="0%" stopColor="#F51D00" stopOpacity="0.3" />
+            <stop offset="100%" stopColor="#F51D00" stopOpacity="0" />
           </linearGradient>
         </defs>
         <path d="M0,60 C30,50 60,55 90,40 C120,28 150,32 180,20 C210,12 240,18 270,8 C290,4 310,2 320,2 L320,80 L0,80 Z" fill="url(#earnGrad)" />
-        <path d="M0,60 C30,50 60,55 90,40 C120,28 150,32 180,20 C210,12 240,18 270,8 C290,4 310,2 320,2" stroke="#533afd" strokeWidth="1.8" fill="none" />
+        <path d="M0,60 C30,50 60,55 90,40 C120,28 150,32 180,20 C210,12 240,18 270,8 C290,4 310,2 320,2" stroke="#F51D00" strokeWidth="1.8" fill="none" />
       </svg>
 
       <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '12px', fontFamily: SANS, fontSize: '10px', color: '#64748d' }}>
@@ -95,7 +95,7 @@ export default function Act3Earn() {
                 transition: 'box-shadow 0.25s',
               }}
             >
-              <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '11px', color: '#533afd', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '10px' }}>
+              <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '11px', color: '#F51D00', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '10px' }}>
                 Block {String(i + 1).padStart(2, '0')}
               </p>
               <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '22px', lineHeight: 1.2, letterSpacing: '-0.01em', color: '#061b31', marginBottom: '10px' }}>

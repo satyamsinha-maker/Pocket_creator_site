@@ -95,7 +95,7 @@ export default function WriterStories() {
                   </p>
                   <span style={{ fontFamily: SANS, fontSize: '13px', color: '#64748d' }}>· {s.role}</span>
                 </div>
-                <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '11px', color: '#533afd', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '14px' }}>
+                <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '11px', color: '#F51D00', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '14px' }}>
                   Series: {s.series}
                 </p>
 
@@ -107,7 +107,7 @@ export default function WriterStories() {
                     lineHeight: 1.4,
                     letterSpacing: '-0.01em',
                     color: '#061b31',
-                    borderLeft: '2px solid #533afd',
+                    borderLeft: '2px solid #F51D00',
                     paddingLeft: '16px',
                     marginBottom: '18px',
                   }}

@@ -25,9 +25,9 @@
   --color-ghost:       #64748d;   /* tertiary, placeholder */
   --color-slate:       #50617a;   /* secondary text */
   --color-midnight:    #061b31;   /* primary text */
-  --color-violet:      #533afd;   /* primary action */
-  --color-soft-violet: #8087ff;   /* decorative accent */
-  --color-washed-violet:#b9b9f9;  /* outlined button border */
+  --color-violet:      #F51D00;   /* primary action */
+  --color-soft-violet: #ff6b4d;   /* decorative accent */
+  --color-washed-violet:#fcb8ad;  /* outlined button border */
   --color-green:       #81b81a;
   --color-orange:      #ff6118;
 

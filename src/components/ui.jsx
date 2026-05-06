@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 const SANS = "'Mallory', ui-sans-serif, system-ui, sans-serif"
 
 /* ── Eyebrow ──────────────────────────────────────────────────────────── */
-export function Eyebrow({ children, color = '#533afd' }) {
+export function Eyebrow({ children, color = '#F51D00' }) {
   return (
     <p
       style={{
@@ -68,9 +68,9 @@ export function Body({ children, color = '#50617a', size = 'md', maxWidth, style
 export function PillButton({ variant = 'filled', children, onClick, ...rest }) {
   const variants = {
     filled: {
-      backgroundColor: '#533afd',
+      backgroundColor: '#F51D00',
       color: '#ffffff',
-      border: '1px solid #533afd',
+      border: '1px solid #F51D00',
       padding: '0 24px',
       height: '40px',
     },
@@ -83,15 +83,15 @@ export function PillButton({ variant = 'filled', children, onClick, ...rest }) {
     },
     outlined: {
       backgroundColor: 'transparent',
-      color: '#533afd',
-      border: '1px solid #b9b9f9',
+      color: '#F51D00',
+      border: '1px solid #fcb8ad',
       padding: '0 24px',
       height: '40px',
     },
     sienna: { /* legacy alias — used by Hero/FinalCTA submit; map to filled */
-      backgroundColor: '#533afd',
+      backgroundColor: '#F51D00',
       color: '#ffffff',
-      border: '1px solid #533afd',
+      border: '1px solid #F51D00',
       padding: '0 18px',
       height: '36px',
     },
@@ -102,9 +102,9 @@ export function PillButton({ variant = 'filled', children, onClick, ...rest }) {
       onClick={onClick}
       whileHover={{
         backgroundColor:
-          variant === 'ghost'    ? 'rgba(83,58,253,0.06)' :
-          variant === 'outlined' ? 'rgba(83,58,253,0.04)' :
-                                    '#3f29d9',
+          variant === 'ghost'    ? 'rgba(245,29,0,0.06)' :
+          variant === 'outlined' ? 'rgba(245,29,0,0.04)' :
+                                    '#c81700',
       }}
       whileTap={{ scale: 0.98 }}
       style={{

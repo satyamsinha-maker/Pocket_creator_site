@@ -9,7 +9,7 @@ function StoryboardStub() {
   return (
     <div style={{ background: '#f8fafd', borderRadius: '6px', padding: '20px', boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 32px 8px' }}>
       <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '15px', color: '#061b31', marginBottom: '6px' }}>The Boss’s Forbidden Love</p>
-      <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '11px', color: '#533afd', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '14px' }}>Romance · Slow burn · Hindi</p>
+      <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '11px', color: '#F51D00', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '14px' }}>Romance · Slow burn · Hindi</p>
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px', marginBottom: '12px' }}>
         {[
@@ -35,12 +35,12 @@ function StoryboardStub() {
 function DraftStub() {
   return (
     <div style={{ background: '#f8fafd', borderRadius: '6px', padding: '20px', boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 32px 8px' }}>
-      <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '11px', color: '#533afd', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '8px' }}>Episode 7 · Draft</p>
+      <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '11px', color: '#F51D00', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '8px' }}>Episode 7 · Draft</p>
       <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '14px', color: '#061b31', lineHeight: 1.5, marginBottom: '8px' }}>
         Mira’s heels echoed across the marble lobby, each step a measured breath. She had not expected to see him here. Not tonight. Not after what he had said in the boardroom.
       </p>
       <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '14px', color: '#061b31', lineHeight: 1.5 }}>
-        Aarav looked up. Their eyes met. The room <span style={{ background: 'rgba(83,58,253,0.1)', borderBottom: '1px dashed #533afd' }}>seemed to hold its breath</span>.
+        Aarav looked up. Their eyes met. The room <span style={{ background: 'rgba(245,29,0,0.1)', borderBottom: '1px dashed #F51D00' }}>seemed to hold its breath</span>.
       </p>
     </div>
   )
@@ -58,7 +58,7 @@ function ReviewStub() {
         { tag: 'Continuity',      note: 'Boardroom scene: cross-checks with Ep 6 ending.' },
       ].map((r) => (
         <div key={r.tag} style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
-          <span style={{ flex: 'none', background: '#533afd', color: '#ffffff', borderRadius: '4px', padding: '2px 6px', fontFamily: SANS, fontWeight: 400, fontSize: '10px', height: 'fit-content' }}>{r.tag}</span>
+          <span style={{ flex: 'none', background: '#F51D00', color: '#ffffff', borderRadius: '4px', padding: '2px 6px', fontFamily: SANS, fontWeight: 400, fontSize: '10px', height: 'fit-content' }}>{r.tag}</span>
           <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '12px', color: '#50617a', lineHeight: 1.4 }}>{r.note}</p>
         </div>
       ))}
@@ -78,11 +78,11 @@ function MemoryStub() {
         </p>
       </div>
       <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
-        <div style={{ background: '#533afd', color: '#ffffff', borderRadius: '4px', width: 22, height: 22, display: 'flex', alignItems: 'center', justifyContent: 'center', flex: 'none' }}>
+        <div style={{ background: '#F51D00', color: '#ffffff', borderRadius: '4px', width: 22, height: 22, display: 'flex', alignItems: 'center', justifyContent: 'center', flex: 'none' }}>
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M2 20 L9 8 L13 14 L17 6 L22 20 Z" stroke="currentColor" strokeWidth="1.6" /></svg>
         </div>
         <div>
-          <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '11px', color: '#533afd', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '4px' }}>Episode 12 · 03:42</p>
+          <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '11px', color: '#F51D00', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '4px' }}>Episode 12 · 03:42</p>
           <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '13px', color: '#061b31', lineHeight: 1.5, fontStyle: 'italic' }}>
             “She wasn’t my sister, Aarav. She was the only person I ever trusted. And I left her in that house.”
           </p>
@@ -151,7 +151,7 @@ export default function Act1Write() {
                 className="act1-row"
               >
                 <div style={{ direction: 'ltr' }}>
-                  <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '11px', color: '#533afd', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '12px' }}>
+                  <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '11px', color: '#F51D00', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '12px' }}>
                     Block {String(i + 1).padStart(2, '0')}
                   </p>
                   <SerifHeading size="md" maxWidth="100%">

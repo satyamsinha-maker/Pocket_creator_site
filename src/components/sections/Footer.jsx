@@ -22,7 +22,7 @@ export default function Footer() {
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '40px' }}>
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
             <path d="M2 20 L9 8 L13 14 L17 6 L22 20 Z" stroke="#061b31" strokeWidth="1.6" strokeLinejoin="round" fill="none" />
-            <circle cx="17" cy="6" r="1.4" fill="#533afd" />
+            <circle cx="17" cy="6" r="1.4" fill="#F51D00" />
           </svg>
           <span
             style={{
@@ -58,7 +58,7 @@ export default function Footer() {
                         textDecoration: 'none',
                         transition: 'color 0.18s',
                       }}
-                      onMouseEnter={(e) => (e.currentTarget.style.color = '#533afd')}
+                      onMouseEnter={(e) => (e.currentTarget.style.color = '#F51D00')}
                       onMouseLeave={(e) => (e.currentTarget.style.color = '#50617a')}
                     >
                       {l}

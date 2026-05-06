@@ -11,7 +11,7 @@ function VoiceStub() {
           key={i}
           animate={{ height: [10, 28 + Math.abs(Math.sin(i * 0.5) * 26), 10] }}
           transition={{ duration: 1.5 + (i % 3) * 0.3, repeat: Infinity, ease: 'easeInOut', delay: i * 0.04 }}
-          style={{ width: 3, background: '#533afd', borderRadius: 1, opacity: 0.55 + (i % 4) * 0.1 }}
+          style={{ width: 3, background: '#F51D00', borderRadius: 1, opacity: 0.55 + (i % 4) * 0.1 }}
         />
       ))}
     </div>
@@ -20,9 +20,9 @@ function VoiceStub() {
 
 function SfxStub() {
   return (
-    <svg viewBox="0 0 200 64" width="100%" height="64" fill="none" stroke="#533afd" strokeWidth="1.5">
+    <svg viewBox="0 0 200 64" width="100%" height="64" fill="none" stroke="#F51D00" strokeWidth="1.5">
       <path d="M0 32 Q 20 8, 40 32 T 80 32 T 120 32 T 160 32 T 200 32" />
-      <path d="M0 32 Q 14 50, 28 32 T 56 32 T 84 32 T 112 32 T 140 32 T 168 32 T 200 32" opacity="0.4" stroke="#8087ff" />
+      <path d="M0 32 Q 14 50, 28 32 T 56 32 T 84 32 T 112 32 T 140 32 T 168 32 T 200 32" opacity="0.4" stroke="#ff6b4d" />
     </svg>
   )
 }
@@ -50,7 +50,7 @@ function VideoStub() {
   return (
     <div style={{ position: 'relative', borderRadius: '4px', aspectRatio: '16 / 9', background: 'radial-gradient(circle, rgb(127, 125, 252), rgb(244, 75, 204) 33%, rgb(229, 237, 245) 66%)', overflow: 'hidden' }}>
       <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 36, height: 36, borderRadius: '4px', background: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: 'rgba(0,0,0,0.18) 0px 4px 12px 0px' }}>
-        <svg width="10" height="12" viewBox="0 0 10 12" fill="none"><path d="M0 1 L10 6 L0 11 Z" fill="#533afd" /></svg>
+        <svg width="10" height="12" viewBox="0 0 10 12" fill="none"><path d="M0 1 L10 6 L0 11 Z" fill="#F51D00" /></svg>
       </div>
       <div style={{ position: 'absolute', bottom: 8, left: 8, fontFamily: SANS, fontSize: '10px', color: '#061b31', background: 'rgba(255,255,255,0.85)', padding: '2px 6px', borderRadius: '4px' }}>0:18 / 0:30</div>
     </div>

@@ -123,7 +123,7 @@ export default function Hero() {
                 <motion.button
                   key={i}
                   onClick={() => setValue(p)}
-                  whileHover={{ borderColor: '#b9b9f9', backgroundColor: '#f8fafd' }}
+                  whileHover={{ borderColor: '#fcb8ad', backgroundColor: '#f8fafd' }}
                   whileTap={{ scale: 0.98 }}
                   style={{
                     background: '#ffffff',
@@ -139,7 +139,7 @@ export default function Hero() {
                     lineHeight: 1.4,
                   }}
                 >
-                  <span style={{ color: '#533afd', marginRight: 6 }}>&rsaquo;</span>
+                  <span style={{ color: '#F51D00', marginRight: 6 }}>&rsaquo;</span>
                   {p}
                 </motion.button>
               ))}
@@ -155,7 +155,7 @@ export default function Hero() {
           >
             <PillButton variant="filled">Start writing free</PillButton>
             <PillButton variant="ghost">
-              <span style={{ display: 'inline-flex', width: 14, height: 14, alignItems: 'center', justifyContent: 'center', color: '#533afd' }}>
+              <span style={{ display: 'inline-flex', width: 14, height: 14, alignItems: 'center', justifyContent: 'center', color: '#F51D00' }}>
                 <svg width="10" height="12" viewBox="0 0 10 12" fill="none">
                   <path d="M0 1 L10 6 L0 11 Z" fill="currentColor" />
                 </svg>
