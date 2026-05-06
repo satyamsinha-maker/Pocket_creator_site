@@ -23,72 +23,25 @@ export default function Navigation() {
       initial={{ y: -16, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.4, ease: 'easeOut' }}
-      style={{
-        position: 'sticky',
-        top: 0,
-        zIndex: 100,
-        backgroundColor: 'rgba(255,255,255,0.85)',
-        backdropFilter: 'saturate(180%) blur(20px)',
-        WebkitBackdropFilter: 'saturate(180%) blur(20px)',
-        borderBottom: scrolled ? '1px solid #e5edf5' : '1px solid transparent',
-        transition: 'border-bottom 0.2s ease',
-      }}
+      className={`sticky top-0 z-[100] bg-white/85 backdrop-blur-xl backdrop-saturate-150 transition-[border] duration-200 ${scrolled ? 'border-b border-powder' : 'border-b border-transparent'}`}
     >
-      <div
-        style={{
-          maxWidth: '1200px',
-          margin: '0 auto',
-          padding: '0 32px',
-          height: '64px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-        }}
-      >
-        {/* Logo + wordmark */}
-        <a href="#top" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
+      <div className="max-w-[1200px] mx-auto px-8 h-16 flex items-center justify-between">
+        <a href="#top" className="flex items-center gap-2.5 no-underline">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
             <path d="M2 20 L9 8 L13 14 L17 6 L22 20 Z" stroke="#061b31" strokeWidth="1.6" strokeLinejoin="round" fill="none" />
             <circle cx="17" cy="6" r="1.4" fill="#F51D00" />
           </svg>
-          <span
-            style={{
-              fontFamily: "'Mallory', sans-serif",
-              fontWeight: 400,
-              fontSize: '16px',
-              letterSpacing: '-0.009px',
-              color: '#061b31',
-            }}
-          >
+          <span className="font-normal text-base tracking-heading-sm text-midnight">
             Pocket Sherpa
           </span>
         </a>
 
-        {/* Centre links */}
-        <ul
-          style={{
-            display: 'flex',
-            gap: '32px',
-            listStyle: 'none',
-            margin: 0,
-            padding: 0,
-          }}
-          className="hidden md:flex"
-        >
+        <ul className="hidden md:flex gap-8 list-none m-0 p-0">
           {NAV.map((item) => (
             <li key={item.label}>
               <a
                 href={item.href}
-                style={{
-                  fontFamily: "'Mallory', sans-serif",
-                  fontWeight: 400,
-                  fontSize: '14px',
-                  color: '#061b31',
-                  textDecoration: 'none',
-                  transition: 'color 0.18s',
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = '#F51D00')}
-                onMouseLeave={(e) => (e.currentTarget.style.color = '#061b31')}
+                className="font-normal text-body text-midnight no-underline transition-colors duration-200 hover:text-violet"
               >
                 {item.label}
               </a>
@@ -96,8 +49,7 @@ export default function Navigation() {
           ))}
         </ul>
 
-        {/* Auth */}
-        <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+        <div className="flex gap-3 items-center">
           <PillButton variant="ghost">Sign in</PillButton>
           <PillButton variant="filled">Start writing free</PillButton>
         </div>

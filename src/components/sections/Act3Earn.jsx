@@ -1,23 +1,21 @@
 import { motion } from 'framer-motion'
 import { Container, AnimatedSection, SerifHeading, Body, Eyebrow } from '../ui'
 
-const SANS = "'Mallory', sans-serif"
-
 function EarningsDashStub() {
   return (
-    <div style={{ background: '#ffffff', borderRadius: '6px', padding: '24px', boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 32px 8px' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
+    <div className="bg-white rounded-card p-6 shadow-soft">
+      <div className="flex justify-between mb-5">
         <div>
-          <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '11px', color: '#64748d', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '6px' }}>This month</p>
-          <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '32px', color: '#061b31', letterSpacing: '-0.02em', fontFeatureSettings: '"tnum"' }}>₹84,520</p>
+          <p className="font-normal text-caption text-ghost uppercase tracking-eyebrow mb-1.5">This month</p>
+          <p className="font-normal text-heading text-midnight tracking-heading tabular-nums">₹84,520</p>
         </div>
-        <div style={{ textAlign: 'right' }}>
-          <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '11px', color: '#64748d', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '6px' }}>Listens</p>
-          <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '32px', color: '#061b31', letterSpacing: '-0.02em', fontFeatureSettings: '"tnum"' }}>1.2M</p>
+        <div className="text-right">
+          <p className="font-normal text-caption text-ghost uppercase tracking-eyebrow mb-1.5">Listens</p>
+          <p className="font-normal text-heading text-midnight tracking-heading tabular-nums">1.2M</p>
         </div>
       </div>
 
-      <svg viewBox="0 0 320 80" style={{ width: '100%', height: 'auto' }}>
+      <svg viewBox="0 0 320 80" className="w-full h-auto">
         <defs>
           <linearGradient id="earnGrad" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="#F51D00" stopOpacity="0.3" />
@@ -28,7 +26,7 @@ function EarningsDashStub() {
         <path d="M0,60 C30,50 60,55 90,40 C120,28 150,32 180,20 C210,12 240,18 270,8 C290,4 310,2 320,2" stroke="#F51D00" strokeWidth="1.8" fill="none" />
       </svg>
 
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '12px', fontFamily: SANS, fontSize: '10px', color: '#64748d' }}>
+      <div className="flex justify-between mt-3 text-[10px] text-ghost">
         <span>Wk 1</span><span>Wk 2</span><span>Wk 3</span><span>Wk 4</span>
       </div>
     </div>
@@ -36,30 +34,21 @@ function EarningsDashStub() {
 }
 
 const BLOCKS = [
-  {
-    title: 'A platform that already pays writers',
-    body:  'Pocket FM listeners spend coins to unlock episodes. A share of every coin spent on your series goes directly to you, automatically, every month.',
-  },
-  {
-    title: 'Built-in audience',
-    body:  'You do not have to find listeners. Pocket FM does. Our recommendation engine surfaces your series to the readers most likely to love it, the same way Spotify surfaces music.',
-  },
-  {
-    title: 'Transparent earnings',
-    body:  'Track your listens, your earnings and your audience growth in a single dashboard. Know exactly how much you are making, in real time.',
-  },
+  { title: 'A platform that already pays writers', body: 'Pocket FM listeners spend coins to unlock episodes. A share of every coin spent on your series goes directly to you, automatically, every month.' },
+  { title: 'Built-in audience',                    body: 'You do not have to find listeners. Pocket FM does. Our recommendation engine surfaces your series to the readers most likely to love it, the same way Spotify surfaces music.' },
+  { title: 'Transparent earnings',                 body: 'Track your listens, your earnings and your audience growth in a single dashboard. Know exactly how much you are making, in real time.' },
 ]
 
 export default function Act3Earn() {
   return (
-    <AnimatedSection id="earn" style={{ padding: '120px 0', background: '#ffffff' }}>
+    <AnimatedSection id="earn" className="py-[120px] bg-white">
       <Container>
-        <div style={{ maxWidth: '720px', marginBottom: '64px' }}>
+        <div className="max-w-[720px] mb-16">
           <Eyebrow>Act 3 · Listeners pay</Eyebrow>
           <SerifHeading size="lg">
             Your story goes live.<br />You get paid.
           </SerifHeading>
-          <div style={{ marginTop: '20px', maxWidth: '520px' }}>
+          <div className="mt-5 max-w-[520px]">
             <Body size="md">
               Your finished series launches on Pocket FM, where 100 million listeners are already paying for serialized audio fiction. They listen, they pay, you earn. Every time.
             </Body>
@@ -71,15 +60,15 @@ export default function Act3Earn() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          style={{ marginBottom: '64px', maxWidth: '720px', margin: '0 auto 64px' }}
+          className="mb-16 max-w-[720px] mx-auto"
         >
           <EarningsDashStub />
-          <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '13px', color: '#50617a', textAlign: 'center', marginTop: '12px' }}>
+          <p className="font-normal text-[13px] text-slate text-center mt-3">
             Anjali R. · ‘The Reckoning’ · 47 episodes live
           </p>
         </motion.div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }} className="act3-grid">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
           {BLOCKS.map((b, i) => (
             <motion.div
               key={b.title}
@@ -88,17 +77,12 @@ export default function Act3Earn() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.06 }}
               whileHover={{ y: -2, boxShadow: 'rgba(50, 50, 93, 0.12) 0px 16px 32px 0px' }}
-              style={{
-                background: '#e5edf5',
-                borderRadius: '6px',
-                padding: '24px',
-                transition: 'box-shadow 0.25s',
-              }}
+              className="bg-powder rounded-card p-6 transition-shadow duration-200"
             >
-              <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '11px', color: '#F51D00', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '10px' }}>
+              <p className="font-normal text-caption text-violet uppercase tracking-eyebrow mb-2.5">
                 Block {String(i + 1).padStart(2, '0')}
               </p>
-              <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '22px', lineHeight: 1.2, letterSpacing: '-0.01em', color: '#061b31', marginBottom: '10px' }}>
+              <p className="font-normal text-heading-sm leading-heading-sm tracking-heading-sm text-midnight mb-2.5">
                 {b.title}
               </p>
               <Body size="sm">{b.body}</Body>
@@ -106,10 +90,6 @@ export default function Act3Earn() {
           ))}
         </div>
       </Container>
-
-      <style>{`
-        @media (max-width: 900px) { .act3-grid { grid-template-columns: 1fr !important; } }
-      `}</style>
     </AnimatedSection>
   )
 }
