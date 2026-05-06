@@ -1,170 +1,252 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { Container, PillButton, Body, SerifHeading } from '../ui'
 
-const PROMPTS = [
-  'A revenge thriller where a wronged woman builds a corporate empire to destroy the men who betrayed her.',
-  'A slow-burn romance between a billionaire and his arch-rival’s daughter.',
-  'An urban fantasy where a college student discovers her grandmother is a powerful witch.',
+const SANS = "'Mallory', sans-serif"
+
+/* Mountain backdrop — cycles every 3 s with a smooth cross-fade.
+ * Add more entries to MOUNTAINS to extend the rotation. Files live in
+ * /public/figma/ and use the naming pattern mountain-1.png, mountain-2.png …
+ */
+const MOUNTAINS = [
+  '/figma/mountain.png',
+  '/figma/mountain-2.png',
+  '/figma/mountain-3.png',
 ]
+const CYCLE_MS    = 5000   // total time per slot (display + fade)
+const FADE_MS     = 2000   // cross-fade duration — slower, meditative
+
+/* Figma reference dims (kept so mountain + product + text scale as one grid)
+ *   mountain frame   : 1441 × 672 (aspect 2.144)
+ *   product overlay  : 1015 × 579 (aspect 1.753)
+ *   product top      : 59  / 672  ≈ 8.78%
+ *   product width    : 1015/ 1441 ≈ 70.44%
+ *
+ *   Both the text-row container and the product image share width:
+ *      width = min(70.44vw, MAX_PRODUCT_WIDTH)
+ *   This keeps heading flush with product LEFT edge and body flush with
+ *   product RIGHT edge, exactly as Figma specifies. The shared width
+ *   variable is exposed as `--grid-w` so any further additions inherit it.
+ */
+
+const MAX_PRODUCT_WIDTH = '1280px'   // sane cap on ultrawide displays
+
+/* ── BlurReveal ───────────────────────────────────────────────────────────
+ * Splits a string into words and reveals them left → right by interpolating
+ * `filter: blur(...)` from heavy → 0 with a per-word stagger. Looks like a
+ * progressive focus pull across the line.
+ *
+ * Props:
+ *   text           — the string to reveal
+ *   delay          — seconds before the first word starts animating
+ *   wordStaggerSec — seconds added per subsequent word (default 0.04)
+ *   blurPx         — initial blur amount in pixels (default 12)
+ *   duration       — duration each word takes to clear (default 0.6 s)
+ * ─────────────────────────────────────────────────────────────────────── */
+function BlurReveal({ text, delay = 0, wordStaggerSec = 0.04, blurPx = 12, duration = 0.6 }) {
+  const words = text.split(' ')
+  return (
+    <>
+      {words.map((w, i) => (
+        <span key={i}>
+          <motion.span
+            initial={{ filter: `blur(${blurPx}px)`, opacity: 0 }}
+            animate={{ filter: 'blur(0px)',         opacity: 1 }}
+            transition={{
+              duration,
+              delay: delay + i * wordStaggerSec,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            style={{ display: 'inline-block', willChange: 'filter, opacity' }}
+          >
+            {w}
+          </motion.span>
+          {i < words.length - 1 ? ' ' : ''}
+        </span>
+      ))}
+    </>
+  )
+}
 
 export default function Hero() {
-  const [value, setValue] = useState('')
+  // Cycle through mountain images every 3 s (no-op when only one image)
+  const [mtnIdx, setMtnIdx] = useState(0)
+  useEffect(() => {
+    if (MOUNTAINS.length < 2) return
+    const t = setInterval(
+      () => setMtnIdx((i) => (i + 1) % MOUNTAINS.length),
+      CYCLE_MS,
+    )
+    return () => clearInterval(t)
+  }, [])
 
   return (
     <section
       id="top"
       style={{
-        padding: '96px 0 112px',
         position: 'relative',
-        overflow: 'hidden',
         background: '#ffffff',
+        overflow: 'hidden',
+        // Shared grid width — text + product use the same value
+        '--grid-w': `min(70.44vw, ${MAX_PRODUCT_WIDTH})`,
       }}
     >
-      {/* Dreamy gradient halo — subtle, top-right */}
+      {/* ── Text grid — locked to product image width ────────────────────── */}
       <div
-        aria-hidden
         style={{
-          position: 'absolute',
-          top: '-25%',
-          right: '-10%',
-          width: '900px',
-          height: '900px',
-          pointerEvents: 'none',
-          background: 'radial-gradient(circle, rgba(127,125,252,0.35), rgba(244,75,204,0.18) 33%, rgba(229,237,245,0) 66%)',
-          filter: 'blur(20px)',
+          width: 'var(--grid-w)',
+          margin: '0 auto',
+          padding: 'clamp(40px, 6vw, 88px) 0 0',
+          boxSizing: 'border-box',
         }}
-      />
-
-      <Container>
-        <div style={{ maxWidth: '820px', position: 'relative', zIndex: 1 }}>
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        className="hero-grid-text"
+      >
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'flex-start',
+            gap: 'clamp(24px, 3vw, 56px)',
+            flexWrap: 'wrap',
+          }}
+          className="hero-text-row"
+        >
+          {/* Heading — aligns to LEFT edge of grid (= product left).
+           *  Words reveal left → right with progressive blur clearing.
+           */}
+          <h1
+            style={{
+              flex: '1 1 320px',
+              maxWidth: '500px',
+              fontFamily: SANS,
+              fontWeight: 400,
+              fontSize: 'clamp(28px, 3.4vw, 40px)',
+              lineHeight: 1.2,
+              letterSpacing: '-0.01em',
+              color: '#000000',
+              margin: 0,
+            }}
           >
-            <SerifHeading size="xl" as="h1" maxWidth="100%">
-              Write a story.<br />Reach listeners.<br />Get paid.
-            </SerifHeading>
-          </motion.div>
+            <BlurReveal
+              text="Meet Sherpa, the AI that writes stories with you"
+              delay={0.1}
+              wordStaggerSec={0.06}
+              blurPx={14}
+              duration={0.7}
+            />
+          </h1>
 
-          <motion.div
-            style={{ marginTop: '24px', maxWidth: '560px' }}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.06 }}
+          {/* Body — aligns to RIGHT edge of grid (= product right). Reveals
+           *  after the heading has begun clearing.
+           */}
+          <p
+            style={{
+              flex: '0 1 340px',
+              maxWidth: '340px',
+              fontFamily: SANS,
+              fontWeight: 400,
+              fontSize: 'clamp(16px, 1.6vw, 20px)',
+              lineHeight: 1.4,
+              color: '#828282',
+              margin: 0,
+            }}
           >
-            <Body size="lg" color="#50617a">
-              Pocket Sherpa is the AI co-writer for serialized fiction. We help you write,
-              we produce the audio, and we put your story on Pocket FM where listeners pay
-              to hear it. You earn every time someone listens.
-            </Body>
-          </motion.div>
+            <BlurReveal
+              text="From a single idea to a published audio series. Sherpa walks the journey with you."
+              delay={0.5}
+              wordStaggerSec={0.04}
+              blurPx={10}
+              duration={0.6}
+            />
+          </p>
+        </div>
+      </div>
 
-          {/* Chat input */}
-          <motion.div
-            style={{ marginTop: '40px', maxWidth: '660px' }}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.12 }}
-          >
-            <p
-              style={{
-                fontFamily: "'Mallory', sans-serif",
-                fontWeight: 400,
-                fontSize: '11px',
-                color: '#64748d',
-                letterSpacing: '0.08em',
-                textTransform: 'uppercase',
-                marginBottom: '10px',
-              }}
-            >
-              Tell me your story idea
-            </p>
+      {/* ── Full-bleed mountain stage (mountain + centered product) ───────── */}
+      <div
+        style={{
+          position: 'relative',
+          width: '100%',
+          aspectRatio: '1441 / 672',   /* exact Figma frame ratio */
+        }}
+      >
+        {/* Mountain background — edge-to-edge, cycles every 3 s with cross-fade.
+         * All images are in the DOM at all times so they preload; only the
+         * active one has opacity 1.
+         */}
+        {MOUNTAINS.map((src, i) => (
+          <motion.img
+            key={src}
+            src={src}
+            alt=""
+            aria-hidden
+            animate={{ opacity: i === mtnIdx ? 1 : 0 }}
+            transition={{ duration: FADE_MS / 1000, ease: 'easeInOut' }}
+            style={{
+              position: 'absolute',
+              inset: 0,
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              display: 'block',
+              opacity: i === 0 ? 1 : 0,    /* initial state matches motion */
+            }}
+          />
+        ))}
 
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                background: '#ffffff',
-                border: '1px solid #d8d6df',
-                borderRadius: '4px',
-                padding: '8px 8px 8px 16px',
-                boxShadow: 'rgba(23, 23, 23, 0.06) 0px 3px 6px 0px',
-                gap: '8px',
-              }}
-            >
-              <input
-                value={value}
-                onChange={(e) => setValue(e.target.value)}
-                placeholder="A betrayed scientist returns from exile with a secret..."
-                style={{
-                  flex: 1,
-                  border: 'none',
-                  outline: 'none',
-                  background: 'transparent',
-                  fontFamily: "'Mallory', sans-serif",
-                  fontSize: '14px',
-                  color: '#061b31',
-                  padding: '8px 0',
-                }}
-              />
-              <PillButton variant="sienna">
-                Start writing
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <path d="M2 7 H12 M8 3 L12 7 L8 11" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </PillButton>
-            </div>
+        {/* White-to-transparent fade (matches Figma 45.76% gradient stop) */}
+        <div
+          aria-hidden
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background:
+              'linear-gradient(to bottom, #ffffff 0%, rgba(255,255,255,0) 45.76%)',
+            pointerEvents: 'none',
+          }}
+        />
 
-            {/* Genre prompt chips */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '14px' }}>
-              {PROMPTS.map((p, i) => (
-                <motion.button
-                  key={i}
-                  onClick={() => setValue(p)}
-                  whileHover={{ borderColor: '#fcb8ad', backgroundColor: '#f8fafd' }}
-                  whileTap={{ scale: 0.98 }}
-                  style={{
-                    background: '#ffffff',
-                    border: '1px solid #e5edf5',
-                    borderRadius: '4px',
-                    padding: '8px 12px',
-                    fontFamily: "'Mallory', sans-serif",
-                    fontSize: '12px',
-                    color: '#50617a',
-                    cursor: 'pointer',
-                    textAlign: 'left',
-                    maxWidth: '380px',
-                    lineHeight: 1.4,
-                  }}
-                >
-                  <span style={{ color: '#F51D00', marginRight: 6 }}>&rsaquo;</span>
-                  {p}
-                </motion.button>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Secondary CTAs */}
-          <motion.div
-            style={{ marginTop: '40px', display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}
+        {/* Product screenshot — top-anchored at 8.78% of mountain (Figma constraint),
+         *  horizontally centered, width = grid-w (matches text-row grid)
+         *
+         *  Static wrapper handles position+centering; motion.img only animates
+         *  opacity so framer-motion's transform doesn't clobber translateX(-50%).
+         */}
+        <div
+          style={{
+            position: 'absolute',
+            top:    '8.78%',                  /* (306 − 247) / 672  per Figma */
+            left:   '50%',
+            transform: 'translateX(-50%)',    /* horizontally centred         */
+            width:  'var(--grid-w)',          /* 1015 / 1441 of mountain      */
+            zIndex: 2,
+          }}
+        >
+          <motion.img
+            src="/figma/product.png"
+            alt="Sherpa writing app interface"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <PillButton variant="filled">Start writing free</PillButton>
-            <PillButton variant="ghost">
-              <span style={{ display: 'inline-flex', width: 14, height: 14, alignItems: 'center', justifyContent: 'center', color: '#F51D00' }}>
-                <svg width="10" height="12" viewBox="0 0 10 12" fill="none">
-                  <path d="M0 1 L10 6 L0 11 Z" fill="currentColor" />
-                </svg>
-              </span>
-              Hear a Pocket Sherpa story
-            </PillButton>
-          </motion.div>
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.18 }}
+            style={{
+              width:  '100%',
+              height: 'auto',                 /* preserves 1015:579 aspect */
+              borderRadius: 'clamp(4px, 0.6vw, 8px)',
+              boxShadow: '0 0 4px 0 rgba(0,0,0,0.25)',
+              display: 'block',
+            }}
+          />
         </div>
-      </Container>
+      </div>
+
+      {/* Mobile tweaks — let the grid breathe on narrow screens */}
+      <style>{`
+        @media (max-width: 768px) {
+          .hero-grid-text { width: 88vw !important; }
+        }
+        @media (max-width: 600px) {
+          .hero-text-row { gap: 16px !important; }
+        }
+      `}</style>
     </section>
   )
 }
