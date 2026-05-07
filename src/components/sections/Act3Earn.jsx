@@ -1,19 +1,54 @@
 import { motion } from 'framer-motion'
-import { Container, AnimatedSection, SerifHeading, Body, Eyebrow } from '../ui'
+import { Container, AnimatedSection, SerifHeading, Body, Eyebrow, SCALE } from '../ui'
 
-const SANS = "'Mallory', sans-serif"
+const eyebrowStyle = (color = '#F51D00') => ({
+  fontFamily: SCALE.eyebrow.family, fontWeight: SCALE.eyebrow.weight,
+  fontSize: SCALE.eyebrow.fontSize, lineHeight: SCALE.eyebrow.lineHeight,
+  letterSpacing: SCALE.eyebrow.letterSpacing, textTransform: SCALE.eyebrow.textTransform,
+  color,
+})
+const captionStyle = (color = '#64748d') => ({
+  fontFamily: SCALE.caption.family, fontWeight: SCALE.caption.weight,
+  fontSize: SCALE.caption.fontSize, lineHeight: SCALE.caption.lineHeight,
+  letterSpacing: SCALE.caption.letterSpacing, color,
+})
 
 function EarningsDashStub() {
   return (
     <div style={{ background: '#ffffff', borderRadius: '6px', padding: '24px', boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 32px 8px' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
         <div>
-          <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '11px', color: '#64748d', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '6px' }}>This month</p>
-          <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '32px', color: '#061b31', letterSpacing: '-0.02em', fontFeatureSettings: '"tnum"' }}>₹84,520</p>
+          <p style={{ ...eyebrowStyle('#64748d'), marginBottom: '6px' }}>This month</p>
+          {/* h2 — Season Mix, fluid 28 → 36 px */}
+          <p
+            style={{
+              fontFamily:    SCALE.h2.family,
+              fontWeight:    SCALE.h2.weight,
+              fontSize:      SCALE.h2.fontSize,
+              lineHeight:    SCALE.h2.lineHeight,
+              letterSpacing: SCALE.h2.letterSpacing,
+              color: '#061b31',
+              fontFeatureSettings: '"tnum"',
+            }}
+          >
+            ₹84,520
+          </p>
         </div>
         <div style={{ textAlign: 'right' }}>
-          <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '11px', color: '#64748d', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '6px' }}>Listens</p>
-          <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '32px', color: '#061b31', letterSpacing: '-0.02em', fontFeatureSettings: '"tnum"' }}>1.2M</p>
+          <p style={{ ...eyebrowStyle('#64748d'), marginBottom: '6px' }}>Listens</p>
+          <p
+            style={{
+              fontFamily:    SCALE.h2.family,
+              fontWeight:    SCALE.h2.weight,
+              fontSize:      SCALE.h2.fontSize,
+              lineHeight:    SCALE.h2.lineHeight,
+              letterSpacing: SCALE.h2.letterSpacing,
+              color: '#061b31',
+              fontFeatureSettings: '"tnum"',
+            }}
+          >
+            1.2M
+          </p>
         </div>
       </div>
 
@@ -28,8 +63,11 @@ function EarningsDashStub() {
         <path d="M0,60 C30,50 60,55 90,40 C120,28 150,32 180,20 C210,12 240,18 270,8 C290,4 310,2 320,2" stroke="#F51D00" strokeWidth="1.8" fill="none" />
       </svg>
 
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '12px', fontFamily: SANS, fontSize: '10px', color: '#64748d' }}>
-        <span>Wk 1</span><span>Wk 2</span><span>Wk 3</span><span>Wk 4</span>
+      <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '12px' }}>
+        <span style={captionStyle('#64748d')}>Wk 1</span>
+        <span style={captionStyle('#64748d')}>Wk 2</span>
+        <span style={captionStyle('#64748d')}>Wk 3</span>
+        <span style={captionStyle('#64748d')}>Wk 4</span>
       </div>
     </div>
   )
@@ -56,7 +94,7 @@ export default function Act3Earn() {
       <Container>
         <div style={{ maxWidth: '720px', marginBottom: '64px' }}>
           <Eyebrow>Act 3 · Listeners pay</Eyebrow>
-          <SerifHeading size="lg">
+          <SerifHeading size="h2">
             Your story goes live.<br />You get paid.
           </SerifHeading>
           <div style={{ marginTop: '20px', maxWidth: '520px' }}>
@@ -74,9 +112,11 @@ export default function Act3Earn() {
           style={{ marginBottom: '64px', maxWidth: '720px', margin: '0 auto 64px' }}
         >
           <EarningsDashStub />
-          <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '13px', color: '#50617a', textAlign: 'center', marginTop: '12px' }}>
-            Anjali R. · ‘The Reckoning’ · 47 episodes live
-          </p>
+          <div style={{ textAlign: 'center', marginTop: '12px' }}>
+            <Body size="sm" color="#50617a">
+              Anjali R. · ‘The Reckoning’ · 47 episodes live
+            </Body>
+          </div>
         </motion.div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }} className="act3-grid">
@@ -95,12 +135,23 @@ export default function Act3Earn() {
                 transition: 'box-shadow 0.25s',
               }}
             >
-              <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '11px', color: '#F51D00', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '10px' }}>
+              <p style={{ ...eyebrowStyle('#F51D00'), marginBottom: '10px' }}>
                 Block {String(i + 1).padStart(2, '0')}
               </p>
-              <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '22px', lineHeight: 1.2, letterSpacing: '-0.01em', color: '#061b31', marginBottom: '10px' }}>
+              {/* h3 — Season Mix per typescale rule */}
+              <h3
+                style={{
+                  fontFamily:    SCALE.h3.family,
+                  fontWeight:    SCALE.h3.weight,
+                  fontSize:      SCALE.h3.fontSize,
+                  lineHeight:    SCALE.h3.lineHeight,
+                  letterSpacing: SCALE.h3.letterSpacing,
+                  color: '#061b31',
+                  marginBottom: '10px',
+                }}
+              >
                 {b.title}
-              </p>
+              </h3>
               <Body size="sm">{b.body}</Body>
             </motion.div>
           ))}

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
-import { Container, AnimatedSection, SerifHeading, Body, Eyebrow } from '../ui'
+import { Container, AnimatedSection, SerifHeading, Body, Eyebrow, SCALE } from '../ui'
 
-const SANS = "'Mallory', sans-serif"
+const SANS = SCALE.body.family
 
 function VoiceStub() {
   return (
@@ -52,7 +52,20 @@ function VideoStub() {
       <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 36, height: 36, borderRadius: '4px', background: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: 'rgba(0,0,0,0.18) 0px 4px 12px 0px' }}>
         <svg width="10" height="12" viewBox="0 0 10 12" fill="none"><path d="M0 1 L10 6 L0 11 Z" fill="#F51D00" /></svg>
       </div>
-      <div style={{ position: 'absolute', bottom: 8, left: 8, fontFamily: SANS, fontSize: '10px', color: '#061b31', background: 'rgba(255,255,255,0.85)', padding: '2px 6px', borderRadius: '4px' }}>0:18 / 0:30</div>
+      <div
+        style={{
+          position: 'absolute', bottom: 8, left: 8,
+          fontFamily: SCALE.caption.family,
+          fontWeight: SCALE.caption.weight,
+          fontSize: SCALE.caption.fontSize,
+          lineHeight: SCALE.caption.lineHeight,
+          letterSpacing: SCALE.caption.letterSpacing,
+          color: '#061b31',
+          background: 'rgba(255,255,255,0.85)',
+          padding: '2px 6px',
+          borderRadius: '4px',
+        }}
+      >0:18 / 0:30</div>
     </div>
   )
 }
@@ -70,7 +83,7 @@ export default function Act2Produce() {
       <Container>
         <div style={{ maxWidth: '720px', marginBottom: '64px' }}>
           <Eyebrow>Act 2 · We produce it</Eyebrow>
-          <SerifHeading size="lg">
+          <SerifHeading size="h2">
             We turn your words into<br />a cinematic audio series.
           </SerifHeading>
           <div style={{ marginTop: '20px', maxWidth: '520px' }}>
@@ -98,9 +111,19 @@ export default function Act2Produce() {
               }}
             >
               <div style={{ marginBottom: '24px', minHeight: '76px' }}>{c.visual}</div>
-              <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '22px', lineHeight: 1.2, letterSpacing: '-0.01em', color: '#061b31', marginBottom: '8px' }}>
+              <h3
+                style={{
+                  fontFamily:    SCALE.h3.family,
+                  fontWeight:    SCALE.h3.weight,
+                  fontSize:      SCALE.h3.fontSize,
+                  lineHeight:    SCALE.h3.lineHeight,
+                  letterSpacing: SCALE.h3.letterSpacing,
+                  color: '#061b31',
+                  marginBottom: '8px',
+                }}
+              >
                 {c.title}
-              </p>
+              </h3>
               <Body size="sm" color="#50617a">
                 {c.body}
               </Body>

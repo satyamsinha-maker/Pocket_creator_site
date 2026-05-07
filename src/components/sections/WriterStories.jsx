@@ -1,7 +1,5 @@
 import { motion } from 'framer-motion'
-import { Container, AnimatedSection, SerifHeading, Eyebrow } from '../ui'
-
-const SANS = "'Mallory', sans-serif"
+import { Container, AnimatedSection, SerifHeading, Body, Eyebrow, Label, Caption, SCALE } from '../ui'
 
 function Avatar({ name, gradient }) {
   const initials = name.split(' ').map((n) => n[0]).slice(0, 2).join('')
@@ -13,9 +11,11 @@ function Avatar({ name, gradient }) {
         borderRadius: '4px',
         background: gradient,
         color: '#ffffff',
-        fontFamily: SANS,
-        fontWeight: 400,
-        fontSize: '18px',
+        fontFamily:    SCALE.subheading.family,
+        fontWeight:    SCALE.subheading.weight,
+        fontSize:      SCALE.subheading.fontSize,        /* 18px */
+        lineHeight:    SCALE.subheading.lineHeight,
+        letterSpacing: SCALE.subheading.letterSpacing,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -60,7 +60,7 @@ export default function WriterStories() {
       <Container>
         <div style={{ marginBottom: '56px', maxWidth: '720px' }}>
           <Eyebrow>Writers, paid</Eyebrow>
-          <SerifHeading size="lg">
+          <SerifHeading size="h2">
             Writers who turned their<br />stories into careers.
           </SerifHeading>
         </div>
@@ -90,22 +90,33 @@ export default function WriterStories() {
 
               <div>
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px', flexWrap: 'wrap', marginBottom: '4px' }}>
-                  <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '18px', color: '#061b31', letterSpacing: '-0.009em' }}>
+                  {/* h4 — Season Mix 20px for writer name */}
+                  <h3
+                    style={{
+                      fontFamily:    SCALE.h4.family,
+                      fontWeight:    SCALE.h4.weight,
+                      fontSize:      SCALE.h4.fontSize,
+                      lineHeight:    SCALE.h4.lineHeight,
+                      letterSpacing: SCALE.h4.letterSpacing,
+                      color: '#061b31',
+                      margin: 0,
+                    }}
+                  >
                     {s.name}
-                  </p>
-                  <span style={{ fontFamily: SANS, fontSize: '13px', color: '#64748d' }}>· {s.role}</span>
+                  </h3>
+                  <Label color="#64748d">· {s.role}</Label>
                 </div>
-                <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '11px', color: '#F51D00', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '14px' }}>
-                  Series: {s.series}
-                </p>
+
+                <Eyebrow>Series: {s.series}</Eyebrow>
 
                 <blockquote
                   style={{
-                    fontFamily: SANS,
-                    fontWeight: 400,
-                    fontSize: '20px',
-                    lineHeight: 1.4,
-                    letterSpacing: '-0.01em',
+                    /* subheading 18 px serif-feel quote — keep Mallory but at lead size */
+                    fontFamily:    SCALE.subheading.family,
+                    fontWeight:    SCALE.subheading.weight,
+                    fontSize:      SCALE.subheading.fontSize,
+                    lineHeight:    SCALE.subheading.lineHeight,
+                    letterSpacing: SCALE.subheading.letterSpacing,
                     color: '#061b31',
                     borderLeft: '2px solid #F51D00',
                     paddingLeft: '16px',
@@ -117,18 +128,9 @@ export default function WriterStories() {
 
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
                   {s.stats.map((st) => (
-                    <span
-                      key={st}
-                      style={{
-                        fontFamily: SANS,
-                        fontWeight: 400,
-                        fontSize: '13px',
-                        color: '#061b31',
-                        fontFeatureSettings: '"tnum"',
-                      }}
-                    >
+                    <Label key={st} color="#061b31" style={{ fontFeatureSettings: '"tnum"' }}>
                       {st}
-                    </span>
+                    </Label>
                   ))}
                 </div>
               </div>

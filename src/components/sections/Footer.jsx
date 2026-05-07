@@ -1,6 +1,4 @@
-import { Container } from '../ui'
-
-const SANS = "'Mallory', sans-serif"
+import { Container, Body, Caption, Eyebrow, SCALE } from '../ui'
 
 const COLS = [
   { heading: 'Product',   links: ['How it works', 'Pricing', 'Roadmap', 'Beta access'] },
@@ -24,36 +22,42 @@ export default function Footer() {
             <path d="M2 20 L9 8 L13 14 L17 6 L22 20 Z" stroke="#061b31" strokeWidth="1.6" strokeLinejoin="round" fill="none" />
             <circle cx="17" cy="6" r="1.4" fill="#F51D00" />
           </svg>
+          {/* Wordmark — body 16 px */}
           <span
             style={{
-              fontFamily: SANS,
-              fontWeight: 400,
-              fontSize: '16px',
-              letterSpacing: '-0.009em',
+              fontFamily:    SCALE.body.family,
+              fontWeight:    SCALE.body.weight,
+              fontSize:      SCALE.body.fontSize,
+              lineHeight:    SCALE.body.lineHeight,
+              letterSpacing: SCALE.body.letterSpacing,
               color: '#061b31',
             }}
           >
             Pocket Sherpa
           </span>
-          <span style={{ fontFamily: SANS, fontSize: '12px', color: '#64748d', marginLeft: '8px' }}>
-            A Pocket FM company
+          <span style={{ marginLeft: '8px' }}>
+            <Caption color="#64748d">A Pocket FM company</Caption>
           </span>
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '32px', marginBottom: '48px' }} className="footer-grid">
           {COLS.map((c) => (
             <div key={c.heading}>
-              <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '11px', color: '#061b31', marginBottom: '14px', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-                {c.heading}
-              </p>
+              {/* Column heading — uses Eyebrow primitive (Mallory 700, 12 px, 0.08em uppercase) */}
+              <div style={{ marginBottom: '14px' }}>
+                <Eyebrow color="#061b31">{c.heading}</Eyebrow>
+              </div>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
                 {c.links.map((l) => (
                   <li key={l}>
                     <a
                       href="#"
                       style={{
-                        fontFamily: SANS,
-                        fontSize: '14px',
+                        fontFamily:    SCALE.bodySm.family,
+                        fontWeight:    SCALE.bodySm.weight,
+                        fontSize:      SCALE.bodySm.fontSize,
+                        lineHeight:    SCALE.bodySm.lineHeight,
+                        letterSpacing: SCALE.bodySm.letterSpacing,
                         color: '#50617a',
                         textDecoration: 'none',
                         transition: 'color 0.18s',
@@ -81,12 +85,12 @@ export default function Footer() {
             gap: '12px',
           }}
         >
-          <p style={{ fontFamily: SANS, fontSize: '13px', color: '#64748d', maxWidth: '480px' }}>
+          <Body size="sm" color="#64748d" maxWidth="480px">
             Idea to audio series to listeners to royalty cheque, all in one product.
-          </p>
-          <span style={{ fontFamily: SANS, fontSize: '12px', color: '#64748d' }}>
+          </Body>
+          <Caption color="#64748d">
             © 2026 Pocket Sherpa · A Pocket FM product
-          </span>
+          </Caption>
         </div>
       </Container>
 

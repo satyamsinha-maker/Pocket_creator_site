@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Container, AnimatedSection, SerifHeading, Body, PillButton } from '../ui'
+import { Container, AnimatedSection, SerifHeading, Body, PillButton, SCALE } from '../ui'
 
 export default function FinalCTA() {
   const [v, setV] = useState('')
@@ -54,8 +54,11 @@ export default function FinalCTA() {
                   border: 'none',
                   outline: 'none',
                   background: 'transparent',
-                  fontFamily: "'Mallory', sans-serif",
-                  fontSize: '14px',
+                  fontFamily:    SCALE.bodySm.family,
+                  fontWeight:    SCALE.bodySm.weight,
+                  fontSize:      SCALE.bodySm.fontSize,
+                  lineHeight:    SCALE.bodySm.lineHeight,
+                  letterSpacing: SCALE.bodySm.letterSpacing,
                   color: '#061b31',
                   padding: '8px 0',
                 }}

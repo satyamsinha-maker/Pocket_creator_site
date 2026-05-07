@@ -2,8 +2,6 @@ import { useEffect, useState } from 'react'
 import { motion, useMotionValue, useTransform, animate } from 'framer-motion'
 import { SCALE } from '../ui'
 
-const SANS = "'Mallory', sans-serif"
-
 /* Mountain backdrop — cycles every 3 s with a smooth cross-fade.
  * Add more entries to MOUNTAINS to extend the rotation. Files live in
  * /public/figma/ and use the naming pattern mountain-1.png, mountain-2.png …
@@ -167,10 +165,12 @@ export default function Hero() {
             style={{
               flex: '0 1 340px',
               maxWidth: '340px',
-              fontFamily: SANS,
-              fontWeight: 400,
-              fontSize: 'clamp(16px, 1.6vw, 20px)',
-              lineHeight: 1.4,
+              /* subheading token — Mallory MP Narrow, 18px, 1.5 line-height */
+              fontFamily:    SCALE.subheading.family,
+              fontWeight:    SCALE.subheading.weight,
+              fontSize:      SCALE.subheading.fontSize,
+              lineHeight:    SCALE.subheading.lineHeight,
+              letterSpacing: SCALE.subheading.letterSpacing,
               color: '#828282',
               margin: 0,
             }}

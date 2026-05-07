@@ -1,4 +1,4 @@
-import { Container, AnimatedSection, Body } from '../ui'
+import { Container, AnimatedSection, Body, SCALE } from '../ui'
 
 const STATS = [
   { value: '4,200',    label: 'writers in beta' },
@@ -28,13 +28,14 @@ export default function TrustBand() {
               }}
               className="trust-item"
             >
+              {/* Stat number — display token (Season Mix, fluid 40 → 56) */}
               <p
                 style={{
-                  fontFamily: "'Mallory', sans-serif",
-                  fontWeight: 400,
-                  fontSize: 'clamp(36px, 4.5vw, 56px)',
-                  lineHeight: 1.07,
-                  letterSpacing: '-0.03em',
+                  fontFamily:    SCALE.display.family,
+                  fontWeight:    SCALE.display.weight,
+                  fontSize:      SCALE.display.fontSize,
+                  lineHeight:    SCALE.display.lineHeight,
+                  letterSpacing: SCALE.display.letterSpacing,
                   color: '#061b31',
                   marginBottom: '8px',
                   fontFeatureSettings: '"tnum"',

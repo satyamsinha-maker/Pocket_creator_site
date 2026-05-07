@@ -1,4 +1,4 @@
-import { Container, AnimatedSection, SerifHeading, Body, Eyebrow } from '../ui'
+import { Container, AnimatedSection, SerifHeading, Body, Eyebrow, SCALE } from '../ui'
 import { motion } from 'framer-motion'
 
 const STEPS = [
@@ -14,7 +14,7 @@ export default function CompleteJourney() {
       <Container>
         <div style={{ marginBottom: '56px', maxWidth: '720px' }}>
           <Eyebrow>The complete journey</Eyebrow>
-          <SerifHeading size="lg">
+          <SerifHeading size="h2">
             From a blank page to a paid audience.<br />We handle everything in between.
           </SerifHeading>
         </div>
@@ -41,27 +41,30 @@ export default function CompleteJourney() {
                 position: 'relative',
               }}
             >
+              {/* Step eyebrow */}
               <p
                 style={{
-                  fontFamily: "'Mallory', sans-serif",
-                  fontWeight: 400,
-                  fontSize: '11px',
+                  fontFamily:    SCALE.eyebrow.family,
+                  fontWeight:    SCALE.eyebrow.weight,
+                  fontSize:      SCALE.eyebrow.fontSize,
+                  lineHeight:    SCALE.eyebrow.lineHeight,
+                  letterSpacing: SCALE.eyebrow.letterSpacing,
+                  textTransform: SCALE.eyebrow.textTransform,
                   color: '#F51D00',
                   marginBottom: '14px',
-                  letterSpacing: '0.08em',
-                  textTransform: 'uppercase',
                 }}
               >
                 Step {s.num}
               </p>
 
-              <p
+              {/* Step title — h3 (Season Mix) per typescale rule */}
+              <h3
                 style={{
-                  fontFamily: "'Mallory', sans-serif",
-                  fontWeight: 400,
-                  fontSize: '22px',
-                  lineHeight: 1.2,
-                  letterSpacing: '-0.01em',
+                  fontFamily:    SCALE.h3.family,
+                  fontWeight:    SCALE.h3.weight,
+                  fontSize:      SCALE.h3.fontSize,
+                  lineHeight:    SCALE.h3.lineHeight,
+                  letterSpacing: SCALE.h3.letterSpacing,
                   color: '#061b31',
                   marginBottom: '8px',
                   display: 'flex',
@@ -71,9 +74,9 @@ export default function CompleteJourney() {
               >
                 {s.title}
                 {i < STEPS.length - 1 && (
-                  <span style={{ color: '#F51D00', fontSize: '16px' }}>→</span>
+                  <span style={{ color: '#F51D00', fontSize: SCALE.label.fontSize }}>→</span>
                 )}
-              </p>
+              </h3>
 
               <Body size="sm" color="#50617a">
                 {s.blurb}
@@ -82,21 +85,12 @@ export default function CompleteJourney() {
           ))}
         </div>
 
-        <p
-          style={{
-            marginTop: '40px',
-            fontFamily: "'Mallory', sans-serif",
-            fontWeight: 400,
-            fontSize: '14px',
-            color: '#50617a',
-            paddingLeft: '14px',
-            borderLeft: '2px solid #F51D00',
-            maxWidth: '640px',
-            lineHeight: 1.5,
-          }}
-        >
-          Most visitors will not read the rest of the page. If you read nothing else, you should still understand the loop.
-        </p>
+        {/* Body callout */}
+        <div style={{ marginTop: '40px', paddingLeft: '14px', borderLeft: '2px solid #F51D00', maxWidth: '640px' }}>
+          <Body size="md" color="#50617a">
+            Most visitors will not read the rest of the page. If you read nothing else, you should still understand the loop.
+          </Body>
+        </div>
       </Container>
 
       <style>{`

@@ -1,8 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Container, AnimatedSection, SerifHeading, Eyebrow } from '../ui'
-
-const SANS = "'Mallory', sans-serif"
+import { Container, AnimatedSection, SerifHeading, Eyebrow, Body, Caption, SCALE } from '../ui'
 
 const GENRES = ['All', 'Romance', 'Thriller', 'Fantasy', 'Drama']
 
@@ -40,9 +38,21 @@ function Card({ s }) {
         }}
       >
         <div style={{ position: 'absolute', bottom: 14, left: 14, right: 14 }}>
-          <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '15px', color: '#fff', letterSpacing: '-0.009em', lineHeight: 1.15, textShadow: '0 1px 6px rgba(0,0,0,0.25)' }}>
+          {/* Cover title — h4 (Season Mix) reduced to fit covers */}
+          <h3
+            style={{
+              fontFamily:    SCALE.h4.family,
+              fontWeight:    SCALE.h4.weight,
+              fontSize:      '18px',                     /* tightened from h4 20px to fit */
+              lineHeight:    1.15,
+              letterSpacing: SCALE.h4.letterSpacing,
+              color: '#fff',
+              textShadow: '0 1px 6px rgba(0,0,0,0.25)',
+              margin: 0,
+            }}
+          >
             {s.title}
-          </p>
+          </h3>
         </div>
         <button
           onClick={(e) => { e.stopPropagation(); setPlaying(!playing) }}
@@ -72,12 +82,26 @@ function Card({ s }) {
       </div>
 
       <div style={{ padding: '14px 16px' }}>
-        <p style={{ fontFamily: SANS, fontWeight: 400, fontSize: '15px', color: '#061b31', marginBottom: '4px', letterSpacing: '-0.009em', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+        {/* h4-ish title in dark */}
+        <h3
+          style={{
+            fontFamily:    SCALE.label.family,
+            fontWeight:    SCALE.label.weight,
+            fontSize:      '15px',
+            lineHeight:    1.3,
+            letterSpacing: '-0.005em',
+            color: '#061b31',
+            margin: '0 0 4px',
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+          }}
+        >
           {s.title}
-        </p>
-        <p style={{ fontFamily: SANS, fontSize: '12px', color: '#64748d' }}>
+        </h3>
+        <Caption color="#64748d">
           {s.genre} · {s.episodes} episodes · {s.writer}
-        </p>
+        </Caption>
       </div>
     </motion.article>
   )
@@ -92,7 +116,7 @@ export default function SampleStories() {
       <Container>
         <div style={{ marginBottom: '40px', maxWidth: '720px' }}>
           <Eyebrow>Sample stories</Eyebrow>
-          <SerifHeading size="lg">Listen to what writers are creating.</SerifHeading>
+          <SerifHeading size="h2">Listen to what writers are creating.</SerifHeading>
         </div>
 
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '32px' }}>
@@ -109,9 +133,11 @@ export default function SampleStories() {
                   borderColor: active ? '#F51D00' : '#e5edf5',
                   borderRadius: '4px',
                   padding: '8px 14px',
-                  fontFamily: SANS,
-                  fontSize: '13px',
-                  fontWeight: 400,
+                  fontFamily:    SCALE.label.family,
+                  fontWeight:    SCALE.label.weight,
+                  fontSize:      SCALE.label.fontSize,
+                  lineHeight:    SCALE.label.lineHeight,
+                  letterSpacing: SCALE.label.letterSpacing,
                   cursor: 'pointer',
                   transition: 'all 0.18s',
                 }}
@@ -133,9 +159,11 @@ export default function SampleStories() {
           {filtered.map((s) => <Card key={s.title} s={s} />)}
         </div>
 
-        <p style={{ fontFamily: SANS, fontSize: '13px', color: '#64748d', textAlign: 'center', marginTop: '32px' }}>
-          Tap a cover to hear a 30-second sample.
-        </p>
+        <div style={{ textAlign: 'center', marginTop: '32px' }}>
+          <Body size="sm" color="#64748d">
+            Tap a cover to hear a 30-second sample.
+          </Body>
+        </div>
       </Container>
 
       <style>{`

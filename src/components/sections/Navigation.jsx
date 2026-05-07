@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import Logo from '../Logo'
+import { SCALE } from '../ui'
 
 const NAV = [
   { label: 'How it works', href: '#journey' },
@@ -8,11 +9,9 @@ const NAV = [
   { label: 'Earnings',     href: '#earn' },
 ]
 
-const SANS = "'Mallory', sans-serif"
-
 export default function Navigation() {
-  const [scrolled,    setScrolled]    = useState(false)
-  const [menuOpen,    setMenuOpen]    = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)
@@ -36,75 +35,81 @@ export default function Navigation() {
         transition: 'border-bottom 0.2s ease',
       }}
     >
+      {/* 3-column grid: 1fr | auto | 1fr — keeps centre menu perfectly centred
+       *  regardless of left-cluster or right-cluster width.                    */}
       <div
         style={{
           width: '100%',
           padding: '0 clamp(20px, 5vw, 64px)',
           height: 'clamp(64px, 7vw, 88px)',
-          display: 'flex',
+          display: 'grid',
+          gridTemplateColumns: '1fr auto 1fr',
           alignItems: 'center',
-          justifyContent: 'space-between',
           gap: '16px',
         }}
         className="nav-row"
       >
-        {/* ── LEFT: Logo ─────────────────────────────────────────────── */}
+        {/* ── LEFT — Logo ─────────────────────────────────────────────── */}
         <a
           href="#top"
-          style={{ display: 'inline-flex', alignItems: 'center', textDecoration: 'none' }}
-          className="nav-logo"
+          style={{ display: 'inline-flex', alignItems: 'center', textDecoration: 'none', justifySelf: 'start' }}
         >
           <Logo scale={1} />
         </a>
 
-        {/* ── RIGHT: links + CTA ────────────────────────────────────── */}
-        <div
-          style={{ display: 'flex', alignItems: 'center', gap: 'clamp(20px, 3vw, 40px)' }}
-          className="nav-right"
+        {/* ── CENTRE — Menu links ──────────────────────────────────────── */}
+        <ul
+          style={{
+            display: 'flex',
+            gap: 'clamp(20px, 3vw, 40px)',
+            listStyle: 'none',
+            margin: 0,
+            padding: 0,
+            justifySelf: 'center',
+          }}
+          className="nav-links"
         >
-          <ul
-            style={{
-              display: 'flex',
-              gap: 'clamp(20px, 3vw, 40px)',
-              listStyle: 'none',
-              margin: 0,
-              padding: 0,
-            }}
-            className="nav-links"
-          >
-            {NAV.map((item) => (
-              <li key={item.label}>
-                <a
-                  href={item.href}
-                  style={{
-                    fontFamily: SANS,
-                    fontWeight: 400,
-                    fontSize: 'clamp(14px, 1.4vw, 20px)',
-                    color: '#828282',
-                    textDecoration: 'none',
-                    transition: 'color 0.18s',
-                    whiteSpace: 'nowrap',
-                  }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = '#1a1a1a')}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = '#828282')}
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
+          {NAV.map((item) => (
+            <li key={item.label}>
+              <a
+                href={item.href}
+                style={{
+                  fontFamily:    SCALE.body.family,
+                  fontWeight:    SCALE.body.weight,
+                  fontSize:      SCALE.body.fontSize,        /* 16px body */
+                  lineHeight:    SCALE.body.lineHeight,
+                  letterSpacing: SCALE.body.letterSpacing,
+                  color: '#828282',
+                  textDecoration: 'none',
+                  transition: 'color 0.18s',
+                  whiteSpace: 'nowrap',
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = '#1a1a1a')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = '#828282')}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
 
+        {/* ── RIGHT — CTA + (mobile) hamburger ────────────────────────── */}
+        <div
+          style={{ display: 'flex', alignItems: 'center', gap: '12px', justifySelf: 'end' }}
+        >
           <motion.a
             href="#signup"
-            whileHover={{ backgroundColor: '#c81700' }}
+            whileHover={{ backgroundColor: '#1a1a1a' }}
             whileTap={{ scale: 0.98 }}
             style={{
-              backgroundColor: '#F51D00',
+              backgroundColor: '#000000',
               color: '#ffffff',
-              fontFamily: SANS,
-              fontWeight: 400,
-              fontSize: 'clamp(14px, 1.4vw, 20px)',
-              padding: 'clamp(6px, 0.6vw, 8px) clamp(14px, 1.6vw, 20px)',
+              fontFamily:    SCALE.body.family,
+              fontWeight:    SCALE.body.weight,
+              fontSize:      SCALE.body.fontSize,            /* 16px body */
+              lineHeight:    SCALE.body.lineHeight,
+              letterSpacing: SCALE.body.letterSpacing,
+              padding: '8px 20px',
               borderRadius: '32px',
               textDecoration: 'none',
               cursor: 'pointer',
@@ -114,10 +119,10 @@ export default function Navigation() {
               whiteSpace: 'nowrap',
             }}
           >
-            Sign up
+            Start writing
           </motion.a>
 
-          {/* Hamburger (visible only ≤640px via CSS) */}
+          {/* Hamburger — visible only ≤ 768 px via CSS */}
           <button
             onClick={() => setMenuOpen((v) => !v)}
             aria-label="Toggle menu"
@@ -162,9 +167,11 @@ export default function Navigation() {
                   href={item.href}
                   onClick={() => setMenuOpen(false)}
                   style={{
-                    fontFamily: SANS,
-                    fontWeight: 400,
-                    fontSize: '17px',
+                    fontFamily:    SCALE.subheading.family,
+                    fontWeight:    SCALE.subheading.weight,
+                    fontSize:      SCALE.subheading.fontSize,    /* 18px subheading */
+                    lineHeight:    SCALE.subheading.lineHeight,
+                    letterSpacing: SCALE.subheading.letterSpacing,
                     color: '#1a1a1a',
                     textDecoration: 'none',
                   }}
