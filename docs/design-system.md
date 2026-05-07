@@ -7,8 +7,8 @@
 > - `src/components/ui.jsx` — `SCALE`, `SANS`, `DISPLAY` exports
 
 **Last updated:** 2026-05-07
-**Scope of this revision:** Typography
-**Planned additions:** Colors · Spacing · Grids · Radii · Shadows · Motion
+**Scope of this revision:** Typography · Colors · Semantic tokens · Spacing & Grid
+**Planned additions:** Radii · Shadows · Motion
 
 ---
 
@@ -173,28 +173,418 @@ These were locked in when we adopted the Pocket Sherpa content plan and apply to
 
 ## Colors
 
-> **Coming soon.** This section will document the full color palette, semantic tokens, surface levels, and contrast guidance. The current Stripe-inspired palette can be inspected directly in `src/index.css` `@theme` block.
+The brand palette is built on **three core families**. Each family ships with the base colour plus seven progressively-lighter **tints** and seven progressively-darker **shades** — fifteen stops in total, generated from the base hex.
 
-Quick reference for now:
+| Family | Base hex | Role |
+|---|---|---|
+| **Ink** | `#1C1C1C` | Primary text, dark surfaces, high-contrast UI |
+| **Vellum** | `#FAF9F1` | Page surface, warm paper ground for everything to sit on |
+| **Scarlet** | `#F51D00` | Brand red — primary action, accents, links, signatures |
 
-| Family | Tokens |
+The names reflect the warm-literary brand voice: **Ink** for the writing it captures, **Vellum** for the page it sits on, **Scarlet** for the spark that drives a writer to publish.
+
+---
+
+### Naming convention
+
+Within each family, the eight tints (lightest → base) and seven shades (base → darkest) are named with a consistent suffix pattern:
+
+- **`{family}-tint-7`** — lightest tint
+- **`{family}-tint-6, …, tint-1`** — progressively closer to base
+- **`{family}`** — base (no suffix)
+- **`{family}-shade-1, …, shade-6`** — progressively darker
+- **`{family}-shade-7`** — darkest shade
+
+So `ink-tint-7` is the lightest grey in the Ink family, `ink` is the base `#1C1C1C`, and `ink-shade-7` is the deepest near-black.
+
+---
+
+### Ink — `#1C1C1C`
+
+Used for primary text, dark UI elements, and the Sign-up / "Start writing" CTA fill.
+
+| Token | Hex | Preview |
+|---|---|---|
+| `ink-tint-7` | `#E2E2E2` | ▮ lightest |
+| `ink-tint-6` | `#C6C6C6` | ▮ |
+| `ink-tint-5` | `#A9A9A9` | ▮ |
+| `ink-tint-4` | `#8D8D8D` | ▮ |
+| `ink-tint-3` | `#717171` | ▮ |
+| `ink-tint-2` | `#545454` | ▮ |
+| `ink-tint-1` | `#383838` | ▮ |
+| **`ink`** | **`#1C1C1C`** | ▮ **base** |
+| `ink-shade-1` | `#181818` | ▮ |
+| `ink-shade-2` | `#151515` | ▮ |
+| `ink-shade-3` | `#111111` | ▮ |
+| `ink-shade-4` | `#0E0E0E` | ▮ |
+| `ink-shade-5` | `#0A0A0A` | ▮ |
+| `ink-shade-6` | `#070707` | ▮ |
+| `ink-shade-7` | `#030303` | ▮ darkest |
+
+---
+
+### Vellum — `#FAF9F1`
+
+Page surface and warm paper ground. The base sits at the **light end** of its family — its "tints" are barely-there nudges toward white, while its "shades" walk all the way down toward charcoal as a complementary warm-grey scale.
+
+| Token | Hex | Preview |
+|---|---|---|
+| `vellum-tint-7` | `#FEFEFD` | ▮ lightest |
+| `vellum-tint-6` | `#FDFDFB` | ▮ |
+| `vellum-tint-5` | `#FDFCF9` | ▮ |
+| `vellum-tint-4` | `#FCFCF8` | ▮ |
+| `vellum-tint-3` | `#FBFBF6` | ▮ |
+| `vellum-tint-2` | `#FBFAF4` | ▮ |
+| `vellum-tint-1` | `#FAF9F2` | ▮ |
+| **`vellum`** | **`#FAF9F1`** | ▮ **base** |
+| `vellum-shade-1` | `#DAD9D2` | ▮ |
+| `vellum-shade-2` | `#BBBAB4` | ▮ |
+| `vellum-shade-3` | `#9C9B96` | ▮ |
+| `vellum-shade-4` | `#7D7C78` | ▮ |
+| `vellum-shade-5` | `#5D5D5A` | ▮ |
+| `vellum-shade-6` | `#3E3E3C` | ▮ |
+| `vellum-shade-7` | `#1F1F1E` | ▮ darkest |
+
+The vellum-shade scale provides an entire **warm-neutral text + border palette**, so a single hue family can carry surface, text, and dividers with consistent temperature. Use `vellum-shade-4` through `vellum-shade-6` for secondary / tertiary text on the cream ground, and `vellum-shade-1`/`-2` for hairline dividers.
+
+---
+
+### Scarlet — `#F51D00`
+
+Brand red. Reserved for primary actions, link accents, eyebrow labels, and any signal that needs to read as "Pocket Sherpa." Use sparingly — its job is contrast, not coverage.
+
+| Token | Hex | Preview |
+|---|---|---|
+| `scarlet-tint-7` | `#FDE2DF` | ▮ lightest |
+| `scarlet-tint-6` | `#FCC6BF` | ▮ |
+| `scarlet-tint-5` | `#FBAA9F` | ▮ |
+| `scarlet-tint-4` | `#FA8E7F` | ▮ |
+| `scarlet-tint-3` | `#F8715F` | ▮ |
+| `scarlet-tint-2` | `#F7553F` | ▮ |
+| `scarlet-tint-1` | `#F6391F` | ▮ |
+| **`scarlet`** | **`#F51D00`** | ▮ **base** |
+| `scarlet-shade-1` | `#D61900` | ▮ hover |
+| `scarlet-shade-2` | `#B71500` | ▮ |
+| `scarlet-shade-3` | `#991200` | ▮ |
+| `scarlet-shade-4` | `#7A0E00` | ▮ |
+| `scarlet-shade-5` | `#5B0A00` | ▮ |
+| `scarlet-shade-6` | `#3D0700` | ▮ |
+| `scarlet-shade-7` | `#1E0300` | ▮ darkest |
+
+`scarlet-shade-1` (`#D61900`) is the natural **hover state** for the brand-filled button. The current implementation uses `#c81700` from the previous palette — slightly cooler — and should be migrated to `scarlet-shade-1` once the palette is wired into `@theme`.
+
+`scarlet-tint-7` (`#FDE2DF`) is a soft pink wash suitable for highlight backgrounds, error chips, or "draft saved" toasts.
+
+---
+
+### Suggested `@theme` block *(not yet wired)*
+
+When ready to migrate the live tokens, paste this into `src/index.css` inside the `@theme { ... }` block:
+
+```css
+/* ── Ink (text + dark surfaces) ─────────────────────────── */
+--color-ink-tint-7:  #E2E2E2;
+--color-ink-tint-6:  #C6C6C6;
+--color-ink-tint-5:  #A9A9A9;
+--color-ink-tint-4:  #8D8D8D;
+--color-ink-tint-3:  #717171;
+--color-ink-tint-2:  #545454;
+--color-ink-tint-1:  #383838;
+--color-ink:         #1C1C1C;
+--color-ink-shade-1: #181818;
+--color-ink-shade-2: #151515;
+--color-ink-shade-3: #111111;
+--color-ink-shade-4: #0E0E0E;
+--color-ink-shade-5: #0A0A0A;
+--color-ink-shade-6: #070707;
+--color-ink-shade-7: #030303;
+
+/* ── Vellum (surface + warm-grey scale) ─────────────────── */
+--color-vellum-tint-7:  #FEFEFD;
+--color-vellum-tint-6:  #FDFDFB;
+--color-vellum-tint-5:  #FDFCF9;
+--color-vellum-tint-4:  #FCFCF8;
+--color-vellum-tint-3:  #FBFBF6;
+--color-vellum-tint-2:  #FBFAF4;
+--color-vellum-tint-1:  #FAF9F2;
+--color-vellum:         #FAF9F1;
+--color-vellum-shade-1: #DAD9D2;
+--color-vellum-shade-2: #BBBAB4;
+--color-vellum-shade-3: #9C9B96;
+--color-vellum-shade-4: #7D7C78;
+--color-vellum-shade-5: #5D5D5A;
+--color-vellum-shade-6: #3E3E3C;
+--color-vellum-shade-7: #1F1F1E;
+
+/* ── Scarlet (brand red) ──────────────────────────────────── */
+--color-scarlet-tint-7:  #FDE2DF;
+--color-scarlet-tint-6:  #FCC6BF;
+--color-scarlet-tint-5:  #FBAA9F;
+--color-scarlet-tint-4:  #FA8E7F;
+--color-scarlet-tint-3:  #F8715F;
+--color-scarlet-tint-2:  #F7553F;
+--color-scarlet-tint-1:  #F6391F;
+--color-scarlet:         #F51D00;
+--color-scarlet-shade-1: #D61900;
+--color-scarlet-shade-2: #B71500;
+--color-scarlet-shade-3: #991200;
+--color-scarlet-shade-4: #7A0E00;
+--color-scarlet-shade-5: #5B0A00;
+--color-scarlet-shade-6: #3D0700;
+--color-scarlet-shade-7: #1E0300;
+```
+
+Once these are in `@theme`, every utility class works automatically — `bg-scarlet`, `text-ink-tint-3`, `border-vellum-shade-2`, etc.
+
+---
+
+### Legacy tokens *(currently in `@theme`)*
+
+The site presently runs on an interim Stripe-inspired palette that pre-dates this brand decision. These will be retired as the new family-based tokens land, but until they are, references in code map roughly like this:
+
+| Legacy token | Will become |
 |---|---|
-| **Surface** | `platinum` (page) · `porcelain` (secondary) · `powder` (alt section) · `stone` (border) |
-| **Text** | `midnight` · `slate` · `ghost` |
-| **Brand** | `violet` (`#F51D00` brand red) · `violet-dark` (`#c81700` hover) · `violet-soft` · `violet-washed` |
-| **Accent** | `green` · `orange` |
+| `--color-platinum` (`#fff`) | (kept — pure white) |
+| `--color-porcelain` (`#f8fafd`) | `vellum-tint-5` ish — *cooler than vellum, will adjust* |
+| `--color-powder` (`#e5edf5`) | (cool blue-grey — section-only, will retire or rename) |
+| `--color-stone` (`#d8d6df`) | `vellum-shade-1` |
+| `--color-ghost` (`#64748d`) | `vellum-shade-3` ish |
+| `--color-slate` (`#50617a`) | `vellum-shade-4` ish |
+| `--color-midnight` (`#061b31`) | `ink-shade-3` ish |
+| `--color-violet` (`#F51D00`) | `scarlet` |
+| `--color-soft-violet` (`#ff6b4d`) | `scarlet-tint-3` ish |
+| `--color-washed-violet` (`#fcb8ad`) | `scarlet-tint-6` ish |
+
+Migration: do it section-by-section (matching the typescale sweep pattern) once the new tokens are in `@theme`, so each commit keeps the diff readable.
 
 ---
 
-## Spacing
+## Semantic tokens
 
-> **Coming soon.** Will document the spacing scale (likely 4 px base), section gaps, container padding, and component padding patterns.
+The 45 family-stop colors above are the **raw palette**. Day-to-day, components should reference **semantic tokens** that name a colour by its *purpose* rather than its hex. Semantic tokens map onto the family scale, so the visual system stays unified — but the indirection means a single edit to "primary text" propagates everywhere it's used.
+
+### Logo
+
+| Slot | Token | Use |
+|---|---|---|
+| Logo mark + wordmark | **`scarlet`** | The "P" mark and the "Sherpa" wordmark both render in `scarlet` (`#F51D00`). The SVG ships with this hex hard-coded. |
+
+### Text
+
+The full text hierarchy lives entirely in the **Ink** family — primary, secondary, tertiary, all the way down to disabled — and pairs naturally with the cream `vellum` page surface.
+
+| Role | Token | Hex | When to use |
+|---|---|---|---|
+| **Text · Primary** | `ink` | `#1C1C1C` | Headings (display, h1–h4) · body emphasis · button labels on light fills · top-of-hierarchy UI text |
+| **Text · Secondary** | `ink-tint-3` | `#717171` | Body paragraphs · subheading copy · supporting text under headings |
+| **Text · Tertiary** | `ink-tint-4` | `#8D8D8D` | Captions · metadata · timestamps · placeholder text · footnotes |
+| **Text · Disabled** | `ink-tint-5` | `#A9A9A9` | Disabled controls · de-emphasised labels |
+| **Text · On-dark** | `vellum` | `#FAF9F1` | Text rendered on top of `ink` fills — primary CTA labels, dark-band sections |
+
+### Buttons
+
+#### Primary CTA — "Start writing", "Sign up free", any conversion-critical action
+
+| State | Background | Text | Border |
+|---|---|---|---|
+| **Default** | `ink` (`#1C1C1C`) | `vellum` (`#FAF9F1`) | none |
+| **Hover** | `ink-tint-1` (`#383838`) | `vellum` | none |
+| **Active / Pressed** | `ink-shade-2` (`#151515`) | `vellum` | none |
+| **Focus ring** | (transparent) | `vellum` | `2px` outline `ink-tint-3` (`#717171`) at `2px` offset |
+| **Disabled** | `ink-tint-5` (`#A9A9A9`) | `vellum` | none |
+
+#### Secondary CTA — "Contact sales", "Read more", any optional action
+
+| State | Background | Text | Border |
+|---|---|---|---|
+| **Default** | transparent | `ink` (`#1C1C1C`) | `1px` solid `ink` |
+| **Hover** | `ink-tint-7` (`#E2E2E2`) | `ink` | `1px` solid `ink` |
+| **Active / Pressed** | `ink-tint-6` (`#C6C6C6`) | `ink` | `1px` solid `ink` |
+| **Focus ring** | (default fill) | `ink` | `2px` outline `ink` at `2px` offset |
+| **Disabled** | transparent | `ink-tint-5` (`#A9A9A9`) | `1px` solid `ink-tint-5` |
+
+#### Brand CTA *(use sparingly)* — moments where the brand red is the right signal
+
+| State | Background | Text | Border |
+|---|---|---|---|
+| **Default** | `scarlet` (`#F51D00`) | `vellum` | none |
+| **Hover** | `scarlet-shade-1` (`#D61900`) | `vellum` | none |
+| **Active / Pressed** | `scarlet-shade-2` (`#B71500`) | `vellum` | none |
+
+### Surface
+
+| Role | Token | Hex |
+|---|---|---|
+| **Page** | `vellum` | `#FAF9F1` |
+| **Card · raised** | `vellum-tint-7` | `#FEFEFD` (effectively white, with the warm ground beneath) |
+| **Card · subtle alt** | `vellum-tint-3` | `#FBFBF6` |
+| **Section · alt band** | `vellum-shade-1` | `#DAD9D2` (used to break up vertical rhythm) |
+| **Hairline / divider** | `vellum-shade-2` | `#BBBAB4` |
+| **Inverse / dark band** | `ink` | `#1C1C1C` |
+
+### Hover & focus rules
+
+A consistent interaction language across every clickable surface:
+
+- **Hover on dark fills** → step **lighter** by one tint (`ink` → `ink-tint-1`, `scarlet` → `scarlet-shade-1`).
+- **Hover on light/transparent fills** → step **darker** by one tint (transparent → `ink-tint-7`, white card → `vellum-shade-1`).
+- **Active / pressed** → step one further in the same direction as hover.
+- **Focus ring** → always `2px` solid outline at `2px` offset, color `ink-tint-3` (`#717171`) on light fills, `vellum` on dark fills, never the brand `scarlet`.
+- **Transition** → `120ms` cubic-bezier `(0.22, 1, 0.36, 1)` for color + background changes; never animate borders.
+
+### Suggested `@theme` semantic block
+
+Paste this into `src/index.css` after the family tokens. The semantic tokens are simple aliases pointing into the family palette — change one mapping, the whole system shifts.
+
+```css
+/* ── Text ────────────────────────────────────────────────── */
+--color-text-primary:    var(--color-ink);          /* #1C1C1C */
+--color-text-secondary:  var(--color-ink-tint-3);   /* #717171 */
+--color-text-tertiary:   var(--color-ink-tint-4);   /* #8D8D8D */
+--color-text-disabled:   var(--color-ink-tint-5);   /* #A9A9A9 */
+--color-text-on-dark:    var(--color-vellum);       /* #FAF9F1 */
+
+/* ── Buttons ─────────────────────────────────────────────── */
+--color-button-primary-bg:           var(--color-ink);
+--color-button-primary-bg-hover:     var(--color-ink-tint-1);
+--color-button-primary-bg-active:    var(--color-ink-shade-2);
+--color-button-primary-text:         var(--color-vellum);
+
+--color-button-secondary-border:     var(--color-ink);
+--color-button-secondary-text:       var(--color-ink);
+--color-button-secondary-bg-hover:   var(--color-ink-tint-7);
+--color-button-secondary-bg-active:  var(--color-ink-tint-6);
+
+--color-button-brand-bg:             var(--color-scarlet);
+--color-button-brand-bg-hover:       var(--color-scarlet-shade-1);
+--color-button-brand-text:           var(--color-vellum);
+
+/* ── Surface ─────────────────────────────────────────────── */
+--color-surface-page:        var(--color-vellum);
+--color-surface-card:        var(--color-vellum-tint-7);
+--color-surface-alt:         var(--color-vellum-shade-1);
+--color-surface-divider:     var(--color-vellum-shade-2);
+--color-surface-inverse:     var(--color-ink);
+
+/* ── Focus ───────────────────────────────────────────────── */
+--color-focus-ring-light:    var(--color-ink-tint-3);
+--color-focus-ring-dark:     var(--color-vellum);
+```
 
 ---
 
-## Grids
+## Spacing & Grid
 
-> **Coming soon.** Will document the responsive grid system, the hero `var(--grid-w)` mechanism (`min(70.44vw, 1280px)`), section max-widths (`1200px` for content, full-bleed for hero), and breakpoint conventions.
+The site is built on an **8 px grid**. Every padding, margin, gap, and offset must be a multiple of 8 (or, for tight UI, a multiple of 4 — half-step). This produces a consistent vertical rhythm and predictable optical alignment.
+
+### The base unit
+
+```
+1 unit = 8 px
+```
+
+Half-steps (4 px) are allowed for fine-grained UI elements where 8 px is too coarse — icon-to-text gaps, control internals, hairline separators.
+
+### Spacing scale
+
+Tokens are named by their unit count, not pixel value. So `space-2` = 2 units = 16 px.
+
+| Token | Units | Pixels | Common use |
+|---|---|---|---|
+| `space-0` | 0 | `0px` | Reset |
+| `space-half` | 0.5 | `4px` | Icon-to-text gap · hairline offsets · tight chip internals |
+| `space-1` | 1 | `8px` | Inline gaps in controls · between paired elements |
+| `space-1-5` | 1.5 | `12px` | Form-field internal padding · small button padding |
+| `space-2` | 2 | `16px` | Default element gap · standard button padding · stub-UI cell padding |
+| `space-3` | 3 | `24px` | Card internal padding · between related items in a list |
+| `space-4` | 4 | `32px` | Card padding · gap between cards in a grid |
+| `space-5` | 5 | `40px` | Section sub-block separation |
+| `space-6` | 6 | `48px` | Section content padding-bottom · stat-row gaps |
+| `space-8` | 8 | `64px` | Container side padding (desktop) · between major UI groups |
+| `space-10` | 10 | `80px` | Section vertical padding (compact) |
+| `space-12` | 12 | `96px` | Section vertical padding (default) |
+| `space-15` | 15 | `120px` | Section vertical padding (tall) |
+| `space-20` | 20 | `160px` | Hero / final-CTA vertical padding |
+
+### Component-level conventions
+
+| Component | Spacing |
+|---|---|
+| **Card padding** | `space-3` (24 px) for compact, `space-4` (32 px) for primary content cards |
+| **Card gap** *(grid)* | `space-2` to `space-3` (16–24 px) |
+| **Section padding (top + bottom)** | `space-12` (96 px) default; `space-15` (120 px) for richer sections; `space-20` (160 px) for hero / closer-CTA |
+| **Container side padding** | `space-4` (32 px) mobile, `space-6`–`space-8` (48–64 px) tablet+ |
+| **Inline element gap** | `space-1` (8 px) for tight, `space-2` (16 px) for comfortable |
+| **Button padding** | vertical `space-1` (8 px) · horizontal `space-2-5` (20 px) for body-text buttons |
+| **Form-field padding** | vertical `space-1` (8 px) · horizontal `space-2` (16 px) |
+| **Eyebrow → heading gap** | `space-2` (16 px) |
+| **Heading → body gap** | `space-2-5` to `space-3` (20–24 px) |
+| **Body paragraph gap** | `space-2` (16 px) |
+
+### Container & grid
+
+| Token | Value | Use |
+|---|---|---|
+| `--container-content` | `1200px` | Default content max-width — sections, footer, nav inner |
+| `--container-narrow` | `720px` | Single-column reading width (intro paragraphs, lead copy) |
+| `--container-wide` | `1376px` | Wider content frame for two-column layouts |
+| `--grid-w` | `min(70.44vw, 1280px)` | **Hero-specific** — locks heading + body + product-image into one shared horizontal grid |
+| `--page-bleed` | `100%` | Full-bleed sections (mountain backdrop, dark bands) |
+
+### Breakpoints
+
+The site is **mobile-first**. Breakpoints are at standard device thresholds:
+
+| Token | Min-width | Devices |
+|---|---|---|
+| `--bp-sm` | `480px` | Large phone |
+| `--bp-md` | `768px` | Tablet portrait |
+| `--bp-lg` | `1024px` | Tablet landscape / small laptop |
+| `--bp-xl` | `1280px` | Desktop |
+| `--bp-2xl` | `1536px` | Wide desktop |
+
+Most layout transitions happen at **`md`** (768 px — column count drops from 4 → 2 or 2 → 1 in most grids) and **`lg`** (1024 px — typographic clamp ranges hit their upper bound).
+
+### Suggested `@theme` block
+
+```css
+/* ── Spacing scale (8 px base) ───────────────────────────── */
+--space-0:      0;
+--space-half:   4px;
+--space-1:      8px;
+--space-1-5:   12px;
+--space-2:     16px;
+--space-2-5:   20px;
+--space-3:     24px;
+--space-4:     32px;
+--space-5:     40px;
+--space-6:     48px;
+--space-8:     64px;
+--space-10:    80px;
+--space-12:    96px;
+--space-15:   120px;
+--space-20:   160px;
+
+/* ── Container widths ───────────────────────────────────── */
+--container-narrow:   720px;
+--container-content: 1200px;
+--container-wide:    1376px;
+--grid-w-hero:       min(70.44vw, 1280px);
+
+/* ── Breakpoints (used in clamp() and media queries) ────── */
+--bp-sm:    480px;
+--bp-md:    768px;
+--bp-lg:   1024px;
+--bp-xl:   1280px;
+--bp-2xl:  1536px;
+```
+
+### Rules
+
+1. **Never use a value that isn't on the scale.** `padding: 13px` doesn't exist — round to `space-1-5` (12 px) or `space-2` (16 px).
+2. **Inside a section, vertical rhythm should be a single repeated unit.** If your section uses `space-3` (24 px) between paragraphs, every paragraph gap should be 24 px — not 24 here, 28 there.
+3. **Outside-in composition.** Container provides the side padding; cards provide their own internal padding; the gap between cards comes from the grid `gap` property — never from card margin.
+4. **Half-steps (`space-half` = 4 px) are an escape hatch.** Use them only when 8 px would visibly break the layout (icon nudges, hairline insets). If you use them more than once or twice in a section, the design probably needs revisiting.
 
 ---
 
@@ -260,3 +650,5 @@ boxShadow: rgba(23, 23, 23, 0.06) 0 3px 6px 0;
 | Date | Change |
 |---|---|
 | 2026-05-07 | First version: typography section. Skeleton sections for colors / spacing / grids / radii / shadows / motion. |
+| 2026-05-07 | Colors section filled in — three core families (`ink`, `vellum`, `scarlet`), 15-stop tint+shade scale per family, naming convention, suggested `@theme` block, and legacy token migration map. |
+| 2026-05-07 | Renamed `ember` → `scarlet` (brand red `#F51D00`). Added Semantic Tokens section (text hierarchy, primary/secondary/brand button states, surface roles, hover/focus rules) and Spacing & Grid section with full 8 px scale, container widths, breakpoints, and component-level conventions. |

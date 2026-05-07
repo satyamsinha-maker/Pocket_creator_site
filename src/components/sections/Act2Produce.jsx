@@ -60,7 +60,7 @@ function VideoStub() {
           fontSize: SCALE.caption.fontSize,
           lineHeight: SCALE.caption.lineHeight,
           letterSpacing: SCALE.caption.letterSpacing,
-          color: '#061b31',
+          color: '#1C1C1C',
           background: 'rgba(255,255,255,0.85)',
           padding: '2px 6px',
           borderRadius: '4px',
@@ -118,13 +118,13 @@ export default function Act2Produce() {
                   fontSize:      SCALE.h3.fontSize,
                   lineHeight:    SCALE.h3.lineHeight,
                   letterSpacing: SCALE.h3.letterSpacing,
-                  color: '#061b31',
+                  color: '#1C1C1C',
                   marginBottom: '8px',
                 }}
               >
                 {c.title}
               </h3>
-              <Body size="sm" color="#50617a">
+              <Body size="sm" color="#717171">
                 {c.body}
               </Body>
             </motion.div>

@@ -7,7 +7,7 @@ const eyebrowStyle = (color = '#F51D00') => ({
   letterSpacing: SCALE.eyebrow.letterSpacing, textTransform: SCALE.eyebrow.textTransform,
   color,
 })
-const captionStyle = (color = '#64748d') => ({
+const captionStyle = (color = '#8D8D8D') => ({
   fontFamily: SCALE.caption.family, fontWeight: SCALE.caption.weight,
   fontSize: SCALE.caption.fontSize, lineHeight: SCALE.caption.lineHeight,
   letterSpacing: SCALE.caption.letterSpacing, color,
@@ -18,7 +18,7 @@ function EarningsDashStub() {
     <div style={{ background: '#ffffff', borderRadius: '6px', padding: '24px', boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 32px 8px' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
         <div>
-          <p style={{ ...eyebrowStyle('#64748d'), marginBottom: '6px' }}>This month</p>
+          <p style={{ ...eyebrowStyle('#8D8D8D'), marginBottom: '6px' }}>This month</p>
           {/* h2 — Season Mix, fluid 28 → 36 px */}
           <p
             style={{
@@ -27,7 +27,7 @@ function EarningsDashStub() {
               fontSize:      SCALE.h2.fontSize,
               lineHeight:    SCALE.h2.lineHeight,
               letterSpacing: SCALE.h2.letterSpacing,
-              color: '#061b31',
+              color: '#1C1C1C',
               fontFeatureSettings: '"tnum"',
             }}
           >
@@ -35,7 +35,7 @@ function EarningsDashStub() {
           </p>
         </div>
         <div style={{ textAlign: 'right' }}>
-          <p style={{ ...eyebrowStyle('#64748d'), marginBottom: '6px' }}>Listens</p>
+          <p style={{ ...eyebrowStyle('#8D8D8D'), marginBottom: '6px' }}>Listens</p>
           <p
             style={{
               fontFamily:    SCALE.h2.family,
@@ -43,7 +43,7 @@ function EarningsDashStub() {
               fontSize:      SCALE.h2.fontSize,
               lineHeight:    SCALE.h2.lineHeight,
               letterSpacing: SCALE.h2.letterSpacing,
-              color: '#061b31',
+              color: '#1C1C1C',
               fontFeatureSettings: '"tnum"',
             }}
           >
@@ -64,10 +64,10 @@ function EarningsDashStub() {
       </svg>
 
       <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '12px' }}>
-        <span style={captionStyle('#64748d')}>Wk 1</span>
-        <span style={captionStyle('#64748d')}>Wk 2</span>
-        <span style={captionStyle('#64748d')}>Wk 3</span>
-        <span style={captionStyle('#64748d')}>Wk 4</span>
+        <span style={captionStyle('#8D8D8D')}>Wk 1</span>
+        <span style={captionStyle('#8D8D8D')}>Wk 2</span>
+        <span style={captionStyle('#8D8D8D')}>Wk 3</span>
+        <span style={captionStyle('#8D8D8D')}>Wk 4</span>
       </div>
     </div>
   )
@@ -113,7 +113,7 @@ export default function Act3Earn() {
         >
           <EarningsDashStub />
           <div style={{ textAlign: 'center', marginTop: '12px' }}>
-            <Body size="sm" color="#50617a">
+            <Body size="sm" color="#717171">
               Anjali R. · ‘The Reckoning’ · 47 episodes live
             </Body>
           </div>
@@ -146,7 +146,7 @@ export default function Act3Earn() {
                   fontSize:      SCALE.h3.fontSize,
                   lineHeight:    SCALE.h3.lineHeight,
                   letterSpacing: SCALE.h3.letterSpacing,
-                  color: '#061b31',
+                  color: '#1C1C1C',
                   marginBottom: '10px',
                 }}
               >

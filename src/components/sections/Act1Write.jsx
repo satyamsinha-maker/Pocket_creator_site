@@ -8,17 +8,17 @@ const eyebrowStyle = (color = '#F51D00') => ({
   letterSpacing: SCALE.eyebrow.letterSpacing, textTransform: SCALE.eyebrow.textTransform,
   color,
 })
-const labelStyle = (color = '#061b31', weight = SCALE.label.weight) => ({
+const labelStyle = (color = '#1C1C1C', weight = SCALE.label.weight) => ({
   fontFamily: SCALE.label.family, fontWeight: weight,
   fontSize: SCALE.label.fontSize, lineHeight: SCALE.label.lineHeight,
   letterSpacing: SCALE.label.letterSpacing, color,
 })
-const captionStyle = (color = '#64748d') => ({
+const captionStyle = (color = '#8D8D8D') => ({
   fontFamily: SCALE.caption.family, fontWeight: SCALE.caption.weight,
   fontSize: SCALE.caption.fontSize, lineHeight: SCALE.caption.lineHeight,
   letterSpacing: SCALE.caption.letterSpacing, color,
 })
-const bodySmStyle = (color = '#061b31') => ({
+const bodySmStyle = (color = '#1C1C1C') => ({
   fontFamily: SCALE.bodySm.family, fontWeight: SCALE.bodySm.weight,
   fontSize: SCALE.bodySm.fontSize, lineHeight: SCALE.bodySm.lineHeight,
   letterSpacing: SCALE.bodySm.letterSpacing, color,
@@ -29,7 +29,7 @@ const bodySmStyle = (color = '#061b31') => ({
 function StoryboardStub() {
   return (
     <div style={{ background: '#f8fafd', borderRadius: '6px', padding: '20px', boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 32px 8px' }}>
-      <p style={{ ...labelStyle('#061b31'), marginBottom: '6px' }}>The Boss’s Forbidden Love</p>
+      <p style={{ ...labelStyle('#1C1C1C'), marginBottom: '6px' }}>The Boss’s Forbidden Love</p>
       <p style={{ ...eyebrowStyle('#F51D00'), marginBottom: '14px' }}>Romance · Slow burn · Hindi</p>
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px', marginBottom: '12px' }}>
@@ -40,13 +40,13 @@ function StoryboardStub() {
           { name: 'Riya',         role: 'Best friend' },
         ].map((c) => (
           <div key={c.name} style={{ background: '#ffffff', border: '1px solid #e5edf5', borderRadius: '4px', padding: '8px 10px' }}>
-            <p style={captionStyle('#061b31')}>{c.name}</p>
-            <p style={{ ...captionStyle('#64748d'), fontSize: '10px' }}>{c.role}</p>
+            <p style={captionStyle('#1C1C1C')}>{c.name}</p>
+            <p style={{ ...captionStyle('#8D8D8D'), fontSize: '10px' }}>{c.role}</p>
           </div>
         ))}
       </div>
 
-      <p style={captionStyle('#50617a')}>
+      <p style={captionStyle('#717171')}>
         Plot arc: rivalry &rarr; misunderstanding &rarr; reluctant alliance &rarr; betrayal &rarr; reckoning.
       </p>
     </div>
@@ -57,10 +57,10 @@ function DraftStub() {
   return (
     <div style={{ background: '#f8fafd', borderRadius: '6px', padding: '20px', boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 32px 8px' }}>
       <p style={{ ...eyebrowStyle('#F51D00'), marginBottom: '8px' }}>Episode 7 · Draft</p>
-      <p style={{ ...bodySmStyle('#061b31'), marginBottom: '8px' }}>
+      <p style={{ ...bodySmStyle('#1C1C1C'), marginBottom: '8px' }}>
         Mira’s heels echoed across the marble lobby, each step a measured breath. She had not expected to see him here. Not tonight. Not after what he had said in the boardroom.
       </p>
-      <p style={bodySmStyle('#061b31')}>
+      <p style={bodySmStyle('#1C1C1C')}>
         Aarav looked up. Their eyes met. The room <span style={{ background: 'rgba(245,29,0,0.1)', borderBottom: '1px dashed #F51D00' }}>seemed to hold its breath</span>.
       </p>
     </div>
@@ -70,7 +70,7 @@ function DraftStub() {
 function ReviewStub() {
   return (
     <div style={{ background: '#f8fafd', borderRadius: '6px', padding: '20px', boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 32px 8px' }}>
-      <p style={{ ...labelStyle('#061b31'), fontStyle: 'italic', marginBottom: '14px' }}>
+      <p style={{ ...labelStyle('#1C1C1C'), fontStyle: 'italic', marginBottom: '14px' }}>
         “Mira’s heels echoed across the marble lobby...”
       </p>
       {[
@@ -80,7 +80,7 @@ function ReviewStub() {
       ].map((r) => (
         <div key={r.tag} style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
           <span style={{ ...captionStyle('#ffffff'), flex: 'none', background: '#F51D00', borderRadius: '4px', padding: '2px 6px', height: 'fit-content' }}>{r.tag}</span>
-          <p style={captionStyle('#50617a')}>{r.note}</p>
+          <p style={captionStyle('#717171')}>{r.note}</p>
         </div>
       ))}
     </div>
@@ -91,10 +91,10 @@ function MemoryStub() {
   return (
     <div style={{ background: '#f8fafd', borderRadius: '6px', padding: '20px', boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 32px 8px' }}>
       <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start', marginBottom: '14px' }}>
-        <div style={{ ...captionStyle('#ffffff'), background: '#061b31', borderRadius: '4px', width: 22, height: 22, display: 'flex', alignItems: 'center', justifyContent: 'center', flex: 'none' }}>
+        <div style={{ ...captionStyle('#ffffff'), background: '#1C1C1C', borderRadius: '4px', width: 22, height: 22, display: 'flex', alignItems: 'center', justifyContent: 'center', flex: 'none' }}>
           You
         </div>
-        <p style={labelStyle('#061b31')}>
+        <p style={labelStyle('#1C1C1C')}>
           What did Marcus say about his sister in episode 12?
         </p>
       </div>
@@ -104,7 +104,7 @@ function MemoryStub() {
         </div>
         <div>
           <p style={{ ...eyebrowStyle('#F51D00'), marginBottom: '4px' }}>Episode 12 · 03:42</p>
-          <p style={{ ...labelStyle('#061b31'), fontStyle: 'italic' }}>
+          <p style={{ ...labelStyle('#1C1C1C'), fontStyle: 'italic' }}>
             “She wasn’t my sister, Aarav. She was the only person I ever trusted. And I left her in that house.”
           </p>
         </div>

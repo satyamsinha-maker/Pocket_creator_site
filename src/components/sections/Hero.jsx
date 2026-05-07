@@ -171,7 +171,7 @@ export default function Hero() {
               fontSize:      SCALE.subheading.fontSize,
               lineHeight:    SCALE.subheading.lineHeight,
               letterSpacing: SCALE.subheading.letterSpacing,
-              color: '#828282',
+              color: '#717171',
               margin: 0,
             }}
           >

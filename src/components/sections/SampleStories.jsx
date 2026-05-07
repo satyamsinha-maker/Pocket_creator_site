@@ -6,13 +6,13 @@ const GENRES = ['All', 'Romance', 'Thriller', 'Fantasy', 'Drama']
 
 const SERIES = [
   { title: 'The Boss’s Forbidden Love',     genre: 'Romance',  episodes: 47, writer: 'Priya Sharma',   gradient: 'radial-gradient(circle, rgb(127, 125, 252), rgb(244, 75, 204) 33%, rgb(229, 237, 245) 66%)' },
-  { title: 'Cold Currency',                  genre: 'Thriller', episodes: 89, writer: 'Arjun Krishnan', gradient: 'linear-gradient(135deg, #061b31, #F51D00)' },
+  { title: 'Cold Currency',                  genre: 'Thriller', episodes: 89, writer: 'Arjun Krishnan', gradient: 'linear-gradient(135deg, #1C1C1C, #F51D00)' },
   { title: 'The Witch in the Walls',         genre: 'Fantasy',  episodes: 23, writer: 'Meera Joseph',   gradient: 'linear-gradient(0deg, rgb(255, 46, 222), rgb(210, 152, 255))' },
   { title: 'Empire of Ashes',                genre: 'Thriller', episodes: 64, writer: 'Vikram Rao',     gradient: 'linear-gradient(90deg, rgb(114, 50, 241) 3.13%, rgb(251, 118, 250) 50%, rgb(255, 207, 94))' },
   { title: 'After Midnight',                 genre: 'Romance',  episodes: 32, writer: 'Sara Iqbal',     gradient: 'linear-gradient(135deg, #ff2ede, #d298ff)' },
   { title: 'The Cartographer’s Daughter',    genre: 'Drama',    episodes: 28, writer: 'Devika Menon',   gradient: 'linear-gradient(135deg, #F51D00, #ff6b4d 60%, #fcb8ad)' },
-  { title: 'Ravan’s Diary',                  genre: 'Fantasy',  episodes: 41, writer: 'Karthik Iyer',   gradient: 'radial-gradient(circle, #ff6118, #F51D00 60%, #061b31)' },
-  { title: 'Last Train to Banaras',          genre: 'Drama',    episodes: 19, writer: 'Anya Banerjee',  gradient: 'linear-gradient(135deg, #50617a, #061b31)' },
+  { title: 'Ravan’s Diary',                  genre: 'Fantasy',  episodes: 41, writer: 'Karthik Iyer',   gradient: 'radial-gradient(circle, #ff6118, #F51D00 60%, #1C1C1C)' },
+  { title: 'Last Train to Banaras',          genre: 'Drama',    episodes: 19, writer: 'Anya Banerjee',  gradient: 'linear-gradient(135deg, #717171, #1C1C1C)' },
 ]
 
 function Card({ s }) {
@@ -90,7 +90,7 @@ function Card({ s }) {
             fontSize:      '15px',
             lineHeight:    1.3,
             letterSpacing: '-0.005em',
-            color: '#061b31',
+            color: '#1C1C1C',
             margin: '0 0 4px',
             whiteSpace: 'nowrap',
             overflow: 'hidden',
@@ -99,7 +99,7 @@ function Card({ s }) {
         >
           {s.title}
         </h3>
-        <Caption color="#64748d">
+        <Caption color="#8D8D8D">
           {s.genre} · {s.episodes} episodes · {s.writer}
         </Caption>
       </div>
@@ -128,7 +128,7 @@ export default function SampleStories() {
                 onClick={() => setGenre(g)}
                 style={{
                   background: active ? '#F51D00' : '#ffffff',
-                  color: active ? '#ffffff' : '#061b31',
+                  color: active ? '#ffffff' : '#1C1C1C',
                   border: '1px solid',
                   borderColor: active ? '#F51D00' : '#e5edf5',
                   borderRadius: '4px',
@@ -160,7 +160,7 @@ export default function SampleStories() {
         </div>
 
         <div style={{ textAlign: 'center', marginTop: '32px' }}>
-          <Body size="sm" color="#64748d">
+          <Body size="sm" color="#8D8D8D">
             Tap a cover to hear a 30-second sample.
           </Body>
         </div>

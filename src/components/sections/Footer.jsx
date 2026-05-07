@@ -19,7 +19,7 @@ export default function Footer() {
       <Container>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '40px' }}>
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-            <path d="M2 20 L9 8 L13 14 L17 6 L22 20 Z" stroke="#061b31" strokeWidth="1.6" strokeLinejoin="round" fill="none" />
+            <path d="M2 20 L9 8 L13 14 L17 6 L22 20 Z" stroke="#1C1C1C" strokeWidth="1.6" strokeLinejoin="round" fill="none" />
             <circle cx="17" cy="6" r="1.4" fill="#F51D00" />
           </svg>
           {/* Wordmark — body 16 px */}
@@ -30,13 +30,13 @@ export default function Footer() {
               fontSize:      SCALE.body.fontSize,
               lineHeight:    SCALE.body.lineHeight,
               letterSpacing: SCALE.body.letterSpacing,
-              color: '#061b31',
+              color: '#1C1C1C',
             }}
           >
             Pocket Sherpa
           </span>
           <span style={{ marginLeft: '8px' }}>
-            <Caption color="#64748d">A Pocket FM company</Caption>
+            <Caption color="#8D8D8D">A Pocket FM company</Caption>
           </span>
         </div>
 
@@ -45,7 +45,7 @@ export default function Footer() {
             <div key={c.heading}>
               {/* Column heading — uses Eyebrow primitive (Mallory 700, 12 px, 0.08em uppercase) */}
               <div style={{ marginBottom: '14px' }}>
-                <Eyebrow color="#061b31">{c.heading}</Eyebrow>
+                <Eyebrow color="#1C1C1C">{c.heading}</Eyebrow>
               </div>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
                 {c.links.map((l) => (
@@ -58,12 +58,12 @@ export default function Footer() {
                         fontSize:      SCALE.bodySm.fontSize,
                         lineHeight:    SCALE.bodySm.lineHeight,
                         letterSpacing: SCALE.bodySm.letterSpacing,
-                        color: '#50617a',
+                        color: '#717171',
                         textDecoration: 'none',
                         transition: 'color 0.18s',
                       }}
                       onMouseEnter={(e) => (e.currentTarget.style.color = '#F51D00')}
-                      onMouseLeave={(e) => (e.currentTarget.style.color = '#50617a')}
+                      onMouseLeave={(e) => (e.currentTarget.style.color = '#717171')}
                     >
                       {l}
                     </a>
@@ -85,10 +85,10 @@ export default function Footer() {
             gap: '12px',
           }}
         >
-          <Body size="sm" color="#64748d" maxWidth="480px">
+          <Body size="sm" color="#8D8D8D" maxWidth="480px">
             Idea to audio series to listeners to royalty cheque, all in one product.
           </Body>
-          <Caption color="#64748d">
+          <Caption color="#8D8D8D">
             © 2026 Pocket Sherpa · A Pocket FM product
           </Caption>
         </div>

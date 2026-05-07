@@ -98,13 +98,13 @@ export default function WriterStories() {
                       fontSize:      SCALE.h4.fontSize,
                       lineHeight:    SCALE.h4.lineHeight,
                       letterSpacing: SCALE.h4.letterSpacing,
-                      color: '#061b31',
+                      color: '#1C1C1C',
                       margin: 0,
                     }}
                   >
                     {s.name}
                   </h3>
-                  <Label color="#64748d">· {s.role}</Label>
+                  <Label color="#8D8D8D">· {s.role}</Label>
                 </div>
 
                 <Eyebrow>Series: {s.series}</Eyebrow>
@@ -117,7 +117,7 @@ export default function WriterStories() {
                     fontSize:      SCALE.subheading.fontSize,
                     lineHeight:    SCALE.subheading.lineHeight,
                     letterSpacing: SCALE.subheading.letterSpacing,
-                    color: '#061b31',
+                    color: '#1C1C1C',
                     borderLeft: '2px solid #F51D00',
                     paddingLeft: '16px',
                     marginBottom: '18px',
@@ -128,7 +128,7 @@ export default function WriterStories() {
 
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
                   {s.stats.map((st) => (
-                    <Label key={st} color="#061b31" style={{ fontFeatureSettings: '"tnum"' }}>
+                    <Label key={st} color="#1C1C1C" style={{ fontFeatureSettings: '"tnum"' }}>
                       {st}
                     </Label>
                   ))}

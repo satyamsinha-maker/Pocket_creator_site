@@ -26,7 +26,7 @@ export default function FinalCTA() {
             Your audience is waiting.
           </SerifHeading>
           <div style={{ margin: '24px auto 36px', maxWidth: '540px' }}>
-            <Body size="lg" color="#50617a">
+            <Body size="lg" color="#717171">
               Sign up free. Write your first chapter today. We will handle the rest.
             </Body>
           </div>
@@ -59,7 +59,7 @@ export default function FinalCTA() {
                   fontSize:      SCALE.bodySm.fontSize,
                   lineHeight:    SCALE.bodySm.lineHeight,
                   letterSpacing: SCALE.bodySm.letterSpacing,
-                  color: '#061b31',
+                  color: '#1C1C1C',
                   padding: '8px 0',
                 }}
               />

@@ -65,7 +65,7 @@ export default function CompleteJourney() {
                   fontSize:      SCALE.h3.fontSize,
                   lineHeight:    SCALE.h3.lineHeight,
                   letterSpacing: SCALE.h3.letterSpacing,
-                  color: '#061b31',
+                  color: '#1C1C1C',
                   marginBottom: '8px',
                   display: 'flex',
                   alignItems: 'center',
@@ -78,7 +78,7 @@ export default function CompleteJourney() {
                 )}
               </h3>
 
-              <Body size="sm" color="#50617a">
+              <Body size="sm" color="#717171">
                 {s.blurb}
               </Body>
             </motion.div>
@@ -87,7 +87,7 @@ export default function CompleteJourney() {
 
         {/* Body callout */}
         <div style={{ marginTop: '40px', paddingLeft: '14px', borderLeft: '2px solid #F51D00', maxWidth: '640px' }}>
-          <Body size="md" color="#50617a">
+          <Body size="md" color="#717171">
             Most visitors will not read the rest of the page. If you read nothing else, you should still understand the loop.
           </Body>
         </div>

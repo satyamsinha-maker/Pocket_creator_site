@@ -36,14 +36,14 @@ export default function TrustBand() {
                   fontSize:      SCALE.display.fontSize,
                   lineHeight:    SCALE.display.lineHeight,
                   letterSpacing: SCALE.display.letterSpacing,
-                  color: '#061b31',
+                  color: '#1C1C1C',
                   marginBottom: '8px',
                   fontFeatureSettings: '"tnum"',
                 }}
               >
                 {s.value}
               </p>
-              <Body size="sm" color="#50617a">
+              <Body size="sm" color="#717171">
                 {s.label}
               </Body>
             </div>

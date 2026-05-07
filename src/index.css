@@ -35,17 +35,133 @@
 }
 
 @theme {
-  /* ── Colors (Stripe palette) ─────────────────────────────────────────── */
-  --color-platinum:    #ffffff;   /* page surface */
-  --color-porcelain:   #f8fafd;   /* secondary surface */
-  --color-powder:      #e5edf5;   /* alternating sections, light card backgrounds */
-  --color-stone:       #d8d6df;   /* hairlines, dividers */
-  --color-ghost:       #64748d;   /* tertiary, placeholder */
-  --color-slate:       #50617a;   /* secondary text */
-  --color-midnight:    #061b31;   /* primary text */
-  --color-violet:      #F51D00;   /* primary action (brand red) */
-  --color-soft-violet: #ff6b4d;   /* decorative accent */
-  --color-washed-violet:#fcb8ad;  /* outlined button border */
+  /* ── Brand color families — see docs/design-system.md ─────────────────
+   * Three families × 15 stops each: 7 tints + base + 7 shades.
+   * Names: ink (text + dark surfaces), vellum (page + warm-grey scale),
+   * scarlet (brand red).
+   * ──────────────────────────────────────────────────────────────────── */
+
+  /* Ink */
+  --color-ink-tint-7:  #E2E2E2;
+  --color-ink-tint-6:  #C6C6C6;
+  --color-ink-tint-5:  #A9A9A9;
+  --color-ink-tint-4:  #8D8D8D;
+  --color-ink-tint-3:  #717171;
+  --color-ink-tint-2:  #545454;
+  --color-ink-tint-1:  #383838;
+  --color-ink:         #1C1C1C;
+  --color-ink-shade-1: #181818;
+  --color-ink-shade-2: #151515;
+  --color-ink-shade-3: #111111;
+  --color-ink-shade-4: #0E0E0E;
+  --color-ink-shade-5: #0A0A0A;
+  --color-ink-shade-6: #070707;
+  --color-ink-shade-7: #030303;
+
+  /* Vellum */
+  --color-vellum-tint-7:  #FEFEFD;
+  --color-vellum-tint-6:  #FDFDFB;
+  --color-vellum-tint-5:  #FDFCF9;
+  --color-vellum-tint-4:  #FCFCF8;
+  --color-vellum-tint-3:  #FBFBF6;
+  --color-vellum-tint-2:  #FBFAF4;
+  --color-vellum-tint-1:  #FAF9F2;
+  --color-vellum:         #FAF9F1;
+  --color-vellum-shade-1: #DAD9D2;
+  --color-vellum-shade-2: #BBBAB4;
+  --color-vellum-shade-3: #9C9B96;
+  --color-vellum-shade-4: #7D7C78;
+  --color-vellum-shade-5: #5D5D5A;
+  --color-vellum-shade-6: #3E3E3C;
+  --color-vellum-shade-7: #1F1F1E;
+
+  /* Scarlet (brand red) */
+  --color-scarlet-tint-7:  #FDE2DF;
+  --color-scarlet-tint-6:  #FCC6BF;
+  --color-scarlet-tint-5:  #FBAA9F;
+  --color-scarlet-tint-4:  #FA8E7F;
+  --color-scarlet-tint-3:  #F8715F;
+  --color-scarlet-tint-2:  #F7553F;
+  --color-scarlet-tint-1:  #F6391F;
+  --color-scarlet:         #F51D00;
+  --color-scarlet-shade-1: #D61900;
+  --color-scarlet-shade-2: #B71500;
+  --color-scarlet-shade-3: #991200;
+  --color-scarlet-shade-4: #7A0E00;
+  --color-scarlet-shade-5: #5B0A00;
+  --color-scarlet-shade-6: #3D0700;
+  --color-scarlet-shade-7: #1E0300;
+
+  /* ── Semantic tokens (point into family palette) ────────────────────── */
+
+  /* Text */
+  --color-text-primary:    var(--color-ink);
+  --color-text-secondary:  var(--color-ink-tint-3);
+  --color-text-tertiary:   var(--color-ink-tint-4);
+  --color-text-disabled:   var(--color-ink-tint-5);
+  --color-text-on-dark:    var(--color-vellum);
+
+  /* Buttons — primary (ink fill, vellum text) */
+  --color-button-primary-bg:           var(--color-ink);
+  --color-button-primary-bg-hover:     var(--color-ink-tint-1);
+  --color-button-primary-bg-active:    var(--color-ink-shade-2);
+  --color-button-primary-text:         var(--color-vellum);
+
+  /* Buttons — secondary (transparent, ink outline + ink text) */
+  --color-button-secondary-border:     var(--color-ink);
+  --color-button-secondary-text:       var(--color-ink);
+  --color-button-secondary-bg-hover:   var(--color-ink-tint-7);
+  --color-button-secondary-bg-active:  var(--color-ink-tint-6);
+
+  /* Buttons — brand (scarlet — use sparingly) */
+  --color-button-brand-bg:             var(--color-scarlet);
+  --color-button-brand-bg-hover:       var(--color-scarlet-shade-1);
+  --color-button-brand-text:           var(--color-vellum);
+
+  /* Surfaces */
+  --color-surface-page:        var(--color-vellum);
+  --color-surface-card:        var(--color-vellum-tint-7);
+  --color-surface-alt:         var(--color-vellum-shade-1);
+  --color-surface-divider:     var(--color-vellum-shade-2);
+  --color-surface-inverse:     var(--color-ink);
+
+  /* Focus */
+  --color-focus-ring-light:    var(--color-ink-tint-3);
+  --color-focus-ring-dark:     var(--color-vellum);
+
+  /* ── Spacing scale (8 px base) — see docs/design-system.md ──────────── */
+  --space-0:       0;
+  --space-half:    4px;
+  --space-1:       8px;
+  --space-1-5:    12px;
+  --space-2:      16px;
+  --space-2-5:    20px;
+  --space-3:      24px;
+  --space-4:      32px;
+  --space-5:      40px;
+  --space-6:      48px;
+  --space-8:      64px;
+  --space-10:     80px;
+  --space-12:     96px;
+  --space-15:    120px;
+  --space-20:    160px;
+
+  /* Container widths */
+  --container-narrow:    720px;
+  --container-content:  1200px;
+  --container-wide:     1376px;
+
+  /* ── Legacy tokens (still referenced by some components, will retire) ─ */
+  --color-platinum:    #ffffff;
+  --color-porcelain:   #f8fafd;
+  --color-powder:      #e5edf5;
+  --color-stone:       #d8d6df;
+  --color-ghost:       #64748d;
+  --color-slate:       #50617a;
+  --color-midnight:    #061b31;
+  --color-violet:      #F51D00;
+  --color-soft-violet: #ff6b4d;
+  --color-washed-violet:#fcb8ad;
   --color-green:       #81b81a;
   --color-orange:      #ff6118;
 
@@ -127,7 +243,7 @@ body {
   font-family: 'Mallory', ui-sans-serif, system-ui, -apple-system, sans-serif;
   font-feature-settings: "ss01" on, "tnum";
   background-color: #ffffff;
-  color: #061b31;
+  color: #1C1C1C;             /* ink — primary text */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

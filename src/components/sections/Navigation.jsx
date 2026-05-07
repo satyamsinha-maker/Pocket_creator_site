@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import Logo from '../Logo'
-import { SCALE } from '../ui'
+import { SCALE, COLORS } from '../ui'
 
 const NAV = [
   { label: 'How it works', href: '#journey' },
@@ -79,13 +79,13 @@ export default function Navigation() {
                   fontSize:      SCALE.body.fontSize,        /* 16px body */
                   lineHeight:    SCALE.body.lineHeight,
                   letterSpacing: SCALE.body.letterSpacing,
-                  color: '#828282',
+                  color: COLORS.textSecondary,               /* ink-tint-3 */
                   textDecoration: 'none',
                   transition: 'color 0.18s',
                   whiteSpace: 'nowrap',
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = '#1a1a1a')}
-                onMouseLeave={(e) => (e.currentTarget.style.color = '#828282')}
+                onMouseEnter={(e) => (e.currentTarget.style.color = COLORS.textPrimary)}
+                onMouseLeave={(e) => (e.currentTarget.style.color = COLORS.textSecondary)}
               >
                 {item.label}
               </a>
@@ -97,16 +97,17 @@ export default function Navigation() {
         <div
           style={{ display: 'flex', alignItems: 'center', gap: '12px', justifySelf: 'end' }}
         >
+          {/* Primary CTA — ink fill, vellum text per design-system.md */}
           <motion.a
             href="#signup"
-            whileHover={{ backgroundColor: '#1a1a1a' }}
+            whileHover={{ backgroundColor: COLORS.inkTint1 }}
             whileTap={{ scale: 0.98 }}
             style={{
-              backgroundColor: '#000000',
-              color: '#ffffff',
+              backgroundColor: COLORS.ink,
+              color:           COLORS.vellum,
               fontFamily:    SCALE.body.family,
               fontWeight:    SCALE.body.weight,
-              fontSize:      SCALE.body.fontSize,            /* 16px body */
+              fontSize:      SCALE.body.fontSize,
               lineHeight:    SCALE.body.lineHeight,
               letterSpacing: SCALE.body.letterSpacing,
               padding: '8px 20px',
@@ -115,7 +116,7 @@ export default function Navigation() {
               cursor: 'pointer',
               display: 'inline-flex',
               alignItems: 'center',
-              transition: 'background-color 0.18s',
+              transition: 'background-color 120ms cubic-bezier(0.22, 1, 0.36, 1)',
               whiteSpace: 'nowrap',
             }}
           >
@@ -141,7 +142,7 @@ export default function Navigation() {
             }}
           >
             <svg width="22" height="14" viewBox="0 0 22 14" fill="none">
-              <path d="M0 1H22M0 7H22M0 13H22" stroke="#1a1a1a" strokeWidth="1.6" />
+              <path d="M0 1H22M0 7H22M0 13H22" stroke={COLORS.ink} strokeWidth="1.6" />
             </svg>
           </button>
         </div>
@@ -172,7 +173,7 @@ export default function Navigation() {
                     fontSize:      SCALE.subheading.fontSize,    /* 18px subheading */
                     lineHeight:    SCALE.subheading.lineHeight,
                     letterSpacing: SCALE.subheading.letterSpacing,
-                    color: '#1a1a1a',
+                    color: COLORS.textPrimary,
                     textDecoration: 'none',
                   }}
                 >
