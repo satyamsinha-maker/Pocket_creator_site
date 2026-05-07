@@ -106,7 +106,7 @@ export default function Hero() {
       id="top"
       style={{
         position: 'relative',
-        background: '#ffffff',
+        background: '#FAF9F1',           /* vellum page base */
         overflow: 'hidden',
         // Shared grid width — text + product use the same value
         '--grid-w': `min(70.44vw, ${MAX_PRODUCT_WIDTH})`,
@@ -225,7 +225,7 @@ export default function Hero() {
             position: 'absolute',
             inset: 0,
             background:
-              'linear-gradient(to bottom, #ffffff 0%, rgba(255,255,255,0) 45.76%)',
+              'linear-gradient(to bottom, #FAF9F1 0%, rgba(250,249,241,0) 45.76%)',
             pointerEvents: 'none',
           }}
         />

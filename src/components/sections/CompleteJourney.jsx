@@ -10,7 +10,7 @@ const STEPS = [
 
 export default function CompleteJourney() {
   return (
-    <AnimatedSection id="journey" style={{ padding: '96px 0', background: '#e5edf5' }}>
+    <AnimatedSection id="journey" style={{ padding: '96px 0', background: '#DAD9D2' }}>
       <Container>
         <div style={{ marginBottom: '56px', maxWidth: '720px' }}>
           <Eyebrow>The complete journey</Eyebrow>

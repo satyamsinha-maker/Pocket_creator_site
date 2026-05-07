@@ -317,7 +317,7 @@ export function Container({ children, style = {} }) {
 
 /* ── Card — Stripe Default Card (powder-blue) by default ──────────────── */
 export function Card({ children, style = {}, className = '', hover = false, surface = 'powder' }) {
-  const bg = surface === 'porcelain' ? '#f8fafd' : surface === 'white' ? '#ffffff' : '#e5edf5'
+  const bg = surface === 'porcelain' ? '#FEFEFD' : surface === 'white' ? '#ffffff' : '#DAD9D2'
   return (
     <motion.div
       className={className}
@@ -343,7 +343,7 @@ export function FeatureCard({ children, style = {}, hover = false }) {
   return (
     <motion.div
       style={{
-        backgroundColor: '#f8fafd',
+        backgroundColor: '#FEFEFD',
         borderRadius: '6px',
         padding: '12px',
         boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 32px 8px',

@@ -10,7 +10,7 @@ const SERIES = [
   { title: 'The Witch in the Walls',         genre: 'Fantasy',  episodes: 23, writer: 'Meera Joseph',   gradient: 'linear-gradient(0deg, rgb(255, 46, 222), rgb(210, 152, 255))' },
   { title: 'Empire of Ashes',                genre: 'Thriller', episodes: 64, writer: 'Vikram Rao',     gradient: 'linear-gradient(90deg, rgb(114, 50, 241) 3.13%, rgb(251, 118, 250) 50%, rgb(255, 207, 94))' },
   { title: 'After Midnight',                 genre: 'Romance',  episodes: 32, writer: 'Sara Iqbal',     gradient: 'linear-gradient(135deg, #ff2ede, #d298ff)' },
-  { title: 'The Cartographer’s Daughter',    genre: 'Drama',    episodes: 28, writer: 'Devika Menon',   gradient: 'linear-gradient(135deg, #F51D00, #ff6b4d 60%, #fcb8ad)' },
+  { title: 'The Cartographer’s Daughter',    genre: 'Drama',    episodes: 28, writer: 'Devika Menon',   gradient: 'linear-gradient(135deg, #F51D00, #F8715F 60%, #FCC6BF)' },
   { title: 'Ravan’s Diary',                  genre: 'Fantasy',  episodes: 41, writer: 'Karthik Iyer',   gradient: 'radial-gradient(circle, #ff6118, #F51D00 60%, #1C1C1C)' },
   { title: 'Last Train to Banaras',          genre: 'Drama',    episodes: 19, writer: 'Anya Banerjee',  gradient: 'linear-gradient(135deg, #717171, #1C1C1C)' },
 ]
@@ -112,7 +112,7 @@ export default function SampleStories() {
   const filtered = genre === 'All' ? SERIES : SERIES.filter((s) => s.genre === genre)
 
   return (
-    <AnimatedSection style={{ padding: '120px 0', background: '#ffffff' }}>
+    <AnimatedSection style={{ padding: '120px 0', background: '#FAF9F1' }}>
       <Container>
         <div style={{ marginBottom: '40px', maxWidth: '720px' }}>
           <Eyebrow>Sample stories</Eyebrow>
@@ -130,7 +130,7 @@ export default function SampleStories() {
                   background: active ? '#F51D00' : '#ffffff',
                   color: active ? '#ffffff' : '#1C1C1C',
                   border: '1px solid',
-                  borderColor: active ? '#F51D00' : '#e5edf5',
+                  borderColor: active ? '#F51D00' : '#DAD9D2',
                   borderRadius: '4px',
                   padding: '8px 14px',
                   fontFamily:    SCALE.label.family,

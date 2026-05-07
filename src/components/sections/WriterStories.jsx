@@ -56,7 +56,7 @@ const STORIES = [
 
 export default function WriterStories() {
   return (
-    <AnimatedSection id="stories" style={{ padding: '120px 0', background: '#e5edf5' }}>
+    <AnimatedSection id="stories" style={{ padding: '120px 0', background: '#DAD9D2' }}>
       <Container>
         <div style={{ marginBottom: '56px', maxWidth: '720px' }}>
           <Eyebrow>Writers, paid</Eyebrow>

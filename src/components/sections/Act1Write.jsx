@@ -28,7 +28,7 @@ const bodySmStyle = (color = '#1C1C1C') => ({
 
 function StoryboardStub() {
   return (
-    <div style={{ background: '#f8fafd', borderRadius: '6px', padding: '20px', boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 32px 8px' }}>
+    <div style={{ background: '#FEFEFD', borderRadius: '6px', padding: '20px', boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 32px 8px' }}>
       <p style={{ ...labelStyle('#1C1C1C'), marginBottom: '6px' }}>The Boss’s Forbidden Love</p>
       <p style={{ ...eyebrowStyle('#F51D00'), marginBottom: '14px' }}>Romance · Slow burn · Hindi</p>
 
@@ -39,7 +39,7 @@ function StoryboardStub() {
           { name: 'Vikram Singh', role: 'The patriarch' },
           { name: 'Riya',         role: 'Best friend' },
         ].map((c) => (
-          <div key={c.name} style={{ background: '#ffffff', border: '1px solid #e5edf5', borderRadius: '4px', padding: '8px 10px' }}>
+          <div key={c.name} style={{ background: '#ffffff', border: '1px solid #DAD9D2', borderRadius: '4px', padding: '8px 10px' }}>
             <p style={captionStyle('#1C1C1C')}>{c.name}</p>
             <p style={{ ...captionStyle('#8D8D8D'), fontSize: '10px' }}>{c.role}</p>
           </div>
@@ -55,7 +55,7 @@ function StoryboardStub() {
 
 function DraftStub() {
   return (
-    <div style={{ background: '#f8fafd', borderRadius: '6px', padding: '20px', boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 32px 8px' }}>
+    <div style={{ background: '#FEFEFD', borderRadius: '6px', padding: '20px', boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 32px 8px' }}>
       <p style={{ ...eyebrowStyle('#F51D00'), marginBottom: '8px' }}>Episode 7 · Draft</p>
       <p style={{ ...bodySmStyle('#1C1C1C'), marginBottom: '8px' }}>
         Mira’s heels echoed across the marble lobby, each step a measured breath. She had not expected to see him here. Not tonight. Not after what he had said in the boardroom.
@@ -69,7 +69,7 @@ function DraftStub() {
 
 function ReviewStub() {
   return (
-    <div style={{ background: '#f8fafd', borderRadius: '6px', padding: '20px', boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 32px 8px' }}>
+    <div style={{ background: '#FEFEFD', borderRadius: '6px', padding: '20px', boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 32px 8px' }}>
       <p style={{ ...labelStyle('#1C1C1C'), fontStyle: 'italic', marginBottom: '14px' }}>
         “Mira’s heels echoed across the marble lobby...”
       </p>
@@ -89,7 +89,7 @@ function ReviewStub() {
 
 function MemoryStub() {
   return (
-    <div style={{ background: '#f8fafd', borderRadius: '6px', padding: '20px', boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 32px 8px' }}>
+    <div style={{ background: '#FEFEFD', borderRadius: '6px', padding: '20px', boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 32px 8px' }}>
       <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start', marginBottom: '14px' }}>
         <div style={{ ...captionStyle('#ffffff'), background: '#1C1C1C', borderRadius: '4px', width: 22, height: 22, display: 'flex', alignItems: 'center', justifyContent: 'center', flex: 'none' }}>
           You
@@ -138,7 +138,7 @@ const BLOCKS = [
 
 export default function Act1Write() {
   return (
-    <AnimatedSection style={{ padding: '120px 0', background: '#ffffff' }}>
+    <AnimatedSection style={{ padding: '120px 0', background: '#FAF9F1' }}>
       <Container>
         <div style={{ maxWidth: '720px', marginBottom: '64px' }}>
           <Eyebrow>Act 1 · Write with Sherpa</Eyebrow>

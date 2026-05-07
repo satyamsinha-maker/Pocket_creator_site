@@ -151,20 +151,6 @@
   --container-content:  1200px;
   --container-wide:     1376px;
 
-  /* ── Legacy tokens (still referenced by some components, will retire) ─ */
-  --color-platinum:    #ffffff;
-  --color-porcelain:   #f8fafd;
-  --color-powder:      #e5edf5;
-  --color-stone:       #d8d6df;
-  --color-ghost:       #64748d;
-  --color-slate:       #50617a;
-  --color-midnight:    #061b31;
-  --color-violet:      #F51D00;
-  --color-soft-violet: #ff6b4d;
-  --color-washed-violet:#fcb8ad;
-  --color-green:       #81b81a;
-  --color-orange:      #ff6118;
-
   /* ── Font families ───────────────────────────────────────────────────── */
   --font-sans:    'Mallory', ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-display: 'Season Mix', Georgia, 'Times New Roman', serif;
@@ -242,8 +228,8 @@ html {
 body {
   font-family: 'Mallory', ui-sans-serif, system-ui, -apple-system, sans-serif;
   font-feature-settings: "ss01" on, "tnum";
-  background-color: #ffffff;
-  color: #1C1C1C;             /* ink — primary text */
+  background-color: #FAF9F1;   /* vellum — page surface */
+  color: #1C1C1C;              /* ink — primary text */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

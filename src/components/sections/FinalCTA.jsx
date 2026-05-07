@@ -4,7 +4,7 @@ import { Container, AnimatedSection, SerifHeading, Body, PillButton, SCALE } fro
 export default function FinalCTA() {
   const [v, setV] = useState('')
   return (
-    <AnimatedSection style={{ padding: '160px 0', textAlign: 'center', position: 'relative', overflow: 'hidden', background: '#ffffff' }}>
+    <AnimatedSection style={{ padding: '160px 0', textAlign: 'center', position: 'relative', overflow: 'hidden', background: '#FAF9F1' }}>
       {/* Dreamy gradient halo behind the headline */}
       <div
         aria-hidden
@@ -37,7 +37,7 @@ export default function FinalCTA() {
                 display: 'flex',
                 alignItems: 'center',
                 background: '#ffffff',
-                border: '1px solid #d8d6df',
+                border: '1px solid #BBBAB4',
                 borderRadius: '4px',
                 padding: '8px 8px 8px 16px',
                 boxShadow: 'rgba(23, 23, 23, 0.06) 0px 3px 6px 0px',

@@ -28,10 +28,10 @@ export default function Navigation() {
         position: 'sticky',
         top: 0,
         zIndex: 100,
-        backgroundColor: 'rgba(255,255,255,0.92)',
+        backgroundColor: 'rgba(250,249,241,0.92)',   /* vellum @ 92% */
         backdropFilter: 'saturate(180%) blur(20px)',
         WebkitBackdropFilter: 'saturate(180%) blur(20px)',
-        borderBottom: scrolled ? '1px solid #ececec' : '1px solid transparent',
+        borderBottom: scrolled ? '1px solid #DAD9D2' : '1px solid transparent',
         transition: 'border-bottom 0.2s ease',
       }}
     >
@@ -155,8 +155,8 @@ export default function Navigation() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.2 }}
           style={{
-            borderTop: '1px solid #ececec',
-            background: '#ffffff',
+            borderTop: '1px solid #DAD9D2',
+            background: '#FAF9F1',          /* vellum — matches page */
             padding: '20px 24px',
           }}
           className="nav-drawer"

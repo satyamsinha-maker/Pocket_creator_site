@@ -338,24 +338,25 @@ Once these are in `@theme`, every utility class works automatically — `bg-scar
 
 ---
 
-### Legacy tokens *(currently in `@theme`)*
+### Legacy tokens — *retired ✅*
 
-The site presently runs on an interim Stripe-inspired palette that pre-dates this brand decision. These will be retired as the new family-based tokens land, but until they are, references in code map roughly like this:
+The site previously ran on an interim Stripe-inspired palette (`platinum`, `porcelain`, `powder`, `stone`, `ghost`, `slate`, `midnight`, `violet`, `soft-violet`, `washed-violet`, `green`, `orange`). All of those tokens have now been removed from `@theme` and every referencing hex has been migrated to the design-system token closest in role:
 
-| Legacy token | Will become |
-|---|---|
-| `--color-platinum` (`#fff`) | (kept — pure white) |
-| `--color-porcelain` (`#f8fafd`) | `vellum-tint-5` ish — *cooler than vellum, will adjust* |
-| `--color-powder` (`#e5edf5`) | (cool blue-grey — section-only, will retire or rename) |
-| `--color-stone` (`#d8d6df`) | `vellum-shade-1` |
-| `--color-ghost` (`#64748d`) | `vellum-shade-3` ish |
-| `--color-slate` (`#50617a`) | `vellum-shade-4` ish |
-| `--color-midnight` (`#061b31`) | `ink-shade-3` ish |
-| `--color-violet` (`#F51D00`) | `scarlet` |
-| `--color-soft-violet` (`#ff6b4d`) | `scarlet-tint-3` ish |
-| `--color-washed-violet` (`#fcb8ad`) | `scarlet-tint-6` ish |
+| Legacy hex | Migrated to | Token |
+|---|---|---|
+| `#061b31` (midnight) | `#1C1C1C` | `ink` |
+| `#50617a` (slate) | `#717171` | `ink-tint-3` |
+| `#64748d` (ghost) | `#8D8D8D` | `ink-tint-4` |
+| `#828282` (legacy nav grey) | `#717171` | `ink-tint-3` |
+| `#F51D00` (violet, kept hex) | `#F51D00` | `scarlet` |
+| `#ff6b4d` (soft-violet) | `#F8715F` | `scarlet-tint-3` |
+| `#fcb8ad` (washed-violet) | `#FCC6BF` | `scarlet-tint-6` |
+| `#d8d6df` (stone) | `#BBBAB4` | `vellum-shade-2` |
+| `#e5edf5` (powder, alt section) | `#DAD9D2` | `vellum-shade-1` |
+| `#f8fafd` (porcelain, card) | `#FEFEFD` | `vellum-tint-7` |
+| `#ececec` (legacy hairline) | `#DAD9D2` | `vellum-shade-1` |
 
-Migration: do it section-by-section (matching the typescale sweep pattern) once the new tokens are in `@theme`, so each commit keeps the diff readable.
+Going forward, the only canonical color sources are the **family palette** (ink / vellum / scarlet) and **semantic tokens** that point into it. New components should never hard-code a hex outside those families.
 
 ---
 
@@ -652,3 +653,5 @@ boxShadow: rgba(23, 23, 23, 0.06) 0 3px 6px 0;
 | 2026-05-07 | First version: typography section. Skeleton sections for colors / spacing / grids / radii / shadows / motion. |
 | 2026-05-07 | Colors section filled in — three core families (`ink`, `vellum`, `scarlet`), 15-stop tint+shade scale per family, naming convention, suggested `@theme` block, and legacy token migration map. |
 | 2026-05-07 | Renamed `ember` → `scarlet` (brand red `#F51D00`). Added Semantic Tokens section (text hierarchy, primary/secondary/brand button states, surface roles, hover/focus rules) and Spacing & Grid section with full 8 px scale, container widths, breakpoints, and component-level conventions. |
+| 2026-05-07 | Migrated page base to `vellum` (`#FAF9F1`) — body, all section-level whites, Hero gradient, and Navigation backdrop now read as the warm cream surface. |
+| 2026-05-07 | **Retired** all legacy Stripe-inspired tokens (`platinum`, `porcelain`, `powder`, `stone`, `ghost`, `slate`, `midnight`, `violet`, `soft/washed-violet`, `green`, `orange`). Removed from `@theme`; remaining inline hex refs migrated to ink/vellum/scarlet family tokens. |

@@ -22,7 +22,7 @@ function SfxStub() {
   return (
     <svg viewBox="0 0 200 64" width="100%" height="64" fill="none" stroke="#F51D00" strokeWidth="1.5">
       <path d="M0 32 Q 20 8, 40 32 T 80 32 T 120 32 T 160 32 T 200 32" />
-      <path d="M0 32 Q 14 50, 28 32 T 56 32 T 84 32 T 112 32 T 140 32 T 168 32 T 200 32" opacity="0.4" stroke="#ff6b4d" />
+      <path d="M0 32 Q 14 50, 28 32 T 56 32 T 84 32 T 112 32 T 140 32 T 168 32 T 200 32" opacity="0.4" stroke="#F8715F" />
     </svg>
   )
 }
@@ -79,7 +79,7 @@ const CARDS = [
 
 export default function Act2Produce() {
   return (
-    <AnimatedSection style={{ padding: '120px 0', background: '#e5edf5' }}>
+    <AnimatedSection style={{ padding: '120px 0', background: '#DAD9D2' }}>
       <Container>
         <div style={{ maxWidth: '720px', marginBottom: '64px' }}>
           <Eyebrow>Act 2 · We produce it</Eyebrow>

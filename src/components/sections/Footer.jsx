@@ -12,8 +12,8 @@ export default function Footer() {
     <footer
       style={{
         padding: '72px 0 48px',
-        borderTop: '1px solid #e5edf5',
-        background: '#f8fafd',
+        borderTop: '1px solid #DAD9D2',
+        background: '#FEFEFD',
       }}
     >
       <Container>
@@ -77,7 +77,7 @@ export default function Footer() {
         <div
           style={{
             paddingTop: '24px',
-            borderTop: '1px solid #e5edf5',
+            borderTop: '1px solid #DAD9D2',
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',

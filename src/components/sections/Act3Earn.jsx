@@ -90,7 +90,7 @@ const BLOCKS = [
 
 export default function Act3Earn() {
   return (
-    <AnimatedSection id="earn" style={{ padding: '120px 0', background: '#ffffff' }}>
+    <AnimatedSection id="earn" style={{ padding: '120px 0', background: '#FAF9F1' }}>
       <Container>
         <div style={{ maxWidth: '720px', marginBottom: '64px' }}>
           <Eyebrow>Act 3 · Listeners pay</Eyebrow>
@@ -129,7 +129,7 @@ export default function Act3Earn() {
               transition={{ duration: 0.5, delay: i * 0.06 }}
               whileHover={{ y: -2, boxShadow: 'rgba(50, 50, 93, 0.12) 0px 16px 32px 0px' }}
               style={{
-                background: '#e5edf5',
+                background: '#DAD9D2',
                 borderRadius: '6px',
                 padding: '24px',
                 transition: 'box-shadow 0.25s',

@@ -9,7 +9,7 @@ const STATS = [
 
 export default function TrustBand() {
   return (
-    <AnimatedSection style={{ padding: '64px 0', background: '#ffffff' }}>
+    <AnimatedSection style={{ padding: '64px 0', background: '#FAF9F1' }}>
       <Container>
         <div
           style={{
@@ -24,7 +24,7 @@ export default function TrustBand() {
               key={s.label}
               style={{
                 paddingLeft: i === 0 ? 0 : '24px',
-                borderLeft: i === 0 ? 'none' : '1px solid #e5edf5',
+                borderLeft: i === 0 ? 'none' : '1px solid #DAD9D2',
               }}
               className="trust-item"
             >
