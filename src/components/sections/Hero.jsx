@@ -125,21 +125,20 @@ export default function Hero() {
         <div
           style={{
             display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'flex-start',
-            gap: 'clamp(24px, 3vw, 56px)',
-            flexWrap: 'wrap',
+            flexDirection: 'column',
+            alignItems: 'center',                /* centred column */
+            gap: 'clamp(20px, 2.5vw, 32px)',
+            textAlign: 'center',
           }}
           className="hero-text-row"
         >
-          {/* Heading — aligns to LEFT edge of grid (= product left).
-           *  Words reveal left → right with progressive blur clearing.
+          {/* Heading — centred. Words reveal left → right with progressive
+           *  blur clearing. Slightly wider maxWidth than the split version
+           *  so a centred two-liner still reads as deliberate.
            */}
           <h1
             style={{
-              flex: '1 1 320px',
-              maxWidth: '560px',
-              /* display token — Season Mix Regular, fluid 40 → 56 px */
+              maxWidth: '880px',
               fontFamily:    SCALE.display.family,
               fontWeight:    SCALE.display.weight,
               fontSize:      SCALE.display.fontSize,
@@ -147,6 +146,7 @@ export default function Hero() {
               letterSpacing: SCALE.display.letterSpacing,
               color: '#000000',
               margin: 0,
+              textWrap: 'balance',               /* skill: text-wrap balance for headlines */
             }}
           >
             <BlurReveal
@@ -158,14 +158,10 @@ export default function Hero() {
             />
           </h1>
 
-          {/* Body — aligns to RIGHT edge of grid (= product right). Reveals
-           *  after the heading has begun clearing.
-           */}
+          {/* Body — centred underneath. Reveals after the heading begins. */}
           <p
             style={{
-              flex: '0 1 340px',
-              maxWidth: '340px',
-              /* subheading token — Mallory MP Narrow, 18px, 1.5 line-height */
+              maxWidth: '520px',
               fontFamily:    SCALE.subheading.family,
               fontWeight:    SCALE.subheading.weight,
               fontSize:      SCALE.subheading.fontSize,
@@ -173,6 +169,7 @@ export default function Hero() {
               letterSpacing: SCALE.subheading.letterSpacing,
               color: '#717171',
               margin: 0,
+              textWrap: 'pretty',                /* skill: text-wrap pretty for body */
             }}
           >
             <BlurReveal
