@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { motion, useMotionValue, useTransform, animate } from 'framer-motion'
+import { SCALE } from '../ui'
 
 const SANS = "'Mallory', sans-serif"
 
@@ -139,12 +140,13 @@ export default function Hero() {
           <h1
             style={{
               flex: '1 1 320px',
-              maxWidth: '500px',
-              fontFamily: SANS,
-              fontWeight: 400,
-              fontSize: 'clamp(28px, 3.4vw, 40px)',
-              lineHeight: 1.2,
-              letterSpacing: '-0.01em',
+              maxWidth: '560px',
+              /* display token — Season Mix Regular, fluid 40 → 56 px */
+              fontFamily:    SCALE.display.family,
+              fontWeight:    SCALE.display.weight,
+              fontSize:      SCALE.display.fontSize,
+              lineHeight:    SCALE.display.lineHeight,
+              letterSpacing: SCALE.display.letterSpacing,
               color: '#000000',
               margin: 0,
             }}
