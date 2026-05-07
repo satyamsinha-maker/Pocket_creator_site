@@ -52,6 +52,37 @@ export const COLORS = {
   surfaceInverse:  '#1C1C1C',  // = ink
 }
 
+/* ── Shadow tokens ─────────────────────────────────────────────────────── *
+ * Three-layer "shadow-as-border" pattern from the make-interfaces-feel-
+ * better skill. Use SHADOWS.border on cards in place of solid borders or
+ * single-blur shadows. Pure-black low-alpha so the shadow adapts to any
+ * background tone (vellum, vellum-tint-7, dark bands, etc.).
+ * ─────────────────────────────────────────────────────────────────────── */
+export const SHADOWS = {
+  border:
+    '0px 0px 0px 1px rgba(0, 0, 0, 0.06),' +
+    '0px 1px 2px -1px rgba(0, 0, 0, 0.06),' +
+    '0px 2px 4px 0px rgba(0, 0, 0, 0.04)',
+  borderHover:
+    '0px 0px 0px 1px rgba(0, 0, 0, 0.08),' +
+    '0px 1px 2px -1px rgba(0, 0, 0, 0.08),' +
+    '0px 2px 4px 0px rgba(0, 0, 0, 0.06)',
+  elevated:
+    '0px 0px 0px 1px rgba(0, 0, 0, 0.04),' +
+    '0px 4px 12px -2px rgba(0, 0, 0, 0.08),' +
+    '0px 16px 32px -8px rgba(0, 0, 0, 0.10)',
+}
+
+/* ── Radius tokens ─────────────────────────────────────────────────────── */
+export const RADII = {
+  button: '8px',
+  card:   '12px',
+  panel:  '16px',
+  input:  '6px',
+  tag:    '6px',
+  pill:   '9999px',
+}
+
 /* ── Typescale lookup ─────────────────────────────────────────────────────
  * Single source of truth for sizes/leading/tracking. Headings (display, h1..h4)
  * all use Season Mix; everything else uses Mallory MP Narrow.
@@ -210,6 +241,8 @@ export function Caption({ children, color = COLORS.textTertiary, style = {} }) {
  *  brand    — Brand CTA (use sparingly): scarlet fill, vellum text
  *  ghost    — text-only minimal action (no fill, no border)
  *  sienna   — legacy alias retained for Hero/FinalCTA; resolves to brand
+ *
+ *  Press feedback: scale(0.96) on tap per make-interfaces-feel-better skill.
  * ─────────────────────────────────────────────────────────────────────── */
 export function PillButton({ variant = 'filled', children, onClick, ...rest }) {
   const variants = {
@@ -260,10 +293,10 @@ export function PillButton({ variant = 'filled', children, onClick, ...rest }) {
     <motion.button
       onClick={onClick}
       whileHover={{ backgroundColor: hoverBg }}
-      whileTap={{ scale: 0.98 }}
+      whileTap={{ scale: 0.96 }}                   /* skill: scale(0.96) on press */
       style={{
         ...visual,
-        borderRadius: '4px',
+        borderRadius: RADII.button,
         fontFamily: SANS,
         fontWeight: 400,
         fontSize: SCALE.label.fontSize,
@@ -273,7 +306,10 @@ export function PillButton({ variant = 'filled', children, onClick, ...rest }) {
         display: 'inline-flex',
         alignItems: 'center',
         gap: '6px',
-        transition: 'background-color 120ms cubic-bezier(0.22, 1, 0.36, 1)',
+        /* skill: never `transition: all` — specify exact properties */
+        transitionProperty: 'background-color, transform',
+        transitionDuration: '120ms',
+        transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
       }}
       {...rest}
     >
@@ -315,48 +351,52 @@ export function Container({ children, style = {} }) {
   )
 }
 
-/* ── Card — Stripe Default Card (powder-blue) by default ──────────────── */
-export function Card({ children, style = {}, className = '', hover = false, surface = 'powder' }) {
-  const bg = surface === 'porcelain' ? '#FEFEFD' : surface === 'white' ? '#ffffff' : '#DAD9D2'
+/* ── Card — vellum surface with layered shadow-as-border ──────────────── *
+ *  surface: 'card' (vellum-tint-7, default) | 'alt' (vellum-shade-1) |
+ *           'inverse' (ink) | legacy aliases 'porcelain'/'powder' kept
+ * ─────────────────────────────────────────────────────────────────────── */
+export function Card({ children, style = {}, className = '', hover = false, surface = 'card' }) {
+  const bg =
+    surface === 'alt'      || surface === 'powder'    ? COLORS.surfaceAlt    :
+    surface === 'inverse'                             ? COLORS.surfaceInverse :
+    /* default + legacy 'porcelain' + 'white' */         COLORS.surfaceCard
   return (
     <motion.div
       className={className}
       style={{
         backgroundColor: bg,
-        borderRadius: '6px',
+        borderRadius: RADII.card,
         padding: '12px',
+        boxShadow: SHADOWS.border,
         ...style,
       }}
-      whileHover={hover ? {
-        boxShadow: 'rgba(50, 50, 93, 0.12) 0px 16px 32px 0px',
-        y: -2,
-      } : undefined}
-      transition={{ duration: 0.25 }}
+      whileHover={hover ? { y: -2, boxShadow: SHADOWS.borderHover } : undefined}
+      transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}
     </motion.div>
   )
 }
 
-/* ── FeatureCard — porcelain with soft xl shadow ──────────────────────── */
+/* ── FeatureCard — featured / elevated surface ────────────────────────── */
 export function FeatureCard({ children, style = {}, hover = false }) {
   return (
     <motion.div
       style={{
-        backgroundColor: '#FEFEFD',
-        borderRadius: '6px',
+        backgroundColor: COLORS.surfaceCard,
+        borderRadius: RADII.card,
         padding: '12px',
-        boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 32px 8px',
+        boxShadow: SHADOWS.elevated,
         ...style,
       }}
-      whileHover={hover ? { y: -2, boxShadow: 'rgba(50, 50, 93, 0.12) 0px 16px 32px 0px' } : undefined}
-      transition={{ duration: 0.25 }}
+      whileHover={hover ? { y: -2 } : undefined}
+      transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}
     </motion.div>
   )
 }
 
-/* Re-export the typescale + fonts so other modules can compose ad-hoc styles
- * (COLORS is exported at its declaration above)                              */
+/* Re-export typescale + fonts (COLORS, SHADOWS, RADII exported at their
+ * declarations above for composing ad-hoc styles).                            */
 export { SCALE, SANS, DISPLAY }

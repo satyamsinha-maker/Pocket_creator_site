@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Container, AnimatedSection, SerifHeading, Body, Eyebrow, SCALE } from '../ui'
+import { Container, AnimatedSection, SerifHeading, Body, Eyebrow, SCALE, SHADOWS, RADII } from '../ui'
 
 const SANS = SCALE.body.family
 
@@ -35,7 +35,7 @@ function ThumbnailStub() {
         'radial-gradient(circle, rgb(127, 125, 252), rgb(244, 75, 204) 33%, rgb(229, 237, 245) 66%)',
         'linear-gradient(0deg, rgb(255, 46, 222), rgb(210, 152, 255))',
       ].map((g, i) => (
-        <div key={i} style={{ aspectRatio: '3 / 4', borderRadius: '4px', background: g, position: 'relative', overflow: 'hidden' }}>
+        <div key={i} style={{ aspectRatio: '3 / 4', borderRadius: RADII.tag, background: g, position: 'relative', overflow: 'hidden' }}>
           <div style={{ position: 'absolute', bottom: 6, left: 6, right: 6 }}>
             <div style={{ height: 3, background: 'rgba(255,255,255,0.85)', borderRadius: 1, marginBottom: 3, width: '70%' }} />
             <div style={{ height: 2, background: 'rgba(255,255,255,0.6)', borderRadius: 1, width: '50%' }} />
@@ -48,8 +48,8 @@ function ThumbnailStub() {
 
 function VideoStub() {
   return (
-    <div style={{ position: 'relative', borderRadius: '4px', aspectRatio: '16 / 9', background: 'radial-gradient(circle, rgb(127, 125, 252), rgb(244, 75, 204) 33%, rgb(229, 237, 245) 66%)', overflow: 'hidden' }}>
-      <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 36, height: 36, borderRadius: '4px', background: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: 'rgba(0,0,0,0.18) 0px 4px 12px 0px' }}>
+    <div style={{ position: 'relative', borderRadius: RADII.tag, aspectRatio: '16 / 9', background: 'radial-gradient(circle, rgb(127, 125, 252), rgb(244, 75, 204) 33%, rgb(229, 237, 245) 66%)', overflow: 'hidden' }}>
+      <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 36, height: 36, borderRadius: RADII.tag, background: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: SHADOWS.border }}>
         <svg width="10" height="12" viewBox="0 0 10 12" fill="none"><path d="M0 1 L10 6 L0 11 Z" fill="#F51D00" /></svg>
       </div>
       <div
@@ -63,7 +63,7 @@ function VideoStub() {
           color: '#1C1C1C',
           background: 'rgba(255,255,255,0.85)',
           padding: '2px 6px',
-          borderRadius: '4px',
+          borderRadius: RADII.tag,
         }}
       >0:18 / 0:30</div>
     </div>
@@ -101,13 +101,13 @@ export default function Act2Produce() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.06 }}
-              whileHover={{ y: -2, boxShadow: 'rgba(50, 50, 93, 0.12) 0px 16px 32px 0px' }}
+              whileHover={{ y: -2, boxShadow: SHADOWS.borderHover }}
               style={{
                 background: '#ffffff',
-                borderRadius: '6px',
+                borderRadius: RADII.card,
                 padding: '28px',
-                boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 32px 8px',
-                transition: 'box-shadow 0.25s',
+                boxShadow: SHADOWS.elevated,
+                transitionProperty: 'box-shadow, transform', transitionDuration: '180ms', transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
               }}
             >
               <div style={{ marginBottom: '24px', minHeight: '76px' }}>{c.visual}</div>

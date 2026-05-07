@@ -209,10 +209,36 @@
   --tracking-caption:   0.02em;
 
   /* ── Radii (Stripe — square 4px buttons, 6px cards) ──────────────────── */
-  --radius-button: 4px;
-  --radius-card:   6px;
-  --radius-input:  4px;
-  --radius-tag:    4px;
+  /* ── Radii ───────────────────────────────────────────────────────────
+   * Bumped per make-interfaces-feel-better skill ("rounder corners").
+   * --radius-panel reserved for image stages / large surfaces.
+   * ──────────────────────────────────────────────────────────────────── */
+  --radius-button:  8px;
+  --radius-card:   12px;
+  --radius-panel:  16px;
+  --radius-input:   6px;
+  --radius-tag:     6px;
+  --radius-pill:  9999px;
+
+  /* ── Shadows (3-layer "shadow-as-border" pattern) ─────────────────────
+   * --shadow-border       — default elevation (1px ring + subtle lift)
+   * --shadow-border-hover — same shape, slightly stronger
+   * --shadow-elevated     — taller lift for hero / featured surfaces
+   * Following the make-interfaces-feel-better surfaces.md spec exactly:
+   * pure black with low opacity adapts to any background.
+   * ──────────────────────────────────────────────────────────────────── */
+  --shadow-border:
+    0px 0px 0px 1px rgba(0, 0, 0, 0.06),
+    0px 1px 2px -1px rgba(0, 0, 0, 0.06),
+    0px 2px 4px 0px rgba(0, 0, 0, 0.04);
+  --shadow-border-hover:
+    0px 0px 0px 1px rgba(0, 0, 0, 0.08),
+    0px 1px 2px -1px rgba(0, 0, 0, 0.08),
+    0px 2px 4px 0px rgba(0, 0, 0, 0.06);
+  --shadow-elevated:
+    0px 0px 0px 1px rgba(0, 0, 0, 0.04),
+    0px 4px 12px -2px rgba(0, 0, 0, 0.08),
+    0px 16px 32px -8px rgba(0, 0, 0, 0.10);
 }
 
 * {
@@ -234,7 +260,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Soft diffused shadow used across feature cards */
+/* Legacy class — points to new layered token */
 .elevated {
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 32px 8px;
+  box-shadow: var(--shadow-elevated);
 }

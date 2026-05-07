@@ -591,32 +591,81 @@ Most layout transitions happen at **`md`** (768 px — column count drops from 4
 
 ## Radii
 
-> **Coming soon.** Currently four named radii in `@theme`:
+Six named radii in `@theme`. Mirrored as `RADII.{button|card|panel|input|tag|pill}` in `ui.jsx` for JS-side composition.
 
-| Token | Value |
-|---|---|
-| `--radius-button` | `4px` |
-| `--radius-input` | `4px` |
-| `--radius-tag` | `4px` |
-| `--radius-card` | `6px` |
+| Token | Value | Use |
+|---|---|---|
+| `--radius-input` | `6px` | Form fields, text inputs |
+| `--radius-tag`   | `6px` | Tags, badges, small chips |
+| `--radius-button`| `8px` | Buttons (filled / outlined) |
+| `--radius-card`  | `12px` | Cards, content blocks |
+| `--radius-panel` | `16px` | Image stages, large surfaces, hero product card |
+| `--radius-pill`  | `9999px` | Pill CTAs (e.g. nav Sign-up button) |
 
-The Sign-up CTA in the nav uses a one-off `32px` pill radius — this should probably become a `--radius-pill` token in a future revision.
+### Concentric border-radius rule
+
+When a rounded element is nested inside another with padding `≤ 24px` between them, the **outer** radius must equal the **inner** radius plus the padding:
+
+```
+outerRadius = innerRadius + padding
+```
+
+A `12px` card with `8px` of internal padding wrapping a `4px`-radius element looks unbalanced. Instead, `outer = 4 + 8 = 12px`, or shrink the inner to `4px` if the outer is fixed.
+
+When padding is larger than `24px`, treat the layers as **separate surfaces** and choose each radius independently — the visual gap is wide enough that strict concentric math stops mattering.
 
 ---
 
 ## Shadows
 
-> **Coming soon.** Currently:
+Three layered tokens following the **shadow-as-border** pattern (1px ring + lift + ambient depth). Pure-black low-alpha so they adapt to any background tone — vellum cream, vellum-tint-7 cards, or dark inverse bands.
+
+| Token | Use |
+|---|---|
+| `--shadow-border` | Default elevation for cards and contained surfaces |
+| `--shadow-border-hover` | Same shape, slightly stronger — for hover states |
+| `--shadow-elevated` | Taller lift for hero / featured surfaces (image stages, dashboard cards) |
 
 ```css
-/* "Soft elevation" — used on feature cards */
-.elevated { box-shadow: rgba(0, 0, 0, 0.2) 0 0 32px 8px; }
+--shadow-border:
+  0px 0px 0px 1px rgba(0, 0, 0, 0.06),
+  0px 1px 2px -1px rgba(0, 0, 0, 0.06),
+  0px 2px 4px 0px rgba(0, 0, 0, 0.04);
 
-/* Hover state — used on cards */
-boxShadow: rgba(50, 50, 93, 0.12) 0 16px 32px 0;
+--shadow-border-hover:
+  0px 0px 0px 1px rgba(0, 0, 0, 0.08),
+  0px 1px 2px -1px rgba(0, 0, 0, 0.08),
+  0px 2px 4px 0px rgba(0, 0, 0, 0.06);
 
-/* Input shadow */
-boxShadow: rgba(23, 23, 23, 0.06) 0 3px 6px 0;
+--shadow-elevated:
+  0px 0px 0px 1px rgba(0, 0, 0, 0.04),
+  0px 4px 12px -2px rgba(0, 0, 0, 0.08),
+  0px 16px 32px -8px rgba(0, 0, 0, 0.10);
+```
+
+### When to use shadow vs. border
+
+| Use shadow | Use border |
+|---|---|
+| Cards, panels, image stages | Dividers between list items |
+| Buttons with bordered styles | Hairline section separators |
+| Elevated elements (dropdowns, modals) | Form input outlines |
+| Elements on varied backgrounds | Table cell boundaries |
+
+The page's vertical column rails (`ColumnRails` component) are **borders** because their job is structural separation — they sit at `vellum-shade-1` (`#DAD9D2`) and never become shadows.
+
+### JS-side composition
+
+```jsx
+import { SHADOWS } from './components/ui'
+
+<div style={{
+  background:    COLORS.surfaceCard,
+  borderRadius:  RADII.card,
+  boxShadow:     SHADOWS.border,
+}}>
+  …
+</div>
 ```
 
 ---
@@ -655,3 +704,5 @@ boxShadow: rgba(23, 23, 23, 0.06) 0 3px 6px 0;
 | 2026-05-07 | Renamed `ember` → `scarlet` (brand red `#F51D00`). Added Semantic Tokens section (text hierarchy, primary/secondary/brand button states, surface roles, hover/focus rules) and Spacing & Grid section with full 8 px scale, container widths, breakpoints, and component-level conventions. |
 | 2026-05-07 | Migrated page base to `vellum` (`#FAF9F1`) — body, all section-level whites, Hero gradient, and Navigation backdrop now read as the warm cream surface. |
 | 2026-05-07 | **Retired** all legacy Stripe-inspired tokens (`platinum`, `porcelain`, `powder`, `stone`, `ghost`, `slate`, `midnight`, `violet`, `soft/washed-violet`, `green`, `orange`). Removed from `@theme`; remaining inline hex refs migrated to ink/vellum/scarlet family tokens. |
+| 2026-05-07 | Filled in **Radii** and **Shadows** sections per `make-interfaces-feel-better` skill. Bumped radii — buttons `4 → 8`, cards `6 → 12`, image stages → new `panel` token (`16px`), inputs/tags `4 → 6`. Replaced ad-hoc single-blur box-shadows with three layered tokens (`shadow-border`, `shadow-border-hover`, `shadow-elevated`) using pure-black low-alpha. Documented the concentric border-radius rule. |
+| 2026-05-07 | `ColumnRails` (global vertical hairlines) hidden while the hero is in view — fade in with `400ms` opacity transition once user scrolls past. |

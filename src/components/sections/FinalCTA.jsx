@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Container, AnimatedSection, SerifHeading, Body, PillButton, SCALE } from '../ui'
+import { Container, AnimatedSection, SerifHeading, Body, PillButton, SCALE, SHADOWS, RADII } from '../ui'
 
 export default function FinalCTA() {
   const [v, setV] = useState('')
@@ -38,9 +38,9 @@ export default function FinalCTA() {
                 alignItems: 'center',
                 background: '#ffffff',
                 border: '1px solid #BBBAB4',
-                borderRadius: '4px',
+                borderRadius: RADII.tag,
                 padding: '8px 8px 8px 16px',
-                boxShadow: 'rgba(23, 23, 23, 0.06) 0px 3px 6px 0px',
+                boxShadow: SHADOWS.border,
                 gap: '8px',
                 textAlign: 'left',
               }}

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Container, AnimatedSection, SerifHeading, Body, Eyebrow, Label, Caption, SCALE } from '../ui'
+import { Container, AnimatedSection, SerifHeading, Body, Eyebrow, Label, Caption, SCALE, SHADOWS, RADII } from '../ui'
 
 function Avatar({ name, gradient }) {
   const initials = name.split(' ').map((n) => n[0]).slice(0, 2).join('')
@@ -8,7 +8,7 @@ function Avatar({ name, gradient }) {
       style={{
         width: 56,
         height: 56,
-        borderRadius: '4px',
+        borderRadius: RADII.tag,
         background: gradient,
         color: '#ffffff',
         fontFamily:    SCALE.subheading.family,
@@ -73,16 +73,16 @@ export default function WriterStories() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.55, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={{ boxShadow: 'rgba(50, 50, 93, 0.12) 0px 16px 32px 0px' }}
+              whileHover={{ boxShadow: SHADOWS.borderHover }}
               style={{
                 background: '#ffffff',
-                borderRadius: '6px',
+                borderRadius: RADII.card,
                 padding: '32px',
                 display: 'grid',
                 gridTemplateColumns: '72px 1fr',
                 gap: '24px',
                 alignItems: 'flex-start',
-                transition: 'box-shadow 0.25s',
+                transitionProperty: 'box-shadow, transform', transitionDuration: '180ms', transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
               }}
               className="story-card"
             >

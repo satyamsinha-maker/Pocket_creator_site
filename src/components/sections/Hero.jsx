@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { motion, useMotionValue, useTransform, animate } from 'framer-motion'
-import { SCALE } from '../ui'
+import { SCALE, SHADOWS, RADII } from '../ui'
 
 /* Mountain backdrop — cycles every 3 s with a smooth cross-fade.
  * Add more entries to MOUNTAINS to extend the rotation. Files live in
@@ -245,9 +245,9 @@ export default function Hero() {
             width:  'var(--grid-w)',          /* 1015 / 1441 of mountain      */
             aspectRatio: '1015 / 579',        /* reserves slot before image  */
             zIndex: 2,
-            borderRadius: 'clamp(4px, 0.6vw, 8px)',
+            borderRadius: RADII.panel,            /* 16px — rounder per skill */
             overflow: 'hidden',
-            boxShadow: '0 0 4px 0 rgba(0,0,0,0.25)',
+            boxShadow: SHADOWS.elevated,           /* layered shadow-as-border */
           }}
         >
           {/* Single product image — clipped by mask, blur clears in tandem */}

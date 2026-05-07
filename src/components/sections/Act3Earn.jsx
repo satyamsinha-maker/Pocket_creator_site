@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Container, AnimatedSection, SerifHeading, Body, Eyebrow, SCALE } from '../ui'
+import { Container, AnimatedSection, SerifHeading, Body, Eyebrow, SCALE, SHADOWS, RADII } from '../ui'
 
 const eyebrowStyle = (color = '#F51D00') => ({
   fontFamily: SCALE.eyebrow.family, fontWeight: SCALE.eyebrow.weight,
@@ -15,7 +15,7 @@ const captionStyle = (color = '#8D8D8D') => ({
 
 function EarningsDashStub() {
   return (
-    <div style={{ background: '#ffffff', borderRadius: '6px', padding: '24px', boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 32px 8px' }}>
+    <div style={{ background: '#ffffff', borderRadius: RADII.card, padding: '24px', boxShadow: SHADOWS.elevated }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
         <div>
           <p style={{ ...eyebrowStyle('#8D8D8D'), marginBottom: '6px' }}>This month</p>
@@ -127,12 +127,12 @@ export default function Act3Earn() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.06 }}
-              whileHover={{ y: -2, boxShadow: 'rgba(50, 50, 93, 0.12) 0px 16px 32px 0px' }}
+              whileHover={{ y: -2, boxShadow: SHADOWS.borderHover }}
               style={{
                 background: '#DAD9D2',
-                borderRadius: '6px',
+                borderRadius: RADII.card,
                 padding: '24px',
-                transition: 'box-shadow 0.25s',
+                transitionProperty: 'box-shadow, transform', transitionDuration: '180ms', transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
               }}
             >
               <p style={{ ...eyebrowStyle('#F51D00'), marginBottom: '10px' }}>

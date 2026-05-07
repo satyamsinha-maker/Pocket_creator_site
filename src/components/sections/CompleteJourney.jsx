@@ -36,7 +36,7 @@ export default function CompleteJourney() {
               transition={{ duration: 0.5, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
               style={{
                 background: '#ffffff',
-                borderRadius: '6px',
+                borderRadius: RADII.card,
                 padding: '24px',
                 position: 'relative',
               }}

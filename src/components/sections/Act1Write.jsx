@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Container, AnimatedSection, SerifHeading, Body, Eyebrow, SCALE } from '../ui'
+import { Container, AnimatedSection, SerifHeading, Body, Eyebrow, SCALE, SHADOWS, RADII } from '../ui'
 
 /* Helpers — apply common SCALE tokens inline (kept terse for stubs) */
 const eyebrowStyle = (color = '#F51D00') => ({
@@ -28,7 +28,7 @@ const bodySmStyle = (color = '#1C1C1C') => ({
 
 function StoryboardStub() {
   return (
-    <div style={{ background: '#FEFEFD', borderRadius: '6px', padding: '20px', boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 32px 8px' }}>
+    <div style={{ background: '#FEFEFD', borderRadius: RADII.card, padding: '20px', boxShadow: SHADOWS.elevated }}>
       <p style={{ ...labelStyle('#1C1C1C'), marginBottom: '6px' }}>The Boss’s Forbidden Love</p>
       <p style={{ ...eyebrowStyle('#F51D00'), marginBottom: '14px' }}>Romance · Slow burn · Hindi</p>
 
@@ -39,7 +39,7 @@ function StoryboardStub() {
           { name: 'Vikram Singh', role: 'The patriarch' },
           { name: 'Riya',         role: 'Best friend' },
         ].map((c) => (
-          <div key={c.name} style={{ background: '#ffffff', border: '1px solid #DAD9D2', borderRadius: '4px', padding: '8px 10px' }}>
+          <div key={c.name} style={{ background: '#ffffff', border: '1px solid #DAD9D2', borderRadius: RADII.tag, padding: '8px 10px' }}>
             <p style={captionStyle('#1C1C1C')}>{c.name}</p>
             <p style={{ ...captionStyle('#8D8D8D'), fontSize: '10px' }}>{c.role}</p>
           </div>
@@ -55,7 +55,7 @@ function StoryboardStub() {
 
 function DraftStub() {
   return (
-    <div style={{ background: '#FEFEFD', borderRadius: '6px', padding: '20px', boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 32px 8px' }}>
+    <div style={{ background: '#FEFEFD', borderRadius: RADII.card, padding: '20px', boxShadow: SHADOWS.elevated }}>
       <p style={{ ...eyebrowStyle('#F51D00'), marginBottom: '8px' }}>Episode 7 · Draft</p>
       <p style={{ ...bodySmStyle('#1C1C1C'), marginBottom: '8px' }}>
         Mira’s heels echoed across the marble lobby, each step a measured breath. She had not expected to see him here. Not tonight. Not after what he had said in the boardroom.
@@ -69,7 +69,7 @@ function DraftStub() {
 
 function ReviewStub() {
   return (
-    <div style={{ background: '#FEFEFD', borderRadius: '6px', padding: '20px', boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 32px 8px' }}>
+    <div style={{ background: '#FEFEFD', borderRadius: RADII.card, padding: '20px', boxShadow: SHADOWS.elevated }}>
       <p style={{ ...labelStyle('#1C1C1C'), fontStyle: 'italic', marginBottom: '14px' }}>
         “Mira’s heels echoed across the marble lobby...”
       </p>
@@ -79,7 +79,7 @@ function ReviewStub() {
         { tag: 'Continuity',      note: 'Boardroom scene: cross-checks with Ep 6 ending.' },
       ].map((r) => (
         <div key={r.tag} style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
-          <span style={{ ...captionStyle('#ffffff'), flex: 'none', background: '#F51D00', borderRadius: '4px', padding: '2px 6px', height: 'fit-content' }}>{r.tag}</span>
+          <span style={{ ...captionStyle('#ffffff'), flex: 'none', background: '#F51D00', borderRadius: RADII.tag, padding: '2px 6px', height: 'fit-content' }}>{r.tag}</span>
           <p style={captionStyle('#717171')}>{r.note}</p>
         </div>
       ))}
@@ -89,9 +89,9 @@ function ReviewStub() {
 
 function MemoryStub() {
   return (
-    <div style={{ background: '#FEFEFD', borderRadius: '6px', padding: '20px', boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 32px 8px' }}>
+    <div style={{ background: '#FEFEFD', borderRadius: RADII.card, padding: '20px', boxShadow: SHADOWS.elevated }}>
       <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start', marginBottom: '14px' }}>
-        <div style={{ ...captionStyle('#ffffff'), background: '#1C1C1C', borderRadius: '4px', width: 22, height: 22, display: 'flex', alignItems: 'center', justifyContent: 'center', flex: 'none' }}>
+        <div style={{ ...captionStyle('#ffffff'), background: '#1C1C1C', borderRadius: RADII.tag, width: 22, height: 22, display: 'flex', alignItems: 'center', justifyContent: 'center', flex: 'none' }}>
           You
         </div>
         <p style={labelStyle('#1C1C1C')}>
@@ -99,7 +99,7 @@ function MemoryStub() {
         </p>
       </div>
       <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
-        <div style={{ background: '#F51D00', color: '#ffffff', borderRadius: '4px', width: 22, height: 22, display: 'flex', alignItems: 'center', justifyContent: 'center', flex: 'none' }}>
+        <div style={{ background: '#F51D00', color: '#ffffff', borderRadius: RADII.tag, width: 22, height: 22, display: 'flex', alignItems: 'center', justifyContent: 'center', flex: 'none' }}>
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M2 20 L9 8 L13 14 L17 6 L22 20 Z" stroke="currentColor" strokeWidth="1.6" /></svg>
         </div>
         <div>

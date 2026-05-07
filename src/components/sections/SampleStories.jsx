@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Container, AnimatedSection, SerifHeading, Eyebrow, Body, Caption, SCALE } from '../ui'
+import { Container, AnimatedSection, SerifHeading, Eyebrow, Body, Caption, SCALE, SHADOWS, RADII } from '../ui'
 
 const GENRES = ['All', 'Romance', 'Thriller', 'Fantasy', 'Drama']
 
@@ -19,14 +19,14 @@ function Card({ s }) {
   const [playing, setPlaying] = useState(false)
   return (
     <motion.article
-      whileHover={{ y: -2, boxShadow: 'rgba(50, 50, 93, 0.12) 0px 16px 32px 0px' }}
+      whileHover={{ y: -2, boxShadow: SHADOWS.borderHover }}
       style={{
         background: '#ffffff',
-        borderRadius: '6px',
+        borderRadius: RADII.card,
         overflow: 'hidden',
         cursor: 'pointer',
-        boxShadow: 'rgba(23, 23, 23, 0.06) 0px 3px 6px 0px',
-        transition: 'box-shadow 0.25s',
+        boxShadow: SHADOWS.border,
+        transitionProperty: 'box-shadow, transform', transitionDuration: '180ms', transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
       }}
     >
       <div
@@ -62,14 +62,14 @@ function Card({ s }) {
             right: 12,
             width: 36,
             height: 36,
-            borderRadius: '4px',
+            borderRadius: RADII.tag,
             background: '#ffffff',
             border: 'none',
             cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            boxShadow: 'rgba(0,0,0,0.15) 0px 2px 6px 0px',
+            boxShadow: SHADOWS.border,
           }}
           aria-label={playing ? 'Pause sample' : 'Play 30-second sample'}
         >
@@ -131,7 +131,7 @@ export default function SampleStories() {
                   color: active ? '#ffffff' : '#1C1C1C',
                   border: '1px solid',
                   borderColor: active ? '#F51D00' : '#DAD9D2',
-                  borderRadius: '4px',
+                  borderRadius: RADII.tag,
                   padding: '8px 14px',
                   fontFamily:    SCALE.label.family,
                   fontWeight:    SCALE.label.weight,
