@@ -1,19 +1,42 @@
 import { motion } from 'framer-motion'
 
-const SANS = "'Mallory', ui-sans-serif, system-ui, sans-serif"
+/* ── Typeface stacks ──────────────────────────────────────────────────── */
+const SANS    = "'Mallory', ui-sans-serif, system-ui, sans-serif"     // body / UI
+const DISPLAY = "'Season Mix', Georgia, 'Times New Roman', serif"     // headings only
+
+/* ── Typescale lookup ─────────────────────────────────────────────────────
+ * Single source of truth for sizes/leading/tracking. Headings (display, h1..h4)
+ * all use Season Mix; everything else uses Mallory MP Narrow.
+ * ─────────────────────────────────────────────────────────────────────── */
+const SCALE = {
+  display:    { fontSize: 'clamp(40px, 5.4vw, 56px)', lineHeight: 1.07, letterSpacing: '-0.03em',  family: DISPLAY, weight: 400 },
+  h1:         { fontSize: 'clamp(36px, 4.5vw, 48px)', lineHeight: 1.10, letterSpacing: '-0.025em', family: DISPLAY, weight: 400 },
+  h2:         { fontSize: 'clamp(28px, 3.4vw, 36px)', lineHeight: 1.15, letterSpacing: '-0.02em',  family: DISPLAY, weight: 400 },
+  h3:         { fontSize: 'clamp(22px, 2.4vw, 28px)', lineHeight: 1.20, letterSpacing: '-0.015em', family: DISPLAY, weight: 400 },
+  h4:         { fontSize: '20px',                     lineHeight: 1.25, letterSpacing: '-0.01em',  family: DISPLAY, weight: 400 },
+
+  subheading: { fontSize: '18px',                     lineHeight: 1.5,  letterSpacing: '0',        family: SANS,    weight: 400 },
+  body:       { fontSize: '16px',                     lineHeight: 1.55, letterSpacing: '0',        family: SANS,    weight: 400 },
+  bodySm:     { fontSize: '14px',                     lineHeight: 1.45, letterSpacing: '0.003em',  family: SANS,    weight: 400 },
+  label:      { fontSize: '13px',                     lineHeight: 1.4,  letterSpacing: '0.005em',  family: SANS,    weight: 400 },
+  eyebrow:    { fontSize: '12px',                     lineHeight: 1.4,  letterSpacing: '0.08em',   family: SANS,    weight: 700, textTransform: 'uppercase' },
+  caption:    { fontSize: '11px',                     lineHeight: 1.4,  letterSpacing: '0.02em',   family: SANS,    weight: 400 },
+}
 
 /* ── Eyebrow ──────────────────────────────────────────────────────────── */
-export function Eyebrow({ children, color = '#F51D00' }) {
+export function Eyebrow({ children, color = '#F51D00', style = {} }) {
   return (
     <p
       style={{
-        fontFamily: SANS,
-        fontWeight: 400,
-        fontSize: '12px',
+        fontFamily:    SCALE.eyebrow.family,
+        fontWeight:    SCALE.eyebrow.weight,
+        fontSize:      SCALE.eyebrow.fontSize,
+        lineHeight:    SCALE.eyebrow.lineHeight,
+        letterSpacing: SCALE.eyebrow.letterSpacing,
+        textTransform: SCALE.eyebrow.textTransform,
         color,
-        letterSpacing: '0.08em',
-        textTransform: 'uppercase',
         marginBottom: '16px',
+        ...style,
       }}
     >
       {children}
@@ -21,21 +44,25 @@ export function Eyebrow({ children, color = '#F51D00' }) {
   )
 }
 
-/* ── Heading — sohne-var/Inter weight 300, large sizes per Stripe scale ─ */
-export function SerifHeading({ children, size = 'lg', maxWidth = '760px', as: Tag = 'h2' }) {
-  const config =
-    size === 'xl' ? { fontSize: 'clamp(40px, 5.4vw, 56px)', lineHeight: 1.07, letterSpacing: '-0.03em' } :
-    size === 'lg' ? { fontSize: 'clamp(32px, 4vw, 44px)',   lineHeight: 1.10, letterSpacing: '-0.025em' } :
-    size === 'md' ? { fontSize: 'clamp(24px, 2.8vw, 32px)', lineHeight: 1.15, letterSpacing: '-0.02em' } :
-                    { fontSize: 'clamp(20px, 2.2vw, 22px)', lineHeight: 1.20, letterSpacing: '-0.01em' }
+/* ── SerifHeading (legacy name kept) — Season Mix display heading ─────── *
+ *  size: 'display' | 'h1' (alias 'xl') | 'h2' (alias 'lg') | 'h3' (alias 'md') | 'h4' (alias 'sm')
+ *  Old aliases (xl/lg/md/sm) preserved so existing call sites continue to work.
+ * ─────────────────────────────────────────────────────────────────────── */
+export function SerifHeading({ children, size = 'h2', maxWidth = '760px', as: Tag = 'h2', style = {} }) {
+  const map = { xl: 'display', lg: 'h2', md: 'h3', sm: 'h4' }
+  const key = map[size] || size
+  const t = SCALE[key] || SCALE.h2
   return (
     <Tag
       style={{
-        fontFamily: SANS,
-        fontWeight: 400,
+        fontFamily:    t.family,
+        fontWeight:    t.weight,
+        fontSize:      t.fontSize,
+        lineHeight:    t.lineHeight,
+        letterSpacing: t.letterSpacing,
         color: '#061b31',
         maxWidth,
-        ...config,
+        ...style,
       }}
     >
       {children}
@@ -43,17 +70,17 @@ export function SerifHeading({ children, size = 'lg', maxWidth = '760px', as: Ta
   )
 }
 
-/* ── Body ─────────────────────────────────────────────────────────────── */
-export function Body({ children, color = '#50617a', size = 'md', maxWidth, style = {} }) {
-  const fontSize = size === 'lg' ? '18px' : size === 'sm' ? '12px' : '14px'
-  const lineHeight = size === 'lg' ? 1.5 : 1.4
+/* ── Subheading — 18 px lead paragraph (Mallory) ───────────────────────── */
+export function Subheading({ children, color = '#50617a', maxWidth, style = {} }) {
+  const t = SCALE.subheading
   return (
     <p
       style={{
-        fontFamily: SANS,
-        fontWeight: 400,
-        fontSize,
-        lineHeight,
+        fontFamily:    t.family,
+        fontWeight:    t.weight,
+        fontSize:      t.fontSize,
+        lineHeight:    t.lineHeight,
+        letterSpacing: t.letterSpacing,
         color,
         maxWidth,
         ...style,
@@ -64,7 +91,71 @@ export function Body({ children, color = '#50617a', size = 'md', maxWidth, style
   )
 }
 
-/* ── PillButton — kept name for compat, now Stripe square buttons ─────── */
+/* ── Body — paragraph text (Mallory) ──────────────────────────────────── *
+ *  size: 'lg' = subheading 18px, 'md' (default) = 16px, 'sm' = 14px
+ * ─────────────────────────────────────────────────────────────────────── */
+export function Body({ children, color = '#50617a', size = 'md', maxWidth, style = {} }) {
+  const map = { lg: SCALE.subheading, md: SCALE.body, sm: SCALE.bodySm }
+  const t = map[size] || SCALE.body
+  return (
+    <p
+      style={{
+        fontFamily:    t.family,
+        fontWeight:    t.weight,
+        fontSize:      t.fontSize,
+        lineHeight:    t.lineHeight,
+        letterSpacing: t.letterSpacing,
+        color,
+        maxWidth,
+        ...style,
+      }}
+    >
+      {children}
+    </p>
+  )
+}
+
+/* ── Label — UI label text (Mallory) ──────────────────────────────────── */
+export function Label({ children, color = '#061b31', weight = 400, style = {} }) {
+  const t = SCALE.label
+  return (
+    <span
+      style={{
+        fontFamily:    t.family,
+        fontWeight:    weight,
+        fontSize:      t.fontSize,
+        lineHeight:    t.lineHeight,
+        letterSpacing: t.letterSpacing,
+        color,
+        ...style,
+      }}
+    >
+      {children}
+    </span>
+  )
+}
+
+/* ── Caption — small meta text (Mallory) ──────────────────────────────── */
+export function Caption({ children, color = '#64748d', style = {} }) {
+  const t = SCALE.caption
+  return (
+    <span
+      style={{
+        fontFamily:    t.family,
+        fontWeight:    t.weight,
+        fontSize:      t.fontSize,
+        lineHeight:    t.lineHeight,
+        letterSpacing: t.letterSpacing,
+        color,
+        ...style,
+      }}
+    >
+      {children}
+    </span>
+  )
+}
+
+/* ── PillButton — Stripe-square buttons ───────────────────────────────── */
 export function PillButton({ variant = 'filled', children, onClick, ...rest }) {
   const variants = {
     filled: {
@@ -112,8 +203,8 @@ export function PillButton({ variant = 'filled', children, onClick, ...rest }) {
         borderRadius: '4px',
         fontFamily: SANS,
         fontWeight: 400,
-        fontSize: '14px',
-        letterSpacing: '0.003px',
+        fontSize: SCALE.label.fontSize,
+        letterSpacing: SCALE.label.letterSpacing,
         cursor: 'pointer',
         whiteSpace: 'nowrap',
         display: 'inline-flex',
@@ -202,3 +293,6 @@ export function FeatureCard({ children, style = {}, hover = false }) {
     </motion.div>
   )
 }
+
+/* Re-export the typescale so other modules can compose ad-hoc styles */
+export { SCALE, SANS, DISPLAY }
